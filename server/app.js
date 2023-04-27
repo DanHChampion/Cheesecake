@@ -14,7 +14,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-users = [
+const users = [
     {
         "id": 1,
         "name": "Dan",
@@ -32,7 +32,7 @@ users = [
     }
 ];
 
-continue_watching_list = [
+const continue_watching_list = [
     {
         "id": 1,
         "title": "Breaking Bad",
@@ -50,7 +50,7 @@ continue_watching_list = [
     }
 ];
 
-watchlist = [
+const watchlist = [
     {
         "id": 4,
         "title": "Flapjack"
@@ -65,7 +65,7 @@ watchlist = [
     }
 ];
 
-random_movies = [
+const random_movies = [
     {
         "id": 7,
         "title": "Ant-Man"
@@ -85,7 +85,6 @@ app.get('/users', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.json(users);
 });
-
 
 app.get('/contwatch', (req, res) => { // Might need to change name of endpoint
     res.status(200);
@@ -110,4 +109,4 @@ app.listen(
     () => console.log(`Running on http://localhost:${PORT}`)
 );
 
-
+module.exports = app;
