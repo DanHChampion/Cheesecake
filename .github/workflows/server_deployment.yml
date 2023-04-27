@@ -1,1 +1,27 @@
+name: Build and Deploy Cheesecake server
 
+on:
+  push:
+    paths:
+      - "server/**"
+  workflow_dispatch:
+
+jobs:
+  run_tests_and_linter:
+    runs-on: ubuntu-latest
+    name: Run unit tests and eslint
+    strategy:
+      matrix:
+        node-version: [14.x, 15.x, 16.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies, run Linter and run Unit tests
+        run: |
+          cd server
+          npm i --dev
+          npm run lint
+          npm test
