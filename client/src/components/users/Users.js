@@ -22,7 +22,7 @@ const Users = () => {
       <div className='wrapper'>
         {users.map((user) => (
           <div className='square' key={user.id}> 
-            <a href='/'>
+            <a href='/home'>
               [ICON]
               <p> {user.name} </p> 
             </a>

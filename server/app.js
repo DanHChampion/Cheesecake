@@ -32,6 +32,54 @@ users = [
     }
 ];
 
+continue_watching_list = [
+    {
+        "id": 1,
+        "title": "Breaking Bad",
+        "timestamp": null
+    },
+    {
+        "id": 2,
+        "title": "Power Rangers: SPD",
+        "timestamp": null
+    },
+    {
+        "id": 3,
+        "title": "Scott Pilgrim vs The World",
+        "timestamp": null
+    }
+];
+
+watchlist = [
+    {
+        "id": 4,
+        "title": "Flapjack"
+    },
+    {
+        "id": 5,
+        "title": "Daredevil"
+    },
+    {
+        "id": 6,
+        "title": "Scott Pilgrim vs The World"
+    }
+];
+
+random_movies = [
+    {
+        "id": 7,
+        "title": "Ant-Man"
+    },
+    {
+        "id": 8,
+        "title": "Spirited Away"
+    },
+    {
+        "id": 9,
+        "title": "Drive"
+    }
+];
+
 app.get('/users', (req, res) => {
     res.status(200);
     res.setHeader('Content-Type', 'application/json');
@@ -39,10 +87,22 @@ app.get('/users', (req, res) => {
 });
 
 
-app.get('/randomnum', (req, res) => {
-    res.status(200).send({
-        num: Math.floor(Math.random() * 10)
-    })
+app.get('/contwatch', (req, res) => { // Might need to change name of endpoint
+    res.status(200);
+    res.setHeader('Content-Type', 'application/json');
+    res.json(continue_watching_list);
+});
+
+app.get('/watchlist', (req, res) => { // Might need to change name of endpoint
+    res.status(200);
+    res.setHeader('Content-Type', 'application/json');
+    res.json(watchlist);
+});
+
+app.get('/movies', (req, res) => { // Might need to change name of endpoint
+    res.status(200);
+    res.setHeader('Content-Type', 'application/json');
+    res.json(random_movies);
 });
 
 app.listen(

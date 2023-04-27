@@ -1,0 +1,26 @@
+.Home {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.row {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 20px;
+
+    width: 180px;
+    height: 250px;
+    border: 1px black solid;
+
+}
