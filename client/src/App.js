@@ -1,25 +1,16 @@
 import './App.css';
-import { useEffect , useState } from 'react';
-import axios from 'axios';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/home/Home.js';
 
 function App() {
-  const [randomNum ,setRandomNum] = useState(null);
-
-  useEffect(() => getRandomNum(), []);
-
-  const getRandomNum = () => {
-    const url = 'http://localhost:8080'
-    axios.get(`${url}/randomnum`)
-    .then (response => {
-      setRandomNum(response.data.num)
-    })
-  }
 
   return (
     <div className="App">
-      <p>Random Number</p>
-      <p>{randomNum}</p>
-      
+      <BrowserRouter>
+				<Routes>
+					<Route path="*" element={<Home/>} />
+				</Routes>
+			</BrowserRouter>
     </div>
   );
 }
