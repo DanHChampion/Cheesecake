@@ -1,6 +1,6 @@
 import './Users.css'
 import { useEffect , useState } from 'react';
-import axios from 'axios';
+import apiRequest from '../hooks/apiRequest.js';
 
 const Users = () => {
   const [users ,setUsers] = useState([]);
@@ -8,12 +8,12 @@ const Users = () => {
   useEffect(() => getUsers(), []);
 
   const getUsers = () => {
-    const url = 'http://localhost:8080'
-    axios.get(`${url}/users`)
-    .then (response => {
-      setUsers(response.data)
-      console.log(response.data)
-    })
+    apiRequest().get('users', (res, err) => {
+			if(!err) {
+        console.log(res.data);
+				setUsers(res.data);
+			}
+		});
   }
 
   return (

@@ -1,6 +1,6 @@
 import './Home.css'
 import { useEffect , useState } from 'react';
-import axios from 'axios';
+import apiRequest from '../hooks/apiRequest.js';
 
 const Home = () => {
   const [randomNum ,setRandomNum] = useState(null);
@@ -8,11 +8,12 @@ const Home = () => {
   useEffect(() => getRandomNum(), []);
 
   const getRandomNum = () => {
-    const url = 'http://localhost:8080'
-    axios.get(`${url}/randomnum`)
-    .then (response => {
-      setRandomNum(response.data.num)
-    })
+    apiRequest().get('randomnum', (res, err) => {
+			if(!err) {
+        console.log(res.data);
+				setRandomNum(res.data.num);
+			}
+		});
   }
 
   return (
