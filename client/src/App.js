@@ -6,17 +6,17 @@ import NotFound from './components/notfound/NotFound.js';
 
 function App() {
 
-  return (
-    <div className="App">
-      <BrowserRouter>
+	return (
+		<div className="App">
+			<BrowserRouter>
 				<Routes>
-          <Route path="/users" element={<Users/>} />
+					<Route path="/users" element={<Users/>} />
 					<Route path="/home" element={<Home/>} />
-          <Route path="/*" element={<NotFound/>} />
+					<Route path="/*" element={<NotFound/>} />
 				</Routes>
 			</BrowserRouter>
-    </div>
-  );
+		</div>
+	);
 }
 
 export default App;

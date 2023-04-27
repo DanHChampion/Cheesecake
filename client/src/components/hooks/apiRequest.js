@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:8080/'
+const URL = 'http://localhost:8080/';
 
 export default function apiRequest() {
 	const get = async (endpoint, callback) => {
@@ -35,5 +35,5 @@ export default function apiRequest() {
 		get: get,
 		patch: patch,
 		post: post
-	}
+	};
 }
