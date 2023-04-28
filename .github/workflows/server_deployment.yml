@@ -9,14 +9,14 @@ on:
 jobs:
   run_tests_and_linter:
     runs-on: ubuntu-latest
-    name: Run unit tests and eslint
+    name: Run Unit tests and Eslint
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14.x
         uses: actions/setup-node@v2
         with:
           node-version: 14.x
-      - name: Install dependencies, run Linter and run Unit tests
+      - name: Install dependencies and run Eslint and Unit tests
         run: |
           cd server
           npm i --dev
