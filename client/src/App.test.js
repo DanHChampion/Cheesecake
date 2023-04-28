@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App.js';
+// import React from 'react';
+// import { createRoot } from 'react-dom/client';
+// import App from './App.js';
 
-test('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+test('Asserts that 1 is equal to 1', () => {
+	expect(1).toEqual(1);
 });

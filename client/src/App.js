@@ -7,7 +7,7 @@ import NotFound from './components/notfound/NotFound.js';
 function App() {
 
 	return (
-		<div className="App">
+		<div id="app" className="App">
 			<BrowserRouter>
 				<Routes>
 					<Route path="/users" element={<Users/>} />
