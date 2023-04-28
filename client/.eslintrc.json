@@ -23,7 +23,7 @@
         }
     },
     "ignorePatterns": [
-         "*/build/**"
+         "**/build/**"
     ],
     "rules": {
         "semi": ["error", "always"],
