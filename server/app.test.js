@@ -22,7 +22,7 @@ describe('Test all GET methods in app.js', () => {
 			.get('/users')
 			.expect(/Dan/);
 	});
-	test('GET /users returns JSON with 3 characters', async () => {
+	test('GET /users returns JSON with 3 items', async () => {
 		let response = await request(app).get('/users');
 		let usersLength = JSON.parse(JSON.stringify(response.body)).length;
 		expect(usersLength).toBe(3);
@@ -44,7 +44,7 @@ describe('Test all GET methods in app.js', () => {
 			.get('/contwatch')
 			.expect(/Breaking Bad/);
 	});
-	test('GET /contwatch returns JSON with 3 characters', async () => {
+	test('GET /contwatch returns JSON with 3 items', async () => {
 		let response = await request(app).get('/contwatch');
 		let usersLength = JSON.parse(JSON.stringify(response.body)).length;
 		expect(usersLength).toBe(3);
@@ -66,7 +66,7 @@ describe('Test all GET methods in app.js', () => {
 			.get('/watchlist')
 			.expect(/Daredevil/);
 	});
-	test('GET /watchlist returns JSON with 3 characters', async () => {
+	test('GET /watchlist returns JSON with 3 items', async () => {
 		let response = await request(app).get('/watchlist');
 		let usersLength = JSON.parse(JSON.stringify(response.body)).length;
 		expect(usersLength).toBe(3);

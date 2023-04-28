@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const PORT = 8080;
 
 // JSON Middleware
 app.use(express.json());
@@ -104,9 +103,5 @@ app.get('/movies', (req, res) => { // Might need to change name of endpoint
 	res.json(random_movies);
 });
 
-app.listen(
-	PORT,
-	() => console.log(`Running on http://localhost:${PORT}`)
-);
 
 module.exports = app;
