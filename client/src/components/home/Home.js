@@ -49,7 +49,7 @@ const Home = () => {
 			<div className='row'>
 				{continueWatching.map((item) => (
 					<div className='item' key={item.id}>
-						<a href='/'>
+						<a href={'/watch/?id=' + item.id}>
                 [POSTER]
 							<p> {item.title} </p>
 						</a>
@@ -60,7 +60,7 @@ const Home = () => {
 			<div className='row'>
 				{watchlist.map((item) => (
 					<div className='item' key={item.id}>
-						<a href='/'>
+						<a href={'/watch/?id=' + item.id}>
                 [POSTER]
 							<p> {item.title} </p>
 						</a>
@@ -71,7 +71,7 @@ const Home = () => {
 			<div className='row'>
 				{movies.map((item) => (
 					<div className='item' key={item.id}>
-						<a href='/'>
+						<a href={'/watch/?id=' + item.id}>
                 [POSTER]
 							<p> {item.title} </p>
 						</a>

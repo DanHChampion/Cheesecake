@@ -23,7 +23,7 @@ const Users = () => {
 				{users.map((user) => (
 					<div className='square' key={user.id}>
 						<a href='/home'>
-              [ICON]
+							[ICON]
 							<p> {user.name} </p>
 						</a>
 						<p> Edit Profile </p>
@@ -31,7 +31,7 @@ const Users = () => {
 				))}
 				<div className='square'>
 					<a href='/users'>
-              [ICON]
+						[ICON]
 						<p> Add Profile </p>
 					</a>
 				</div>
