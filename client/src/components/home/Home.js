@@ -44,13 +44,18 @@ const Home = () => {
 	return (
 		<div className="Home">
 			<NavBar/>
-			<h2>Welcome back!</h2>
+			<div className='billboard'>
+				<a href={'/watch/?id=8'}>
+					[POSTER]
+					<p> Sprited Away</p>
+				</a>
+			</div>
 			<p>Continue Watching</p>
 			<div className='row'>
 				{continueWatching.map((item) => (
 					<div className='item' key={item.id}>
 						<a href={'/watch/?id=' + item.id}>
-                [POSTER]
+							[POSTER]
 							<p> {item.title} </p>
 						</a>
 					</div>
@@ -61,7 +66,7 @@ const Home = () => {
 				{watchlist.map((item) => (
 					<div className='item' key={item.id}>
 						<a href={'/watch/?id=' + item.id}>
-                [POSTER]
+							[POSTER]
 							<p> {item.title} </p>
 						</a>
 					</div>
@@ -72,7 +77,7 @@ const Home = () => {
 				{movies.map((item) => (
 					<div className='item' key={item.id}>
 						<a href={'/watch/?id=' + item.id}>
-                [POSTER]
+							[POSTER]
 							<p> {item.title} </p>
 						</a>
 					</div>
