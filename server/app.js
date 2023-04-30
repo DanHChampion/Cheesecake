@@ -33,9 +33,13 @@ app.get('/watchlist', (req, res) => { // Might need to change name of endpoint
 });
 
 app.get('/movies', (req, res) => { // Might need to change name of endpoint
+	let itemList = []
+	for (let key in all_videos) {
+		itemList.push(all_videos[key]);
+	};
 	res.status(200);
 	res.setHeader('Content-Type', 'application/json');
-	res.json(random_movies);
+	res.json(itemList);
 });
 
 // Video Streaming Element

@@ -7,7 +7,7 @@
     height: 100%
 }
 
-.wrapper {
+.Users .wrapper {
     display: flex;
     justify-content: center;
     flex-direction: row;
