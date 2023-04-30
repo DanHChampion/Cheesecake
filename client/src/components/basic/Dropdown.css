@@ -1,0 +1,14 @@
+.Dropdown{
+    position: fixed;
+    width: 200px;
+    height: fit-content;
+    top: 50px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.Dropdown .item{
+    padding: 10px;
+    border: 1px black solid;
+}

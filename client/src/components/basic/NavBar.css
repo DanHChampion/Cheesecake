@@ -10,3 +10,12 @@
     border-bottom: 1px black solid;
     background-color: white;
 }
+.nav-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px black solid;
+    height: inherit;
+    padding: 0 10px;
+}

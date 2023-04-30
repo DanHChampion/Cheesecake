@@ -1,6 +1,6 @@
 import './Home.css';
 import NavBar from '../basic/NavBar.js';
-import Carousel from '../basic/Carousel';
+import Carousel from '../basic/Carousel.js';
 
 const Home = () => {
 

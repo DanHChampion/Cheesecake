@@ -4,10 +4,6 @@ const usersRoute = require('./routes/users.js');
 const watchlistRoute = require('./routes/watchlist.js');
 const videoRoute = require('./routes/video.js');
 
-app.use('/users', usersRoute);
-app.use('/watchlist', watchlistRoute);
-app.use('/video', videoRoute);
-
 // JSON Middleware
 app.use(express.json());
 
@@ -19,6 +15,10 @@ const corsOptions = {
 	optionSuccessStatus:200
 };
 app.use(cors(corsOptions));
+
+app.use('/users', usersRoute);
+app.use('/watchlist', watchlistRoute);
+app.use('/video', videoRoute);
 
 app.get('/contwatch', (req, res) => { // Might need to change name of endpoint
 	res.status(200);
