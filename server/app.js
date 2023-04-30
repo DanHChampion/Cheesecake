@@ -33,10 +33,10 @@ app.get('/watchlist', (req, res) => { // Might need to change name of endpoint
 });
 
 app.get('/movies', (req, res) => { // Might need to change name of endpoint
-	let itemList = []
+	let itemList = [];
 	for (let key in all_videos) {
 		itemList.push(all_videos[key]);
-	};
+	}
 	res.status(200);
 	res.setHeader('Content-Type', 'application/json');
 	res.json(itemList);
@@ -133,21 +133,6 @@ const watchlist = [
 	{
 		'id': 6,
 		'title': 'The Interview'
-	}
-];
-
-const random_movies = [
-	{
-		'id': 7,
-		'title': 'Ant-Man'
-	},
-	{
-		'id': 8,
-		'title': 'Spirited Away'
-	},
-	{
-		'id': 9,
-		'title': 'Drive'
 	}
 ];
 
