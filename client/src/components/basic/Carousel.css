@@ -18,11 +18,16 @@
     padding: 20px 0;
     scroll-behavior: smooth;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 150px;
 }
 .container {
     width: fit-content;
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin: 0 50px;
 }
 .Carousel .item {
@@ -34,21 +39,27 @@
     border: 1px black solid;
     margin: 0 10px;
     transition: 250ms all;
+    border-radius: 5px;
 }
 .Carousel .item:hover { 
     transform: scale(1.05);
 }
 .scroll-arrow{
     position: absolute;
-    top: 0;
+    top: 20px;
     z-index: 1;
     background-color: black;
-    opacity: 50%;
-    height: 100%;
-    width: 70px;
+    opacity: 1%;
+    height: 150px;
+    width: 64px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.Carousel:hover .scroll-arrow{
+    opacity: 20%;
 }
 
 .left-arrow{

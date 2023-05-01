@@ -1,7 +1,7 @@
 import './NavBar.css';
 import Dropdown from '../basic/Dropdown.js';
 import { useState } from 'react';
-
+import logo from './../../assets/logo.png';
 
 const NavBar = () => {
 
@@ -9,7 +9,7 @@ const NavBar = () => {
 
 	return(
 		<div className="NavBar">
-			<a className='nav-item' href='/home'><img src={'./logo.png'} alt='Logo' /></a>
+			<a className='nav-item' href='/home'><img src={logo} alt='Logo' /></a>
 			<a className='nav-item' href='/home'>Home</a>
 			<a className='nav-item' href='/watchlist'>Watchlist</a>
 			<a className='nav-item' href='/movies'>Movies</a>
