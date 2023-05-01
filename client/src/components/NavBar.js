@@ -19,6 +19,7 @@ const NavBar = () => {
 				<input type='text'/>
 				<button>Search</button>
 			</div>
+			<a className='nav-item' href='#'>Notifications</a>
 			<a className='nav-item' href='#' onClick={() => {setDropdown(!dropdown);}}><img src={'./default.png'} alt='Profile' /></a>
 			{dropdown &&
 				<Dropdown/>

@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 150px;
+    height: 8vw;
 }
 .container {
     width: fit-content;
@@ -34,15 +34,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px;
-    width: 250px;
-    border: 1px black solid;
-    margin: 0 10px;
+    height: 8vw;
+    width: 15vw;
+    margin: 0 5px;
     transition: 250ms all;
     border-radius: 5px;
+    background-image: linear-gradient(rgb(43, 43, 43), black) ;
 }
 .Carousel .item:hover { 
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 .scroll-arrow{
     position: absolute;
@@ -50,7 +50,7 @@
     z-index: 1;
     background-color: black;
     opacity: 1%;
-    height: 150px;
+    height: 8vw;
     width: 64px;
     display: flex;
     justify-content: center;
