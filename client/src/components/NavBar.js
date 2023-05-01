@@ -1,7 +1,7 @@
 import './NavBar.css';
-import Dropdown from '../basic/Dropdown.js';
+import Dropdown from './Dropdown.js';
 import { useState } from 'react';
-import logo from './../../assets/logo.png';
+import logo from '../assets/logo.png';
 
 const NavBar = () => {
 

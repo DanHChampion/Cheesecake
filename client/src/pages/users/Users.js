@@ -1,6 +1,6 @@
 import './Users.css';
 import { useEffect , useState } from 'react';
-import apiRequest from '../hooks/apiRequest.js';
+import apiRequest from '../../hooks/apiRequest.js';
 
 const Users = () => {
 	const [users ,setUsers] = useState([]);

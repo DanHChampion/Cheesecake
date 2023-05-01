@@ -1,6 +1,6 @@
 import './Player.css';
 import { useEffect , useState } from 'react';
-import videoSource from '../hooks/videoSource.js';
+import videoSource from '../../utils/videoSource.js';
 
 const Player = () => {
 	const queryParameters = new URLSearchParams(window.location.search);

@@ -1,5 +1,5 @@
 import './NotFound.css';
-import NavBar from '../basic/NavBar.js';
+import NavBar from '../../components/NavBar.js';
 
 const NotFound = () => {
 	return(
