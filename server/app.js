@@ -1,8 +1,14 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
-const usersRoute = require('./routes/users.js');
-const watchlistRoute = require('./routes/watchlist.js');
-const videoRoute = require('./routes/video.js');
+// const mongoose = require('mongoose');
+
+// Database // NEED TO SETUP MONGODB ON LOCAL MACHINE FIRST
+// mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+// const db = mongoose.connection;
+// db.on('error', (error) => console.error(error));
+// db.once('open', () => console.log('Connected to Database'));
 
 // JSON Middleware
 app.use(express.json());
@@ -15,6 +21,11 @@ const corsOptions = {
 	optionSuccessStatus:200
 };
 app.use(cors(corsOptions));
+
+// Routes
+const usersRoute = require('./routes/users.js');
+const watchlistRoute = require('./routes/watchlist.js');
+const videoRoute = require('./routes/video.js');
 
 app.use('/users', usersRoute);
 app.use('/watchlist', watchlistRoute);
