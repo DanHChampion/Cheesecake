@@ -47,5 +47,11 @@
     "eslint": "^8.39.0",
     "eslint-plugin-react": "^7.32.2",
     "jest-watch-typeahead": "^0.6.5"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": ["node_modules/(?!@apiRequest)/.+\\.js$"]
   }
 }
