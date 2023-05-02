@@ -21,20 +21,16 @@ const Users = () => {
 			<p>Who&apos;s Watching?</p>
 			<div className='wrapper'>
 				{users.map((user) => (
-					<div className='square' key={user.id}>
-						<a href='/home'>
-							[ICON]
-							<p> {user.name} </p>
-						</a>
+					<a className='item' key={user.id} href='/home'>
+						<img src='./default.png' alt={user.name + '\'s Icon'}/>
+						<p> {user.name} </p>
 						<p> Edit Profile </p>
-					</div>
-				))}
-				<div className='square'>
-					<a href='/users'>
-						[ICON]
-						<p> Add Profile </p>
 					</a>
-				</div>
+				))}
+				<a className='item' href='/users'>
+					<img src='./plus_icon.png' alt='Plus Icon'/>
+					<p> Add Profile </p>
+				</a>
 			</div>
 		</div>
 	);
