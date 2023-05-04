@@ -1,0 +1,87 @@
+@import '../assets/global.scss';
+
+.NavBar {
+    top:0px;
+    position: absolute;
+    display: flex ;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: $navbar-height;
+    background-color: $bg-colour;
+    color: white;
+    font-family: $font-family;
+    letter-spacing: 1px;
+
+    .container {
+        flex-direction: row;
+        position: absolute;
+        height: inherit;
+    }
+
+    .left-container{
+        @extend .flex-center, .container;
+        left: 10px;
+    }
+    
+    .right-container {
+        @extend .flex-center, .container;
+        right:0px;
+    }
+
+    .nav-item{
+        @extend .flex-center;
+        flex-direction: row;
+        height: inherit;
+        min-width: fit-content;
+        padding: 0 20px 0 10px;
+
+        .logo {
+            padding: 0 20px;
+        }
+
+        img{
+            width: 50px;
+            object-fit: contain;
+        }
+
+        .icon{
+            padding: 0 10px;
+        }
+
+        .big-icon{
+            font-size: 22px;
+            padding: 0px;
+        }
+    }
+    .nav-item:hover{
+        text-shadow: 0 0 10px #555;
+    }
+    .search-container{
+        height: inherit;
+
+        input{
+            padding: 5px 15px;
+            font-size: inherit;
+            background: none;
+            border: 2px solid white;
+            outline: none;
+            color: inherit;
+            font-family: inherit;
+            border-radius: 2px;
+            margin: 0 10px
+        }
+        input:focus{
+        }
+
+        button{
+            @extend .clickable;
+            color: inherit;
+            border: none;
+            background: none;
+        }
+    }
+}
+
+

@@ -1,4 +1,4 @@
-import './NotFound.css';
+import './NotFound.scss';
 import NavBar from '../../components/NavBar.js';
 
 const NotFound = () => {

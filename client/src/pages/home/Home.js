@@ -1,4 +1,4 @@
-import './Home.css';
+import './Home.scss';
 import NavBar from '../../components/NavBar.js';
 import Carousel from '../../components/Carousel.js';
 

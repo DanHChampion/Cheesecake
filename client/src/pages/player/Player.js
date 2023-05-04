@@ -1,4 +1,4 @@
-import './Player.css';
+import './Player.scss';
 import { useEffect , useState } from 'react';
 import videoSource from '../../utils/videoSource.js';
 

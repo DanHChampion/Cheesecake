@@ -1,4 +1,4 @@
-import './Users.css';
+import './Users.scss';
 import { useEffect , useState } from 'react';
 import apiRequest from '../../hooks/apiRequest.js';
 
