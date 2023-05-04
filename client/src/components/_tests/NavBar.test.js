@@ -19,8 +19,8 @@ it('renders all items NavBar.js successfully', () => {
 	// expect(searchBarElement).toBeInTheDocument();
 	const searchElement = screen.getByRole('button');
 	expect(searchElement).toBeInTheDocument();
-	const notificationsElement = screen.getByText(/Notifications/i);
-	expect(notificationsElement).toBeInTheDocument();
+	// const notificationsElement = screen.getByText(/Notifications/i); NOW REPLACED WITH ICON
+	// expect(notificationsElement).toBeInTheDocument();
 	const profileImgElement = screen.getAllByRole('img')[1];
 	expect(profileImgElement).toBeInTheDocument();
 });
