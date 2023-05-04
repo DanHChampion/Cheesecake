@@ -15,8 +15,8 @@ it('renders all items NavBar.js successfully', () => {
 	expect(moviesElement).toBeInTheDocument();
 	const seriesElement = screen.getByText(/Series/i);
 	expect(seriesElement).toBeInTheDocument();
-	const searchBarElement = screen.getByRole('textbox');
-	expect(searchBarElement).toBeInTheDocument();
+	// const searchBarElement = screen.getByRole('textbox'); IT IS NOW HIDDEN
+	// expect(searchBarElement).toBeInTheDocument();
 	const searchElement = screen.getByRole('button');
 	expect(searchElement).toBeInTheDocument();
 	const notificationsElement = screen.getByText(/Notifications/i);
