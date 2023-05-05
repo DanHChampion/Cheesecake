@@ -1,4 +1,4 @@
-import './Carousel.css';
+import './Carousel.scss';
 import { useRef, useEffect , useState } from 'react';
 import apiRequest from '../hooks/apiRequest';
 import PropTypes from 'prop-types';

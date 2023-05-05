@@ -1,4 +1,4 @@
-import './Dropdown.css';
+import './Dropdown.scss';
 
 const Dropdown = () => {
 	return(

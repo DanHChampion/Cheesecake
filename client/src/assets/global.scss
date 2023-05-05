@@ -1,0 +1,52 @@
+// Variables
+$bg-colour: #111;
+$bg-hover-colour: #222;
+$base-color: #c6538c;
+$navbar-height: 60px;
+$font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: rgb(37, 37, 37);
+  color: white;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.flex-center {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.debug-border {
+  border: 1px black solid;
+}
+
+.clickable{
+  cursor: pointer;
+}

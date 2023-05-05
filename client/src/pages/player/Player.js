@@ -1,18 +1,17 @@
-import './Player.css';
+import './Player.scss';
 import { useEffect , useState } from 'react';
-import mediaSource from '../hooks/mediaSource.js';
+import videoSource from '../../utils/videoSource.js';
 
 const Player = () => {
 	const queryParameters = new URLSearchParams(window.location.search);
-	const videoType = queryParameters.get('type');
-	const videoPath = queryParameters.get('path');
+	const videoId = queryParameters.get('id');
 
 	const [videoSrc,setVideoSrc] = useState(null);
 
 	useEffect(() => getVideo(), []);
 
 	const getVideo = () => {
-		setVideoSrc(mediaSource(videoType+'/'+videoPath));
+		setVideoSrc(videoSource(videoId));
 	};
 
 	return (

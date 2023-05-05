@@ -1,9 +1,8 @@
-import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/home/Home.js';
-import Users from './components/users/Users.js';
-import Player from './components/player/Player.js';
-import NotFound from './components/notfound/NotFound.js';
+import Home from './pages/home/Home.js';
+import Users from './pages/users/Users.js';
+import Player from './pages/player/Player.js';
+import NotFound from './pages/notfound/NotFound.js';
 
 function App() {
 

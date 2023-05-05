@@ -12,43 +12,54 @@
     overflow:hidden;
     grid-template-columns: repeat(3, auto);
 } */
-.wrapper {
+.Carousel .wrapper {
     width: 100%;
     position: relative;
     padding: 20px 0;
     scroll-behavior: smooth;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 8vw;
 }
-.container {
+.Carousel .container {
     width: fit-content;
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin: 0 50px;
 }
 .Carousel .item {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px;
-    width: 250px;
-    border: 1px black solid;
-    margin: 0 10px;
+    height: 8vw;
+    width: 15vw;
+    margin: 0 5px;
     transition: 250ms all;
+    border-radius: 5px;
+    background-image: linear-gradient(rgb(43, 43, 43), black) ;
 }
 .Carousel .item:hover { 
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 .scroll-arrow{
     position: absolute;
-    top: 0;
+    top: 20px;
     z-index: 1;
     background-color: black;
-    opacity: 50%;
-    height: 100%;
-    width: 70px;
+    opacity: 1%;
+    height: 8vw;
+    width: 64px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.Carousel:hover .scroll-arrow{
+    opacity: 20%;
 }
 .Carousel img{
     width: 100%;
