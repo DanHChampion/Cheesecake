@@ -22,6 +22,7 @@ const Carousel = (props) => {
 
 	const getItems = () => {
 		apiRequest().get( props.endpoint, (res, err) => {
+			console.log(res.data);
 			if(!err) {
 				setItems(res.data);
 			}
@@ -64,8 +65,8 @@ const Carousel = (props) => {
 					<div ref={wrapperRef} className='wrapper' onScroll={()=> {onSlide();}}>
 						<div ref={containerRef} className='container'>
 							{items.map((item) => (
-								<a href={'/watch/?id=' + item.id}className='item' key={item.id}>
-									<img src={'./'} alt={item.title +' Poster'}/>
+								<a href={'/watch/?type=' + item.type +'&path=' + item.videopath} className='item' key={item.id}>
+									<img src={item.imagepath} alt={item.title +' Poster'}/>
 								</a>
 							))}
 						</div>

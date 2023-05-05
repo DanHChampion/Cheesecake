@@ -1,8 +1,14 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
-const usersRoute = require('./routes/users.js');
-const watchlistRoute = require('./routes/watchlist.js');
-const videoRoute = require('./routes/video.js');
+// const mongoose = require('mongoose');
+
+// Database
+// mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+// const db = mongoose.connection;
+// db.on('error', (error) => console.error(error));
+// db.once('open', () => console.log('Connected to Database!'));
 
 // JSON Middleware
 app.use(express.json());
@@ -16,9 +22,16 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+// Routes
+const usersRoute = require('./routes/users.js');
+const watchlistRoute = require('./routes/watchlist.js');
+const streamRoute = require('./routes/stream.js');
+const videoRoute = require('./routes/videos.js');
+
 app.use('/users', usersRoute);
 app.use('/watchlist', watchlistRoute);
-app.use('/video', videoRoute);
+app.use('/stream', streamRoute);
+app.use('/videos', videoRoute);
 
 app.get('/contwatch', (req, res) => { // Might need to change name of endpoint
 	res.status(200);
@@ -60,7 +73,7 @@ const all_videos = {
 	'1':{
 		'id': 1,
 		'title': 'Breaking Bad',
-		'type': 'clip',
+		'type': 'clips',
 		'videopath': 'Is Anything Real.mp4'
 	},
 	'2':{
@@ -72,7 +85,7 @@ const all_videos = {
 	'3': {
 		'id': 3,
 		'title': 'Scott Pilgrim vs The World',
-		'type': 'movie',
+		'type': 'movies',
 		'videopath': 'Cant Stop.mp4'
 	},
 	'4': {
