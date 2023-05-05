@@ -1,12 +1,12 @@
 'use strict';
 
 const request = require('supertest');
-const app = require('./app');
+const app = require('../app');
 
 describe('Test all GET methods in app.js', () => {
 
 	// Testing GET Methods
-	// Users Section - Need new tests for MONGODB Integration
+	// Users Section // CURRENTLY NO DATABASE
 	// test('GET /users successful', () => {
 	// 	return request(app)
 	// 		.get('/users')
@@ -16,16 +16,6 @@ describe('Test all GET methods in app.js', () => {
 	// 	return request(app)
 	// 		.get('/users')
 	// 		.expect('Content-type', /json/);
-	// });
-	// test('GET /users returns JSON containing Dan', () => {
-	// 	return request(app)
-	// 		.get('/users')
-	// 		.expect(/Dan/);
-	// });
-	// test('GET /users returns JSON with 3 items', async () => {
-	// 	let response = await request(app).get('/users');
-	// 	let usersLength = JSON.parse(JSON.stringify(response.body)).length;
-	// 	expect(usersLength).toBe(3);
 	// });
 
 	// Continue Watching Section

@@ -15,6 +15,7 @@ const Home = () => {
 			</div>
 			<Carousel label={'Continue Watching'} endpoint={'contwatch'}/>
 			<Carousel label={'All Movies'} endpoint={'movies'}/>
+			<Carousel label={'Movies'} endpoint={'videos/movies'}/>
 			<Carousel label={'Watchlist'} endpoint={'watchlist'}/>
 		</div>
 	);

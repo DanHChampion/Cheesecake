@@ -21,7 +21,7 @@ const Users = () => {
 			<p>Who&apos;s Watching?</p>
 			<div className='wrapper'>
 				{users.map((user) => (
-					<div className='square' key={user.id}>
+					<div className='square' key={user._id}>
 						<a href='/home'>
 							[ICON]
 							<p> {user.name} </p>

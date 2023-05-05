@@ -20,13 +20,9 @@ router.get('/:id', getUser, (req, res) => {
 
 // Creating one
 router.post('/', async (req, res) => {
-	const user = new User({
-		name: req.body.name,
-		avatar: './default.png'
-	});
 	try {
-		const newUser = await user.save();
-		res.status(201).json(newUser);
+		const { newUserId } = await createUser(req.body);
+		res.status(201).json(newUserId);
 	} catch (err) {
 		res.status(400).json({ message: err.message });
 	}
@@ -71,6 +67,18 @@ async function getUser(req, res, next) {
 
 	res.user = user;
 	next();
+}
+
+async function createUser(body) {
+	const user = new User({
+		name: body.name,
+		avatar: './default.png'
+	});
+	const newUser = await user.save();
+
+	return {
+		userId: newUser._id
+	};
 }
 
 module.exports = router;
