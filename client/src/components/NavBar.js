@@ -1,15 +1,23 @@
 import './NavBar.scss';
 import Dropdown from './Dropdown.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faPlus, faFilm, faTvAlt, faVideo, faBell, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import logo from '../assets/logo.png';
 
 const NavBar = () => {
-
 	const [dropdown,setDropdown] = useState(false);
 	const [search,setSearch] = useState(false);
 
+	const getUserObject = () => {
+		return JSON.parse(sessionStorage.getItem('userObject'));
+	};
+
+	useEffect(() => {
+		setUserObject(getUserObject());
+	},[]);
+
+	const [userObject,setUserObject] = useState(getUserObject());
 
 	return(
 		<div className="NavBar">
@@ -27,7 +35,7 @@ const NavBar = () => {
 					<button onClick={() => {setSearch(!search);}}><FontAwesomeIcon className='big-icon' icon={faMagnifyingGlass}/></button>
 				</div>
 				<a className='nav-item' href='#'><FontAwesomeIcon className='big-icon' icon={faBell}/></a>
-				<a className='nav-item' href='#' onClick={() => {setDropdown(!dropdown);}}><img src={'./default.png'} alt='Profile' /></a>
+				<a className='nav-item' href='#' onClick={() => {setDropdown(!dropdown);}}><img src={userObject.icon} alt='Profile' /></a>
 			</div>
 			{dropdown &&
 				<Dropdown/>

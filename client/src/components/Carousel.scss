@@ -1,3 +1,5 @@
+@import '../assets/global.scss';
+
 .Carousel{
     position: relative;
     display: flex;
@@ -39,7 +41,7 @@
     margin: 0 5px;
     transition: 250ms all;
     border-radius: 5px;
-    background-image: linear-gradient(rgb(43, 43, 43), black) ;
+    background-image: linear-gradient(#111, black) ;
     overflow: hidden;
 }
 .Carousel .item:hover { 

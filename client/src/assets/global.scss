@@ -1,5 +1,5 @@
 // Variables
-$bg-colour: #111;
+$bg-colour: #0f0e0c;
 $bg-hover-colour: #222;
 $base-color: #c6538c;
 $navbar-height: 60px;
@@ -13,7 +13,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -28,7 +28,7 @@ code {
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
-  background-color: rgb(37, 37, 37);
+  background-color: $bg-colour;
   color: white;
 }
 

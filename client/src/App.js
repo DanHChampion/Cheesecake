@@ -5,6 +5,19 @@ import Player from './pages/player/Player.js';
 import NotFound from './pages/notfound/NotFound.js';
 
 function App() {
+	const userObject = sessionStorage.getItem('userObject');
+
+	if(userObject === null) {
+		return (
+			<div id="app" className="App">
+				<BrowserRouter>
+					<Routes>
+						<Route path="*" element={<Users/>} />
+					</Routes>
+				</BrowserRouter>
+			</div>
+		);
+	}
 
 	return (
 		<div id="app" className="App">

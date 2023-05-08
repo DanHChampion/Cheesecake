@@ -18,13 +18,17 @@ const Users = () => {
 		});
 	};
 
+	const logIn = (userObject) => {
+		sessionStorage.setItem('userObject', JSON.stringify(userObject));
+	};
+
 	return (
 		<div className='Users'>
 			<span>Who&apos;s Watching?</span>
 			<div className='wrapper'>
 				{users.map((user) => (
 					<div className='item' key={user.id}>
-						<a href='/home' className='icon-wrapper'>
+						<a href='/home' onClick={() => {logIn(user);}} className='icon-wrapper'>
 							<img src={user.icon} alt={user.name+' Avatar'}/>
 						</a>
 						<p> {user.name} </p>

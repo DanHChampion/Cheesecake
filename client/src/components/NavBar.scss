@@ -9,7 +9,7 @@
     justify-content: space-evenly;
     width: 100%;
     height: $navbar-height;
-    background: linear-gradient($bg-colour, #22222200 );
+    background: linear-gradient(#000 , $bg-colour );
     color: white;
     font-family: $font-family;
     letter-spacing: 1px;
@@ -23,12 +23,16 @@
 
     .left-container{
         @extend .flex-center, .container;
-        left: 10px;
+        left: 20px;
     }
     
     .right-container {
         @extend .flex-center, .container;
-        right:0px;
+        right:20px;
+
+        img:hover {
+            border: 2px white solid;
+        }
     }
 
     .nav-item{
@@ -49,13 +53,17 @@
         }
 
         .logo {
+            width: 50px;
             padding: 0 20px;
         }
 
         img{
-            width: 50px;
-            object-fit: contain;
+            width: 32px;
+            border-radius: 5px;
+            transition: 200ms;
+            border: 2px transparent solid;
         }
+        
 
         .icon{
             padding-right: 10px;

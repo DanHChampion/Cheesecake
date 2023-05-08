@@ -102,7 +102,7 @@ const users = [
 {
 	'id': '1',
 	'name': 'Dan',
-	'icon': 'https://icon-library.com/images/default-profile-icon/default-profile-icon-0.jpg'
+	'icon': 'https://i.pinimg.com/474x/d6/e2/b9/d6e2b92c45c41819cbd4000bb447c50e.jpg'
 },
 {
 	'id': '2',
