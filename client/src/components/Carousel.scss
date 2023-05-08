@@ -40,6 +40,7 @@
     transition: 250ms all;
     border-radius: 5px;
     background-image: linear-gradient(rgb(43, 43, 43), black) ;
+    overflow: hidden;
 }
 .Carousel .item:hover { 
     transform: scale(1.03);

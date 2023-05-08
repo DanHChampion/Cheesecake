@@ -15,11 +15,11 @@ const NavBar = () => {
 		<div className="NavBar">
 			<div className='left-container'>
 				<a className='nav-item' href='/home'><img className='logo' src={logo} alt='Logo' /></a>
-				<a className='nav-item' href='/home'><FontAwesomeIcon className='icon' icon={faHouse}/>HOME</a>
-				<a className='nav-item' href='/watchlist'><FontAwesomeIcon className='icon' icon={faPlus}/>WATCHLIST</a>
-				<a className='nav-item' href='/movies'><FontAwesomeIcon className='icon' icon={faFilm}/>MOVIES</a>
-				<a className='nav-item' href='/series'><FontAwesomeIcon className='icon' icon={faTvAlt}/>SERIES</a>
-				<a className='nav-item' href='/clips'><FontAwesomeIcon className='icon' icon={faVideo}/>CLIPS</a>
+				<a className='nav-item' href='/home'><FontAwesomeIcon className='icon' icon={faHouse}/><span>HOME</span></a>
+				<a className='nav-item' href='/watchlist'><FontAwesomeIcon className='icon' icon={faPlus}/><span>WATCHLIST</span></a>
+				<a className='nav-item' href='/movies'><FontAwesomeIcon className='icon' icon={faFilm}/><span>MOVIES</span></a>
+				<a className='nav-item' href='/series'><FontAwesomeIcon className='icon' icon={faTvAlt}/><span>SERIES</span></a>
+				<a className='nav-item' href='/clips'><FontAwesomeIcon className='icon' icon={faVideo}/><span>CLIPS</span></a>
 			</div>
 			<div className='right-container'>
 				<div className='search-container nav-item'>

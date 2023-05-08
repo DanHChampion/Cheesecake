@@ -9,10 +9,11 @@
     justify-content: space-evenly;
     width: 100%;
     height: $navbar-height;
-    background-color: $bg-colour;
+    background: linear-gradient($bg-colour, #22222200 );
     color: white;
     font-family: $font-family;
     letter-spacing: 1px;
+    z-index: 1;
 
     .container {
         flex-direction: row;
@@ -35,7 +36,17 @@
         flex-direction: row;
         height: inherit;
         min-width: fit-content;
-        padding: 0 20px 0 10px;
+        padding: 0 20px 0 10px;        
+        span{
+            padding: 8px 1px;
+            background: 
+                linear-gradient(to right, transparent, transparent),
+                linear-gradient(to right, white, white);
+            background-size: 100% 0.1em, 0 0.1em;
+            background-position: 100% 100%, 0 100%;
+            background-repeat: no-repeat;
+            transition: background-size 400ms;
+        }
 
         .logo {
             padding: 0 20px;
@@ -47,7 +58,7 @@
         }
 
         .icon{
-            padding: 0 10px;
+            padding-right: 10px;
         }
 
         .big-icon{
@@ -57,6 +68,9 @@
     }
     .nav-item:hover{
         text-shadow: 0 0 10px #555;
+        span {
+            background-size: 0 0.1em, 100% 0.1em;
+        }
     }
     .search-container{
         height: inherit;

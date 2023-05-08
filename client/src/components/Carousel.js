@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 // props include
 // label
 // endpoint
-const Carousel = (props) => {
+const Carousel = ( { label, previewObj, endpoint } ) => {
 	const [items,setItems] = useState(null);
 
 	const [scrollX, setScrollX] = useState(0);
@@ -21,8 +21,7 @@ const Carousel = (props) => {
 
 
 	const getItems = () => {
-		apiRequest().get( props.endpoint, (res, err) => {
-			console.log(res.data);
+		apiRequest().get( endpoint, (res, err) => {
 			if(!err) {
 				setItems(res.data);
 			}
@@ -47,27 +46,28 @@ const Carousel = (props) => {
 	};
 
 	const onSlide = () => {
-		console.log('Bruh');
 		setScrollX(wrapperRef.current.scrollLeft);
 		setState({
 			left:  scrollX > 1 ? true : false,
 			right: scrollX <= containerRef.current.offsetWidth - wrapperRef.current.offsetWidth ? true : false
 		});
-		console.log(scrollX);
 	};
 
 	return (
 		<>
-			<p>{props.label}</p>
+			<p>{label}</p>
 			<div className="Carousel">
 				{state.left && <div className='scroll-arrow left-arrow' onClick={() => {goLeft();}}> &lt; </div>}
 				{items &&
 					<div ref={wrapperRef} className='wrapper' onScroll={()=> {onSlide();}}>
 						<div ref={containerRef} className='container'>
 							{items.map((item) => (
-								<a href={'/watch/?type=' + item.type +'&path=' + item.videopath} className='item' key={item.id}>
+								// <a href={'/watch/?type=' + item.type +'&path=' + item.videopath} className='item' key={item.id}>
+								// 	<img src={item.imagepath} alt={item.title +' Poster'}/>
+								// </a>
+								<div onClick={() => {previewObj.openPreview(item);}} className='item' key={item.id}>
 									<img src={item.imagepath} alt={item.title +' Poster'}/>
-								</a>
+								</div>
 							))}
 						</div>
 					</div>
@@ -83,4 +83,5 @@ export default Carousel;
 Carousel.propTypes = {
 	label: PropTypes.string.isRequired,
 	endpoint: PropTypes.string.isRequired,
+	previewObj: PropTypes.object.isRequired,
 };
