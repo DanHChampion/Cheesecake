@@ -1,27 +1,56 @@
+@import '../../assets/global.scss';
+
 .Users {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend .flex-center;
     flex-direction: column;
+    height: 100%;
+    font-family: $font-family;
 
-    height: 100%
+    span {
+        font-size: 30px;
+    }
+    
+    .wrapper {
+        @extend .flex-center;
+        flex-direction: row;
+        margin: 30px;
+
+    }
+    .item {
+        @extend .flex-center;
+        flex-direction: column;
+    
+        margin: 20px;
+    
+        width: 200px;
+        height: fit-content;
+        font-size: 20px;
+
+        .icon-wrapper{
+            @extend .flex-center;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 3px white solid;
+            transition: 300ms;
+            font-size: 100px;
+
+
+            img{
+                width: 100%;
+                object-fit: cover;
+            }
+
+            
+        }
+        .icon-wrapper:hover{
+            transform: scale(1.05);
+
+        }
+
+        
+        
+    }
 }
 
-.Users .wrapper {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
-.Users .item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    margin: 20px;
-
-    width: 200px;
-    height: 200px;
-    border: 1px black solid;
-
-}

@@ -1,5 +1,7 @@
 import './Users.scss';
 import { useEffect , useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import apiRequest from '../../hooks/apiRequest.js';
 
 const Users = () => {
@@ -18,22 +20,21 @@ const Users = () => {
 
 	return (
 		<div className='Users'>
-			<p>Who&apos;s Watching?</p>
+			<span>Who&apos;s Watching?</span>
 			<div className='wrapper'>
 				{users.map((user) => (
-					<div className='square' key={user.id}>
-						<a href='/home'>
-							[ICON]
-							<p> {user.name} </p>
+					<div className='item' key={user.id}>
+						<a href='/home' className='icon-wrapper'>
+							<img src={user.icon} alt={user.name+' Avatar'}/>
 						</a>
-						<p> Edit Profile </p>
+						<p> {user.name} </p>
 					</div>
 				))}
-				<div className='square'>
-					<a href='/users'>
-						[ICON]
-						<p> Add Profile </p>
+				<div className='item'>
+					<a className='icon-wrapper' href='/users'>
+						<FontAwesomeIcon className='icon' icon={faPlus}/>
 					</a>
+					<p> Add Profile </p>
 				</div>
 			</div>
 		</div>
