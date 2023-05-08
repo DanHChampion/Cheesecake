@@ -4,7 +4,13 @@ import '@testing-library/jest-dom';
 import NavBar from '../NavBar';
 
 it('renders all items NavBar.js successfully', () => {
-	render(<NavBar/>);
+	const mockUser = {
+		'id': '1',
+		'name': 'Dan',
+		'icon': 'https://i.pinimg.com/474x/d6/e2/b9/d6e2b92c45c41819cbd4000bb447c50e.jpg'
+	};
+
+	render(<NavBar userObject={mockUser} />);
 	const logoImgElement = screen.getAllByRole('img')[0];
 	expect(logoImgElement).toBeInTheDocument();
 	const homeElement = screen.getByText(/Home/i);

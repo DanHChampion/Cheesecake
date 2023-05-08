@@ -35,7 +35,7 @@ const NavBar = () => {
 				</div>
 				<a className='nav-item' href='#'><FontAwesomeIcon className='big-icon' icon={faBell}/></a>
 				<Dropdown>
-					<a className='nav-item' href='#'><img src={userObject.icon} alt='Profile' /></a>
+					<a className='nav-item' href='#'><img src={userObject? userObject.icon : './default.png'} alt='Profile' /></a>
 				</Dropdown>
 			</div>
 		</div>
