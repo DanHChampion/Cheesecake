@@ -1,14 +1,44 @@
+@import '../assets/global.scss';
+@import './NavBar.scss';
+
 .Dropdown{
-    position: fixed;
-    width: 200px;
-    height: fit-content;
-    top: 50px;
-    right: 0px;
-    display: flex;
-    flex-direction: column;
-    background-color: black;
+    height: inherit;
+    position: relative;
+
+    .content{
+        transition: 300ms;
+        position: absolute;
+        width: 200px;
+        height: fit-content;
+        top: $navbar-height;
+        right: 0px;
+        display: flex;
+        flex-direction: column;
+        background-color: #111;
+        border: 1px solid #222;
+        visibility: hidden;
+        opacity: 0;
+
+        .item{
+            padding: 10px;
+            text-align: left;
+
+            svg{
+                padding: 0px 15px 0px 10px;
+            }
+        }
+
+        .item:hover{
+            background-color: #222;
+        }
+    }
+   
 }
-.Dropdown .item{
-    padding: 10px;
-    border: 1px black solid;
+.Dropdown:hover img{
+    border: 2px white solid;
+}
+
+.Dropdown:hover .content{
+    visibility: visible;
+    opacity: 1;
 }

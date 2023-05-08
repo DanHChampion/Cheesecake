@@ -30,9 +30,6 @@
         @extend .flex-center, .container;
         right:20px;
 
-        img:hover {
-            border: 2px white solid;
-        }
     }
 
     .nav-item{
@@ -40,7 +37,7 @@
         flex-direction: row;
         height: inherit;
         min-width: fit-content;
-        padding: 0 20px 0 10px;        
+        padding: 0 20px 0 10px;
         span{
             padding: 8px 1px;
             background: 

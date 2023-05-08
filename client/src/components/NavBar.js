@@ -6,7 +6,6 @@ import { faHouse, faPlus, faFilm, faTvAlt, faVideo, faBell, faMagnifyingGlass } 
 import logo from '../assets/logo.png';
 
 const NavBar = () => {
-	const [dropdown,setDropdown] = useState(false);
 	const [search,setSearch] = useState(false);
 
 	const getUserObject = () => {
@@ -35,11 +34,10 @@ const NavBar = () => {
 					<button onClick={() => {setSearch(!search);}}><FontAwesomeIcon className='big-icon' icon={faMagnifyingGlass}/></button>
 				</div>
 				<a className='nav-item' href='#'><FontAwesomeIcon className='big-icon' icon={faBell}/></a>
-				<a className='nav-item' href='#' onClick={() => {setDropdown(!dropdown);}}><img src={userObject.icon} alt='Profile' /></a>
+				<Dropdown>
+					<a className='nav-item' href='#'><img src={userObject.icon} alt='Profile' /></a>
+				</Dropdown>
 			</div>
-			{dropdown &&
-				<Dropdown/>
-			}
 		</div>
 	);
 };

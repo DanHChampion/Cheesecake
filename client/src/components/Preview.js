@@ -24,6 +24,4 @@ export default Preview;
 
 Preview.propTypes = {
 	previewObj: PropTypes.object.isRequired,
-	// visible: PropTypes.bool.isRequired,
-	// onClose: PropTypes.func.isRequired,
 };
