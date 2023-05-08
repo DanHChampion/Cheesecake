@@ -6,7 +6,6 @@ import { faHouse, faPlus, faFilm, faTvAlt, faVideo, faBell, faMagnifyingGlass } 
 import logo from '../assets/logo.png';
 
 const NavBar = () => {
-	const [search,setSearch] = useState(false);
 
 	const getUserObject = () => {
 		return JSON.parse(sessionStorage.getItem('userObject'));
@@ -29,9 +28,9 @@ const NavBar = () => {
 				<a className='nav-item' href='/clips'><FontAwesomeIcon className='icon' icon={faVideo}/><span>CLIPS</span></a>
 			</div>
 			<div className='right-container'>
-				<div className='search-container nav-item'>
-					{search && <input id='searchbar' placeholder='Titles, peoples, genres' type='text'/>}
-					<button onClick={() => {setSearch(!search);}}><FontAwesomeIcon className='big-icon' icon={faMagnifyingGlass}/></button>
+				<div className='search-container'>
+					<input id='searchbar' placeholder='Titles, peoples, genres' type='text'/>
+					<label htmlFor='searchbar' className='button' ><FontAwesomeIcon className='big-icon' icon={faMagnifyingGlass}/></label>
 				</div>
 				<a className='nav-item' href='#'><FontAwesomeIcon className='big-icon' icon={faBell}/></a>
 				<Dropdown>

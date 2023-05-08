@@ -29,7 +29,6 @@
     .right-container {
         @extend .flex-center, .container;
         right:20px;
-
     }
 
     .nav-item{
@@ -58,18 +57,13 @@
             width: 32px;
             border-radius: 5px;
             transition: 200ms;
-            border: 2px transparent solid;
+            border: 1px transparent solid;
         }
         
-
         .icon{
             padding-right: 10px;
         }
 
-        .big-icon{
-            font-size: 22px;
-            padding: 0px;
-        }
     }
     .nav-item:hover{
         text-shadow: 0 0 10px #555;
@@ -77,29 +71,76 @@
             background-size: 0 0.1em, 100% 0.1em;
         }
     }
+    .big-icon{
+        font-size: 22px;
+        padding: 0px;
+    }
     .search-container{
-        height: inherit;
+        @extend .flex-center;
+        height: 35px;
+	    width: 35px;
+        position: relative;
+        padding-right: 20px;
+
+        .button{
+            @extend .flex-center;
+            @extend .clickable;
+            width: 100%;
+            height: 35px;
+            position: absolute;
+            color: inherit;
+            background: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            z-index: 3;
+
+        }
+        .button:hover {
+            transition-duration: 0.4s;
+            -moz-transition-duration: 0.4s;
+            -webkit-transition-duration: 0.4s;
+            -o-transition-duration: 0.4s;
+        }
+
+        input:focus + .button {
+            transition-duration: 0.4s;
+            -moz-transition-duration: 0.4s;
+            -webkit-transition-duration: 0.4s;
+            -o-transition-duration: 0.4s;
+        }
 
         input{
-            padding: 5px 15px;
-            font-size: inherit;
             background: none;
-            border: 2px solid white;
             outline: none;
-            color: inherit;
-            font-family: inherit;
-            border-radius: 2px;
-            margin: 0 10px
-        }
-        input:focus{
-        }
-
-        button{
-            @extend .clickable;
-            color: inherit;
             border: none;
-            background: none;
+            color: inherit;
+            font-size: inherit;
+            font-family: inherit;
+            border-radius: 5px;
+            margin: 0 10px;
+            position: absolute;
+            right: 0; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
+            background-color: transparent;
+            padding-right: 50px;
+            width: 0;
+            height: 100%;
+            z-index: 2;
+            transition-duration: 0.4s;
+            -moz-transition-duration: 0.4s;
+            -webkit-transition-duration: 0.4s;
+            -o-transition-duration: 0.4s;
         }
+        input:focus {
+            width: 300px; /* Bar width+1px */
+            padding-left: 15px;
+            padding-right: 50px;
+            background-color: #000;
+            border: 1px solid white;
+        }
+        
     }
 }
 
