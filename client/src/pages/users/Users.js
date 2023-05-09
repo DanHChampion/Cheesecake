@@ -35,7 +35,7 @@ const Users = () => {
 					</div>
 				))}
 				<div className='item'>
-					<a className='icon-wrapper' href='/users'>
+					<a className='icon-wrapper' href='/add'>
 						<FontAwesomeIcon className='icon' icon={faPlus}/>
 					</a>
 					<p> Add Profile </p>

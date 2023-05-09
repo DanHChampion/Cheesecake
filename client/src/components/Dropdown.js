@@ -13,7 +13,7 @@ const Dropdown = (props) => {
 		<div className="Dropdown">
 			{props.children}
 			<div className='content'>
-				<a className='item' onClick={() => {logOut;}} href='/users'><FontAwesomeIcon icon={faUser}/>Change Profile</a>
+				<a className='item' onClick={() => {logOut();}} href='/users'><FontAwesomeIcon icon={faUser}/>Change Profile</a>
 				<a className='item' href='/help'><FontAwesomeIcon icon={faCircleQuestion}/>Help</a>
 				<a className='item' href='/settings'><FontAwesomeIcon icon={faGear}/>Settings</a>
 			</div>

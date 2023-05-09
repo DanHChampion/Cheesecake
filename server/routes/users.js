@@ -17,6 +17,24 @@ router.get('/:id', (req, res) => {
 	res.json(users[users.findIndex(x => x.id === id)]);
 });
 
+// Creating one
+router.post('/new', async (req, res) => {
+	const newUser = {
+		'id': count.toString(),
+		'name': req.body.name,
+		'icon': req.body.icon? req.body.icon : 'https://mir-s3-cdn-cf.behance.net/projects/max_808/22328711.54a2f9e311082.jpg'
+	};
+
+	try {
+		users.push(newUser);
+		res.status(201).json(newUser);
+		count ++;
+		console.log(users);
+	} catch (err) {
+		res.status(400).json({ message: err.message });
+	}
+});
+
 // Code from: https://youtu.be/fgTGADljAeg
 // Getting all
 // router.get('/', async (req, res) => {
@@ -98,7 +116,9 @@ router.get('/:id', (req, res) => {
 
 module.exports = router;
 
-const users = [
+let count = 3;
+
+let users = [
 	{
 		'id': '1',
 		'name': 'Dan',
@@ -106,12 +126,7 @@ const users = [
 	},
 	{
 		'id': '2',
-		'name': 'Panos',
-		'icon': 'https://icon-library.com/images/default-profile-icon/default-profile-icon-0.jpg'
+		'name': 'Scott',
+		'icon': 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/263a1361-4930-4f55-b439-97b19a957b06/df0490e-e00e5729-8419-48a8-856c-881c66b2ff96.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI2M2ExMzYxLTQ5MzAtNGY1NS1iNDM5LTk3YjE5YTk1N2IwNlwvZGYwNDkwZS1lMDBlNTcyOS04NDE5LTQ4YTgtODU2Yy04ODFjNjZiMmZmOTYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-aogYUMgz9HQuqh5rLgH3pBd7HEcIQq2818kAoxdqJM'
 	},
-	{
-		'id': '3',
-		'name': 'Dai',
-		'icon': 'https://icon-library.com/images/default-profile-icon/default-profile-icon-0.jpg'
-	}
 ];

@@ -34,7 +34,11 @@ const NavBar = () => {
 				</div>
 				<a className='nav-item' href='#'><FontAwesomeIcon className='big-icon' icon={faBell}/></a>
 				<Dropdown>
-					<a className='nav-item' href='#'><img src={userObject? userObject.icon : './default.png'} alt='Profile' /></a>
+					<a className='nav-item' href='#'>
+						<div className='img-wrapper'>
+							<img src={userObject? userObject.icon : './default.png'} alt='Profile' />
+						</div>
+					</a>
 				</Dropdown>
 			</div>
 		</div>

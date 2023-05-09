@@ -3,6 +3,8 @@ import Home from './pages/home/Home.js';
 import Users from './pages/users/Users.js';
 import Player from './pages/player/Player.js';
 import NotFound from './pages/notfound/NotFound.js';
+import EditProfile from './pages/profile/EditProfile.js';
+import AddProfile from './pages/profile/AddProfile.js';
 
 function App() {
 	const userObject = sessionStorage.getItem('userObject');
@@ -12,6 +14,8 @@ function App() {
 			<div id="app" className="App">
 				<BrowserRouter>
 					<Routes>
+						<Route path="/edit" element={<EditProfile/>} />
+						<Route path="/add" element={<AddProfile/>} />
 						<Route path="*" element={<Users/>} />
 					</Routes>
 				</BrowserRouter>

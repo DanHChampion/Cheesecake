@@ -35,8 +35,6 @@ router.get('/horror', async (req, res) => {
 	for (const [index, name] of list.entries()) {
 		let files = readdirSync('./videos/Movies/'+name, { withFileTypes: true })
 			.map(dirent => dirent.name);
-		console.log(files[0]);
-		console.log('bruh',files[1]);
 		response.push({
 			'id':index,
 			'title': name,
