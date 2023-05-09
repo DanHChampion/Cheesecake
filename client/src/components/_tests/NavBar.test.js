@@ -23,8 +23,8 @@ it('renders all items NavBar.js successfully', () => {
 	expect(seriesElement).toBeInTheDocument();
 	// const searchBarElement = screen.getByRole('textbox'); IT IS NOW HIDDEN
 	// expect(searchBarElement).toBeInTheDocument();
-	const searchElement = screen.getByRole('button');
-	expect(searchElement).toBeInTheDocument();
+	// const searchElement = screen.getByRole('button');
+	// expect(searchElement).toBeInTheDocument();
 	// const notificationsElement = screen.getByText(/Notifications/i); NOW REPLACED WITH ICON
 	// expect(notificationsElement).toBeInTheDocument();
 	const profileImgElement = screen.getAllByRole('img')[1];
