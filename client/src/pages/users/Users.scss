@@ -7,9 +7,29 @@
     font-family: $font-family;
 
     span {
-        font-size: 30px;
+        font-size: 35px;
         font-weight: bold;
         letter-spacing: 1px;
+    }
+
+    .button{
+        @extend .clickable;
+        border-radius: 2px;
+        padding: 10px 20px;
+        letter-spacing: 1px;
+        background-color: transparent;
+        color: grey;
+        border: 2px grey solid;
+        outline: none;
+        margin: 5px;
+        font-size: 20px;
+        font-family: inherit;
+        white-space: nowrap;
+        transition: 300ms;
+    }
+    .button:hover{
+        color: white;
+        border: 2px white solid;
     }
     
     .wrapper {
@@ -26,7 +46,8 @@
     
         width: 200px;
         height: fit-content;
-        font-size: 20px;
+        font-size: 24px;
+        color: grey;
 
         .icon-wrapper{
             @extend .flex-center;
@@ -37,6 +58,7 @@
             border: 3px transparent solid;
             transition: 300ms;
             font-size: 100px;
+            position: relative;
 
 
             img{
@@ -45,16 +67,37 @@
                 object-fit: cover;
             }
 
+            .edit{
+                background-color: $bg-hover-colour;
+                padding: 10px;
+                border-radius: 50%;
+                position: absolute;
+                bottom: 8px;
+                right: 8px;
+                font-size: 20px;
+                pointer-events: auto;
+            }
+
             
         }
         .icon-wrapper:hover{
             border: 3px white solid;
             transform: scale(1.05);
-
+        }
+        .jiggle{
+            @include jiggle(300ms);
+            filter: brightness(0.75);
+        }
+        .jiggle:hover{
+            animation-name: none;
+            filter: none;
         }
 
-        
-        
     }
+    .item:has(.icon-wrapper:hover){
+        color: white;
+    }
+    
 }
+
 

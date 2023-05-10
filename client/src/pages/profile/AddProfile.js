@@ -15,8 +15,7 @@ const AddProfile = () => {
 			'name': name,
 			'icon': url
 		};
-		console.log(body);
-		apiRequest().post('users/new', body, (res, err) => {
+		apiRequest().post('users', body, (res, err) => {
 			if(!err) {
 				console.log(res.status);
 			} else {
@@ -28,12 +27,17 @@ const AddProfile = () => {
 
 	return (
 		<div className='Profile'>
-			<span>Add Profile</span>
 			<form action='/users' onSubmit={() => {handleSubmit();}} className='wrapper'>
-				<ChangeIcon inputUrl={url} setState={setUrl} />
-				<input type='text' className='input-text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}></input>
-				<input className='button' type='submit' value="Create"/>
-				<a href='/users' className='button'>Cancel</a>
+				<span>Add Profile</span>
+				<p>Create a new profile for someone else.</p>
+				<div className='row'>
+					<ChangeIcon inputUrl={url} setState={setUrl} />
+					<input type='text' className='input-text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}></input>
+				</div>
+				<div className='row'>
+					<input className='button' type='submit' value='CREATE'/>
+					<a href='/users' className='button'>CANCEL</a>
+				</div>
 			</form>
 		</div>
 	);

@@ -16,17 +16,21 @@ const ChangeIcon = ({inputUrl, setState}) => {
 
 	return(
 		<div className="ChangeIcon">
-			<div onClick={() => {setPopup(true);}} className='img-wrapper'>
+			<div onClick={() => {setPopup(true);}} className='icon-wrapper editable'>
 				<img src={inputUrl}/>
 				<FontAwesomeIcon icon={faPencil}/>
 			</div>
-			{popup &&
+			{popup && <>
+				<div className='background'/>
 				<div className='popup'>
-					<img src={url}/>
+					<div className='icon-wrapper'>
+						<img src={url}/>
+					</div>
 					<input onChange={e => setUrl(e.target.value)} placeholder='Image URL'/>
 					<button onClick={() => {handleChange();}}>Change</button>
 					<button onClick={() => {setPopup(false);}}>Cancel</button>
 				</div>
+			</>
 			}
 		</div>
 	);

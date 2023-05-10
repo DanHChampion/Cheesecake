@@ -7,6 +7,7 @@ $font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 html {
   scroll-behavior: smooth;
+  background-color: $bg-colour;
 }
 
 body {
@@ -41,9 +42,36 @@ a{
 }
 
 .debug-border {
-  border: 1px black solid;
+  border: 1px blue solid;
 }
 
 .clickable{
   cursor: pointer;
+}
+
+.background{
+  @extend .flex-center;
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 50%;
+}
+
+@mixin jiggle($duration) {
+  animation: jiggle-anim $duration infinite;
+}
+
+@keyframes jiggle-anim {
+  0% {
+      transform: rotate(-.5deg);
+      animation-timing-function: ease-in;
+  }
+
+  50% {
+      transform: rotate(1deg);
+      animation-timing-function: ease-out;
+  }
 }

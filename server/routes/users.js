@@ -13,12 +13,12 @@ router.get('/', async (req, res) => {
 
 // Getting One
 router.get('/:id', (req, res) => {
-	const id = req.headers.id;
+	const id = req.params.id;
 	res.json(users[users.findIndex(x => x.id === id)]);
 });
 
 // Creating one
-router.post('/new', async (req, res) => {
+router.post('/', async (req, res) => {
 	const newUser = {
 		'id': count.toString(),
 		'name': req.body.name,
@@ -29,9 +29,40 @@ router.post('/new', async (req, res) => {
 		users.push(newUser);
 		res.status(201).json(newUser);
 		count ++;
-		console.log(users);
 	} catch (err) {
 		res.status(400).json({ message: err.message });
+	}
+});
+
+// Updating One
+router.patch('/:id', async (req, res) => {
+	const id = req.params.id;
+	const index = users.findIndex(x => x.id === id);
+	if (req.body.name !== null){
+		users[index].name = req.body.name;
+	}
+	if (req.body.icon !== null){
+		users[index].icon = req.body.icon;
+	}
+
+	try {
+		const updatedUser = users[index];
+		res.json(updatedUser);
+	} catch (err) {
+		res.status(400).json({ message: err.message });
+	}
+});
+
+// Deleting One
+router.delete('/:id', async (req, res) => {
+	try {
+		const id = req.params.id;
+		const index = users.findIndex(x => x.id === id);
+		const x = users.splice(index, 1);
+		res.json({ message: 'Deleted User' });
+	} catch (err) {
+		console.log(err);
+		res.status(500).json({ message: err.message });
 	}
 });
 
@@ -130,3 +161,5 @@ let users = [
 		'icon': 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/263a1361-4930-4f55-b439-97b19a957b06/df0490e-e00e5729-8419-48a8-856c-881c66b2ff96.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI2M2ExMzYxLTQ5MzAtNGY1NS1iNDM5LTk3YjE5YTk1N2IwNlwvZGYwNDkwZS1lMDBlNTcyOS04NDE5LTQ4YTgtODU2Yy04ODFjNjZiMmZmOTYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-aogYUMgz9HQuqh5rLgH3pBd7HEcIQq2818kAoxdqJM'
 	},
 ];
+
+// RAMONA https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/263a1361-4930-4f55-b439-97b19a957b06/df0495y-ee88befd-5e0e-4fdd-9f37-17c68a4d78e5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI2M2ExMzYxLTQ5MzAtNGY1NS1iNDM5LTk3YjE5YTk1N2IwNlwvZGYwNDk1eS1lZTg4YmVmZC01ZTBlLTRmZGQtOWYzNy0xN2M2OGE0ZDc4ZTUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.7FsyIlRq9AAaxjtV7MHeirrEZKZ8dO_8zER57Gkb-LQ

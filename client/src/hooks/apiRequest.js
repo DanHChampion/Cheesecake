@@ -31,9 +31,20 @@ export default function apiRequest() {
 			});
 	};
 
+	const _delete = async (endpoint, callback) => {
+		axios.delete(URL + endpoint)
+			.then(callback)
+			.catch(err => {
+				if(!err) return;
+				console.error(err);
+				callback({}, err);
+			});
+	};
+
 	return {
 		get: get,
 		patch: patch,
-		post: post
+		post: post,
+		delete: _delete
 	};
 }

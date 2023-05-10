@@ -1,13 +1,14 @@
 import './Users.scss';
 import { useEffect , useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus , faPencil } from '@fortawesome/free-solid-svg-icons';
 import apiRequest from '../../hooks/apiRequest.js';
 
 const Users = () => {
-	const [users ,setUsers] = useState([]);
+	const [users, setUsers] = useState([]);
+	const [toggleEdit, setToggleEdit] = useState(false);
 
-	useEffect(() => getUsers(), []);
+	useEffect(() => {getUsers(); logOut();}, []);
 
 	const getUsers = () => {
 		apiRequest().get('users', (res, err) => {
@@ -16,6 +17,10 @@ const Users = () => {
 				setUsers(res.data);
 			}
 		});
+	};
+
+	const logOut = () => {
+		sessionStorage.clear();
 	};
 
 	const logIn = (userObject) => {
@@ -28,19 +33,21 @@ const Users = () => {
 			<div className='wrapper'>
 				{users.map((user) => (
 					<div className='item' key={user.id}>
-						<a href='/home' onClick={() => {logIn(user);}} className='icon-wrapper'>
+						<a href={toggleEdit? '/edit/?id='+user.id : '/home'} onClick={toggleEdit? console.log('editing') : () => {logIn(user);}} className={toggleEdit? 'icon-wrapper jiggle' : 'icon-wrapper'}>
 							<img src={user.icon} alt={user.name+' Avatar'}/>
+							{toggleEdit && <FontAwesomeIcon className='edit' icon={faPencil}/>}
 						</a>
-						<p> {user.name} </p>
+						<p>{user.name}</p>
 					</div>
 				))}
 				<div className='item'>
 					<a className='icon-wrapper' href='/add'>
 						<FontAwesomeIcon className='icon' icon={faPlus}/>
 					</a>
-					<p> Add Profile </p>
+					<p>Add Profile</p>
 				</div>
 			</div>
+			<button className='button' onClick={() => {setToggleEdit(!toggleEdit);}}>{toggleEdit? 'DONE' : 'MANAGE PROFILE'}</button>
 		</div>
 	);
 };

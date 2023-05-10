@@ -1,0 +1,79 @@
+@import '../../assets/global.scss';
+
+.Profile {
+    @extend .flex-center;
+    flex-direction: column;
+    height: 100%;
+    font-family: $font-family;
+
+    form{
+        @extend .flex-center;
+        flex-direction: column;
+        margin: 30px;
+        font-size: 20px;
+        width: 40vw;
+        text-align: left;
+
+        .row{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: row;
+            margin: 10px 0px;
+            
+        }
+
+        span {
+            width: 100%;
+            font-size: 40px;
+            padding: 0;
+            margin: 0px;
+            font-weight: bold;
+        }
+        p{
+            width: 100%;
+            font-size: 20px;
+            color: #777;
+            margin: 5px;
+        }
+
+        .input-text{
+            margin-left: 10px;
+            width: 350px;
+            height: 30px;
+            padding: 5px;
+            font-size: inherit;
+            font-family: inherit;
+            outline: none;
+            border: 2px transparent solid;
+            border-radius: 2px;
+            background-color: #333;
+            color: white;
+            transition: 100ms;
+        }
+        .input-text:focus{
+            border: 2px white solid;
+            background-color: transparent;
+        }
+
+        .button {
+            @extend .clickable;
+            border-radius: 2px;
+            padding: 10px 20px;
+            letter-spacing: 1px;
+            border: 2px white solid;
+            outline: none;
+            margin: 5px;
+            font-size: inherit;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .delete {
+            border: 2px rgb(230, 51, 51) solid;
+            background-color: rgb(230, 51, 51);
+            color: white;
+        }
+    }
+}

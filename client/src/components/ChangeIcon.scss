@@ -1,0 +1,54 @@
+@import '../assets/global.scss';
+
+.ChangeIcon{
+    position: relative;
+    .editable{
+        @extend .clickable;
+    }
+    .icon-wrapper{
+        @extend .flex-center;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 10px;
+        border: 3px transparent solid;
+        transition: 300ms;
+        font-size: 100px;
+        position: relative;
+        
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 200ms;
+        }
+
+        svg{
+            background-color: $bg-hover-colour;
+            padding: 10px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            font-size: 15px;
+        }
+
+        
+    }
+    .editable:hover img{
+        filter: brightness(0.6);
+
+    }
+    .popup{
+        @extend .flex-center;
+        position: absolute;
+        top: -100px;
+        left: -100px;
+        height: 100%;
+        padding: 100px;
+        width: 40vw;
+        z-index: 1;
+        background-color: black;
+        border-radius: 10px;     
+    }
+}
