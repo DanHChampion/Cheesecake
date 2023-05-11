@@ -2,6 +2,7 @@ import './Carousel.scss';
 import { useRef, useEffect , useState } from 'react';
 import apiRequest from '../hooks/apiRequest';
 import PropTypes from 'prop-types';
+import getImage from '../utils/getImage';
 
 // props include
 // label
@@ -55,7 +56,7 @@ const Carousel = ( { label, previewObj, endpoint } ) => {
 
 	return (
 		<>
-			<p>{label}</p>
+			<span style={{fontSize:'20px', textAlign:'left', width:'90%', marginTop:'50px'}}>{label}</span>
 			<div className="Carousel">
 				{state.left && <div className='scroll-arrow left-arrow' onClick={() => {goLeft();}}> &lt; </div>}
 				{items &&
@@ -63,7 +64,8 @@ const Carousel = ( { label, previewObj, endpoint } ) => {
 						<div ref={containerRef} className='container'>
 							{items.map((item) => (
 								<div onClick={() => {previewObj.openPreview(item);}} className='item' key={item.id}>
-									<img src={item.imagepath} alt={item.title +' Poster'}/>
+									<p>{item.title}</p>
+									{item.imagepath && <img src={getImage(item.title+'/coverphoto.jpg')} alt={item.title} onError={(e) => e.target.style.display = 'none'}/>}
 								</div>
 							))}
 						</div>

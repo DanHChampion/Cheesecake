@@ -7,74 +7,90 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+
+    .wrapper {
+        width: 100%;
+        position: relative;
+        scroll-behavior: smooth;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 15vw;
+        padding: 20px 0;
+
+        .container {
+            width: fit-content;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 0 50px;
+            
+            .item {
+                @extend .flex-center, .clickable;
+                position: relative;
+                height: inherit;
+                width: 10vw;
+                margin: 0 8px;
+                transition: 250ms all;
+                border-radius: 10px;
+                color: white;
+                overflow: hidden;
+                filter: drop-shadow(0 8px 6px black);
+                border: 4px transparent solid;
+                overflow: hidden;
+
+                p{
+                    @extend .flex-center;
+                    background: linear-gradient(110deg, #0c0c0c 60%, #000000 60%);
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                img{
+                    @extend .flex-center;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    object-fit: cover;
+                }
+            }
+            .item:hover {
+                transform: scale(1.03);
+                border: 4px white solid;
+            }
+        }
+    }
+    .scroll-arrow{
+        position: absolute;
+        top: 20px;
+        z-index: 1;
+        background-color: black;
+        opacity: 1%;
+        height: 15vw;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .left-arrow{
+        left: 0;
+    }
+    .right-arrow{
+        right: 0;
+    }
 }
 
-/* .wrapper {
-    display: grid;
-    overflow:hidden;
-    grid-template-columns: repeat(3, auto);
-} */
-.Carousel .wrapper {
-    width: 100%;
-    position: relative;
-    padding: 20px 0;
-    scroll-behavior: smooth;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 8vw;
-}
-.Carousel .container {
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 50px;
-}
-.Carousel .item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 8vw;
-    width: 15vw;
-    margin: 0 5px;
-    transition: 250ms all;
-    border-radius: 5px;
-    background-image: linear-gradient(#111, black) ;
-    overflow: hidden;
-}
-.Carousel .item:hover { 
-    transform: scale(1.03);
-}
-.scroll-arrow{
-    position: absolute;
-    top: 20px;
-    z-index: 1;
-    background-color: black;
-    opacity: 1%;
-    height: 8vw;
-    width: 64px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 5px;
-}
 .Carousel:hover .scroll-arrow{
     opacity: 20%;
 }
-.Carousel img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
-.left-arrow{
-    left: 0;
-}
-.right-arrow{
-    right: 0;
-}
+
+
 
 

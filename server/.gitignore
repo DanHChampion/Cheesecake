@@ -11,6 +11,9 @@
 # video files
 /videos
 
+# images files
+/images
+
 # production
 /build
 

@@ -1,7 +1,8 @@
 require('dotenv').config();
-
+const path = require('path');
 const express = require('express');
 const app = express();
+
 // const mongoose = require('mongoose');
 
 // Database
@@ -32,6 +33,10 @@ app.use('/users', usersRoute);
 app.use('/watchlist', watchlistRoute);
 app.use('/stream', streamRoute);
 app.use('/videos', videoRoute);
+
+// For images
+const dir = path.join(__dirname, 'images');
+app.use(express.static(dir));
 
 app.get('/contwatch', (req, res) => { // Might need to change name of endpoint
 	res.status(200);

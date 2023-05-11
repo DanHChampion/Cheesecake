@@ -19,15 +19,12 @@ const Home = () => {
 			{visibleModal && <Preview previewObj={previewObj}/>}
 
 			<div className='billboard'>
-				<a href={'/watch/?id=8'}>
-					[POSTER]
-					<p> Sprited Away</p>
-				</a>
+				{/* <video src='https://www.youtube.com/embed/uYPbbksJxIg?controls=0' /> */}
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/uYPbbksJxIg?controls=0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 			</div>
 			<Carousel label={'Continue Watching'} previewObj={previewObj} endpoint={'contwatch'}/>
 			<Carousel label={'All Movies'} previewObj={previewObj} endpoint={'movies'}/>
 			<Carousel label={'Movies'} previewObj={previewObj} endpoint={'videos/movies'}/>
-			<Carousel label={'Horror'} previewObj={previewObj} endpoint={'videos/horror'}/>
 			<Carousel label={'Series'} previewObj={previewObj} endpoint={'videos/series'}/>
 			<Carousel label={'Watchlist'} previewObj={previewObj} endpoint={'watchlist'}/>
 		</div>
