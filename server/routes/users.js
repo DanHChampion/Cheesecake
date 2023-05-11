@@ -59,6 +59,7 @@ router.delete('/:id', async (req, res) => {
 		const id = req.params.id;
 		const index = users.findIndex(x => x.id === id);
 		const x = users.splice(index, 1);
+		console.log(x);
 		res.json({ message: 'Deleted User' });
 	} catch (err) {
 		console.log(err);
