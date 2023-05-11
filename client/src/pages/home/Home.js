@@ -28,6 +28,7 @@ const Home = () => {
 			<Carousel label={'All Movies'} previewObj={previewObj} endpoint={'movies'}/>
 			<Carousel label={'Movies'} previewObj={previewObj} endpoint={'videos/movies'}/>
 			<Carousel label={'Horror'} previewObj={previewObj} endpoint={'videos/horror'}/>
+			<Carousel label={'Series'} previewObj={previewObj} endpoint={'videos/series'}/>
 			<Carousel label={'Watchlist'} previewObj={previewObj} endpoint={'watchlist'}/>
 		</div>
 	);

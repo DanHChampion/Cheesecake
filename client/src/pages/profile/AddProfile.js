@@ -11,8 +11,9 @@ const AddProfile = () => {
 	const [url, setUrl] = useState('https://mir-s3-cdn-cf.behance.net/projects/404/22328711.54a2f9e311082.jpg');
 
 	const handleSubmit = () => {
+
 		const body = {
-			'name': name,
+			'name': name === ''? 'Profile': name,
 			'icon': url
 		};
 		apiRequest().post('users', body, (res, err) => {

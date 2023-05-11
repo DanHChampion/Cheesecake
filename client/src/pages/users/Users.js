@@ -29,7 +29,7 @@ const Users = () => {
 
 	return (
 		<div className='Users'>
-			<span>Who&apos;s Watching?</span>
+			<span>Who&apos;s watching?</span>
 			<div className='wrapper'>
 				{users.map((user) => (
 					<div className='item' key={user.id}>
@@ -47,7 +47,7 @@ const Users = () => {
 					<p>Add Profile</p>
 				</div>
 			</div>
-			<button className='button' onClick={() => {setToggleEdit(!toggleEdit);}}>{toggleEdit? 'DONE' : 'MANAGE PROFILE'}</button>
+			<button className='button' onClick={() => {setToggleEdit(!toggleEdit);}}>{toggleEdit? 'DONE' : 'MANAGE PROFILES'}</button>
 		</div>
 	);
 };

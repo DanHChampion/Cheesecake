@@ -1,0 +1,33 @@
+@import '../../assets/global.scss';
+
+.Browse{
+    padding-top: $navbar-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+
+        .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 8vw;
+            width: 15vw;
+            margin: 0 5px;
+            transition: 250ms all;
+            border-radius: 5px;
+            background-image: linear-gradient(#111, black) ;
+            overflow: hidden;
+        }
+        .item:hover { 
+            transform: scale(1.03);
+        }
+    }
+    
+
+}
