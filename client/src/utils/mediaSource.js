@@ -2,12 +2,13 @@
 
 const URL = 'http://localhost:8080/';
 
-export default function mediaSource(endpoint) {
+export default function mediaSource(type, path) {
 	// Get Video MetaData
 
 	// Get Video Type
-	console.log(endpoint);
+	const pathEncoded = encodeURIComponent(path);
+
 
 	// Return Endpoint (and Metadata?)
-	return URL + 'stream/'+endpoint;
+	return URL + 'stream/'+ type + '/' + pathEncoded;
 }

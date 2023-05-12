@@ -14,6 +14,7 @@
         height: 100vh;
         overflow-y: scroll;
         padding: 50px 0px ;
+        z-index: 2;
         
         .popup{
             @extend .flex-center;
@@ -31,10 +32,10 @@
             .img-wrapper{
                 position: relative;
                 width: 100%;
-                height: 30vw;
-                background-color: #719;
+                height: 28vw;
+                background-color: rgb(39, 39, 39);
 
-                img{
+                .poster{
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
@@ -79,6 +80,14 @@
                 bottom: 80px;
                 left: 80px;
                 width: fit-content;
+
+                img{
+                    // Title card
+                    position: absolute;
+                    max-width: 250px;
+                    max-height: 200px;
+                    bottom: 80px;
+                }
 
                 .button {
                     @extend .flex-center, .clickable;

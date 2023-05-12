@@ -56,7 +56,7 @@ const Carousel = ( { label, previewObj, endpoint } ) => {
 
 	return (
 		<>
-			<span style={{fontSize:'20px', textAlign:'left', width:'90%', marginTop:'50px'}}>{label}</span>
+			<span style={{fontSize:'22px', fontWeight:'bold', textAlign:'left', width:'90%', marginTop:'30px'}}>{label}</span>
 			<div className="Carousel">
 				{state.left && <div className='scroll-arrow left-arrow' onClick={() => {goLeft();}}> &lt; </div>}
 				{items &&
@@ -65,7 +65,7 @@ const Carousel = ( { label, previewObj, endpoint } ) => {
 							{items.map((item) => (
 								<div onClick={() => {previewObj.openPreview(item);}} className='item' key={item.id}>
 									<p>{item.title}</p>
-									{item.imagepath && <img src={getImage(item.title+'/coverphoto.jpg')} alt={item.title} onError={(e) => e.target.style.display = 'none'}/>}
+									<img src={getImage(item.title+'/coverphoto.jpg')} alt={item.title} onError={(e) => e.target.style.display = 'none'}/>
 								</div>
 							))}
 						</div>

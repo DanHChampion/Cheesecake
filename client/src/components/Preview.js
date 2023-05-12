@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes , faPlus , faPlay } from '@fortawesome/free-solid-svg-icons';
 import Episodes from './Episodes';
+import getImage from '../utils/getImage';
+
 
 // import usePreview from '../hooks/usePreview.js';
 
@@ -12,16 +14,17 @@ const Preview = ({ previewObj }) => {
 
 	return(
 		<div className='Preview'>
-			<div className='background'/>
-			<div className='scrollable-wrapper'>
+			<div className='background' />
+			<div className='scrollable-wrapper' onClick={(e) => {if(e.target === e.currentTarget){previewObj.closePreview(false);}}}>
 				<div className="popup">
 					<button className='exit' onClick={() => {previewObj.closePreview(false);}}>
 						<FontAwesomeIcon icon={faTimes}/>
 					</button>
 					<div className='img-wrapper'>
-						<img src={itemData.imagepath === null ? itemData.imagepath : 'https://www.hometheaterforum.com/community/media/2014-interstellar-movie-poster.1964/full'} alt={itemData.title +' Poster'}/>
+						<img className='poster' src={getImage(itemData.title+'/preview.jpg')} alt={itemData.title +' Poster'} onError={(e) => e.target.style.display = 'none'}/>
 						<div className='button-container'>
-							<a href={'/watch/?type=' + itemData.type +'&path=' + itemData.videopath} className='button'>
+							<img src={getImage(itemData.title+'/title.png')} alt={itemData.title +' Title'} onError={(e) => e.target.style.display = 'none'}/>
+							<a href={'/watch/?type=' + itemData.type +'&path=' + encodeURIComponent(itemData.videopath)} className='button'>
 								<FontAwesomeIcon icon={faPlay}/> PLAY
 							</a>
 							<button className='icon-button'><FontAwesomeIcon icon={faPlus} /></button>
@@ -38,7 +41,7 @@ const Preview = ({ previewObj }) => {
 						<p> DURATION</p>
 					</div>
 					{itemData.type !== 'movie' &&
-						<Episodes/>
+						<Episodes itemData={itemData}/>
 					}
 				</div>
 			</div>

@@ -12,7 +12,7 @@ const Player = () => {
 	useEffect(() => getVideo(), []);
 
 	const getVideo = () => {
-		setVideoSrc(mediaSource(videoType+'/'+videoPath));
+		setVideoSrc(mediaSource(videoType, videoPath));
 	};
 
 	return (

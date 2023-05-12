@@ -5,7 +5,7 @@ const fs = require('fs');
 
 // Video Streaming Element
 // Code from: https://youtu.be/ZjBLbXUuyWg
-router.get('/:type/:path/:subpath', function(req, res) {
+router.get('/:type/:path', function(req, res) {
 	const range = req.headers.range;
 	if (!range) {
 		res.status(400).send('Requires Range header');
@@ -16,10 +16,9 @@ router.get('/:type/:path/:subpath', function(req, res) {
 	if (type === 'Clip' || type === 'Movie'){
 		type = type + 's';
 	}
-	const path = req.params.path;
-	const subpath = req.params.subpath;
+	const path = decodeURIComponent(req.params.path);
 
-	const videoPath = `./videos/${type}/${path}/${subpath}`; // Relative to app.js
+	const videoPath = `./videos/${type}/${path}`; // Relative to app.js
 	const videoSize = fs.statSync(videoPath).size;
 
 	// Parse Range
