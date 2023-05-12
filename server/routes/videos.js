@@ -60,22 +60,22 @@ router.get('/series/:title/:season', async (req, res) => {
 		const season = req.params.season;
 		const title = req.params.title;
 		const list = readdirSync('./videos/Series/'+title+'/'+season, { withFileTypes: true })
-		.map(dirent => dirent.name);
+			.map(dirent => dirent.name);
 
-	let response = [];
-	for (const [index, name] of list.entries()) {
-		response.push({
-			'episode':index,
-			'title': 'episode',
-			'videopath': title+'/'+season+'/'+name,
-		});
-	}
-	res.json(response);
+		let response = [];
+		for (const [index, name] of list.entries()) {
+			response.push({
+				'episode':index,
+				'title': 'episode',
+				'videopath': title+'/'+season+'/'+name,
+			});
+		}
+		res.json(response);
 	}
 	catch{
 		res.status(400);
 	}
-	
+
 });
 
 module.exports = router;
