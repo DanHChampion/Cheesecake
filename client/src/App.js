@@ -6,6 +6,7 @@ import NotFound from './pages/notfound/NotFound.js';
 import EditProfile from './pages/profile/EditProfile.js';
 import AddProfile from './pages/profile/AddProfile.js';
 import Browse from './pages/browse/Browse.js';
+import Experimental from './pages/experimental/Experimental.js';
 
 function App() {
 	const userObject = sessionStorage.getItem('userObject');
@@ -34,6 +35,7 @@ function App() {
 					<Route path="/movies" element={<Browse type='movies'/>} />
 					<Route path="/series" element={<Browse type='series'/>} />
 					<Route path="/clips" element={<Browse type='clips'/>} />
+					<Route path="/experimental" element={<Experimental/>} />
 					<Route path="/*" element={<NotFound/>} />
 				</Routes>
 			</BrowserRouter>

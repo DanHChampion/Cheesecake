@@ -1,23 +1,7 @@
 @import '../../assets/global.scss';
 
 .Home {
+    @extend .flex-center;
     padding-top: $navbar-height;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-}
-
-.billboard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    margin: 10px;
-
-    height: 60vh;
-    width: 85vw;
-    border: 1px black solid;
-
 }

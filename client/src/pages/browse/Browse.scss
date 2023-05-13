@@ -1,32 +1,51 @@
 @import '../../assets/global.scss';
 
 .Browse{
-    padding-top: $navbar-height;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 75px 50px;
 
-    .container{
+    .header{
         width: 100%;
-        display: grid;
-        grid-template-columns: 20% 20% 20% 20% 20%;
+        height: $navbar-height;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
 
-        .item {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 8vw;
-            width: 15vw;
-            margin: 0 5px;
-            transition: 250ms all;
+        span {
+            font-size: 30px;
+            text-transform: capitalize;
+            padding: 0px 30px;
+        }
+        select {
+            font-family: inherit;
+            height: fit-content;
+            text-transform: capitalize;
+            padding: 5px 10px;
+            font-size: 18px;
+            background-color: $bg-hover-colour;
+            border: 2px white solid;
+            color: white;
+            outline: none;
             border-radius: 5px;
-            background-image: linear-gradient(#111, black) ;
-            overflow: hidden;
         }
-        .item:hover { 
-            transform: scale(1.03);
+        option{
+            background-color: $bg-hover-colour;
         }
+
+    }
+
+    .grid{
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 100px ;
+        display: grid;
+        row-gap: 10px;
+        grid-template-columns: repeat(8, 12.5%);
+        height: fit-content;
+
     }
     
 

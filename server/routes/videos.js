@@ -48,10 +48,14 @@ router.get('/series', async (req, res) => {
 
 // Getting series seasons folders
 router.get('/series/seasons/:title', async (req, res) => {
-
-	res.json(readdirSync('./videos/Series/'+req.params.title, { withFileTypes: true })
+	try {
+		res.json(readdirSync('./videos/Series/'+req.params.title, { withFileTypes: true })
 		.filter(dirent => dirent.isDirectory())
 		.map(dirent => dirent.name));
+	} catch {
+		res.status(400);
+	}
+	
 });
 
 // Getting all episdoes within a season

@@ -1,8 +1,10 @@
 import './Browse.scss';
 import NavBar from '../../components/NavBar.js';
 import Preview from '../../components/Preview.js';
+import Card from '../../components/Card.js';
 import usePreview from '../../hooks/usePreview';
 import apiRequest from '../../hooks/apiRequest';
+
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -32,19 +34,19 @@ const Browse = ({type}) => {
 		<div className="Browse">
 			<NavBar/>
 			{visibleModal && <Preview previewObj={previewObj}/>}
-			<span>{type}</span>
-			<select id="cars" name="cars">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="fiat">Fiat</option>
-				<option value="audi">Audi</option>
-			</select>
+			<div className='header'>
+				<span>{type}</span>
+				<select>
+					<option value="all">All {type}</option>
+					<option value="action">Action</option>
+					<option value="comedy">Comedy</option>
+					<option value="horror">Horror</option>
+				</select>
+			</div>
 			{items &&
-				<div className='container'>
+				<div className='grid'>
 					{items.map((item) => (
-						<div onClick={() => {previewObj.openPreview(item);}} className='item' key={item.id}>
-							<img src={item.imagepath} alt={item.title +' Poster'}/>
-						</div>
+						<Card key={item.id} item={item} previewObj={previewObj}/>
 					))}
 				</div>
 			}

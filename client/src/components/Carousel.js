@@ -2,7 +2,7 @@ import './Carousel.scss';
 import { useRef, useEffect , useState } from 'react';
 import apiRequest from '../hooks/apiRequest';
 import PropTypes from 'prop-types';
-import getImage from '../utils/getImage';
+import Card from './Card';
 
 // props include
 // label
@@ -63,10 +63,7 @@ const Carousel = ( { label, previewObj, endpoint } ) => {
 					<div ref={wrapperRef} className='wrapper' onScroll={()=> {onSlide();}}>
 						<div ref={containerRef} className='container'>
 							{items.map((item) => (
-								<div onClick={() => {previewObj.openPreview(item);}} className='item' key={item.id}>
-									<p>{item.title}</p>
-									<img src={getImage(item.title+'/coverphoto.jpg')} alt={item.title} onError={(e) => e.target.style.display = 'none'}/>
-								</div>
+								<Card key={item.id} item={item} previewObj={previewObj}/>
 							))}
 						</div>
 					</div>
