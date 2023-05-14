@@ -2,6 +2,8 @@ import './Episodes.scss';
 import apiRequest from '../hooks/apiRequest';
 import { useState , useEffect } from 'react';
 import PropTypes from 'prop-types';
+import getImage from '../utils/getImage';
+
 
 const Episodes = ({itemData}) => {
 
@@ -38,19 +40,26 @@ const Episodes = ({itemData}) => {
 
 	return(
 		<div className="Episodes">
-			<select onChange={(e) => {handleChange(e.target.value);}}>
-				{seasons &&
-					seasons.map((season) => (
-						<option value={season} key={season}> {season}</option>
-					))
-				}
-			</select>
+			<div className='header'>
+				<span>Episodes</span>
+				<select onChange={(e) => {handleChange(e.target.value);}}>
+					{seasons &&
+						seasons.map((season) => (
+							<option value={season} key={season}> {season}</option>
+						))
+					}
+				</select>
+			</div>
+
 			<div className='container'>
 				{episodes &&
 					episodes.map((episode) => (
-						<div key={episode.episode}>
-							<a href={'/watch/?type=series&path=' + encodeURIComponent(episode.videopath)}>{episode.videopath}</a>
-						</div>
+						<a href={'/watch/?type=series&path=' + encodeURIComponent(episode.videopath)} key={episode.episode} className='item'>
+							<span className='number'>{episode.episode}</span>
+							<img src={getImage(itemData.title+'/preview.jpg')}></img>
+							<span>{episode.title}</span>
+							{/* <span className='duration'>20m</span> */}
+						</a>
 					))
 				}
 			</div>
