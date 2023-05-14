@@ -134,7 +134,60 @@
                 }
             }
             .video-info{
+                @extend .flex-center;
+                flex-direction: row;
                 padding: 20px;
+                height: 25vh;
+                text-align: left;
+
+                .container{
+                    @extend .flex-center;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    height: 100%;
+                    flex-direction: column;
+                }
+                .left{
+                    width: 60%;
+                    .name{
+                        font-size: 25px;
+                        padding-bottom: 10px;
+                    }
+                    .year{
+                        padding-bottom: 10px;
+                    }
+                }
+                .right{
+                    width: 40%;
+                    padding-left:30px;
+                    font-size: 0;
+                    span{
+                        color: grey;
+                        padding-bottom: 0;
+                        font-size: 16px;
+                    }
+
+                    .list{
+                        display: inline;
+                        padding-inline-start: 0;
+                        list-style: none;
+                        margin-bottom: 10px;
+
+                        .item{
+                            display: none;
+                        }
+                        .item.on { /* JavaScript-added class to reveal list items */
+                            display: inline;
+                            font-size: 16px;
+                          }
+    
+                        .item.on ~ .item.on::before {
+                            content: ', '; 
+                        }
+                    }
+                    
+                }
+                
             }
         }
     }

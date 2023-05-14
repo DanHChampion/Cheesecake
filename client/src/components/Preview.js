@@ -1,16 +1,46 @@
 import './Preview.scss';
-// import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes , faPlus , faPlay } from '@fortawesome/free-solid-svg-icons';
 import Episodes from './Episodes';
 import getImage from '../utils/getImage';
-
-
-// import usePreview from '../hooks/usePreview.js';
+import tmdbApi from '../hooks/tmdbApi';
 
 const Preview = ({ previewObj }) => {
 	const itemData = previewObj.itemData;
+	const index = 5;
+	const type = itemData.type === 'movie'? 'movie' : 'tv';
+	const name = itemData.title.substring(0, itemData.title.lastIndexOf(' '));
+
+	const [apiData, setApiData] = useState();
+	const [credits, setCredits] = useState();
+	const [keywords, setKeywords] = useState();
+
+	useEffect(() => {
+		const searchEndpoint = 'search/'+ type +'?query='+encodeURIComponent(name)+'&';
+		console.log(searchEndpoint);
+		tmdbApi().get( searchEndpoint, (res, err) => {
+			if(!err) {
+				setApiData(res.data.results[0]); // Get first result
+				const creditsEndpoint = type +'/'+ res.data.results[0].id +'/credits?';
+				tmdbApi().get( creditsEndpoint, (res, err) => {
+					if(!err) {
+						console.log(res.data);
+						setCredits(res.data.cast.slice(0, index));
+					}
+				});
+				const keywordsEndpoint = type +'/'+ res.data.results[0].id +'/keywords?';
+				tmdbApi().get( keywordsEndpoint, (res, err) => {
+					if(!err) {
+						console.log(res.data);
+						if (type === 'movie') setKeywords(res.data.keywords.slice(0, index));
+						if (type === 'tv') setKeywords(res.data.results.slice(0, index));
+					}
+				});
+			}
+		});
+	}, []);
 
 	return(
 		<div className='Preview'>
@@ -30,16 +60,31 @@ const Preview = ({ previewObj }) => {
 							<button className='icon-button'><FontAwesomeIcon icon={faPlus} /></button>
 						</div>
 					</div>
-					<div className='video-info'>
-						<p>{itemData.title}</p>
-						<p> YEAR</p>
-						<p> SYNOPSIS</p>
-						<p> GENRES</p>
-						<p> TAGS</p>
-						<p> DIRECTOR</p>
-						<p> CAST</p>
-						<p> DURATION</p>
-					</div>
+					{apiData &&
+						<div className='video-info'>
+							<div className='left container'>
+								<span className='name'>{name}</span>
+								<span className='year'>{ type==='movie'? apiData.release_date.slice(0, 4) : apiData.first_air_date.slice(0, 4) }</span>
+								<span className='overview'>{apiData.overview}</span>
+							</div>
+							<div className='right container'>
+								<span>Cast:</span>
+								<ul className='list'>
+									{credits && credits.map((member) => (
+										<li className='item on' key={member.id}>{member.name}</li>
+									))
+									}
+								</ul>
+								<span>Keywords:</span>
+								<ul className='list'>
+									{keywords && keywords.map((keyword) => (
+										<li className='item on' key={keyword.id}>{keyword.name}</li>
+									))
+									}
+								</ul>
+							</div>
+						</div>
+					}
 					{itemData.type !== 'movie' &&
 						<Episodes itemData={itemData}/>
 					}

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:8080/';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export default function apiRequest() {
 	const get = async (endpoint, callback) => {
-		axios.get(URL + endpoint)
+		axios.get(BACKEND_URL + endpoint)
 			.then(callback)
 			.catch(err => {
 				console.log(err);
@@ -13,7 +13,7 @@ export default function apiRequest() {
 	};
 
 	const patch = async (endpoint, body, callback) => {
-		axios.patch(URL + endpoint, body)
+		axios.patch(BACKEND_URL + endpoint, body)
 			.then(callback)
 			.catch(err => {
 				console.log(err);
@@ -22,7 +22,7 @@ export default function apiRequest() {
 	};
 
 	const post = async (endpoint, body, callback) => {
-		axios.post(URL + endpoint, body)
+		axios.post(BACKEND_URL + endpoint, body)
 			.then(callback)
 			.catch(err => {
 				if(!err) return;
@@ -32,7 +32,7 @@ export default function apiRequest() {
 	};
 
 	const _delete = async (endpoint, callback) => {
-		axios.delete(URL + endpoint)
+		axios.delete(BACKEND_URL + endpoint)
 			.then(callback)
 			.catch(err => {
 				if(!err) return;
