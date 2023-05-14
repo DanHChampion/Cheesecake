@@ -39,8 +39,6 @@ router.get('/series', async (req, res) => {
 			'title': name,
 			'type':'series',
 			'videopath': `${name}/${files[0]}`,
-			// 'imagepath':'https://widowcranky.files.wordpress.com/2019/08/onceuponatimeinhollywood-banniere-800x445.jpg'
-			// 'imagepath': 'https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/863E75A035911DBA10F8D7EE1E433A12A1BF4915670B66597AC31C585A291942/scale?width=500&aspectRatio=1.78&format=jpeg'
 		});
 	}
 	res.json(response);
@@ -50,12 +48,11 @@ router.get('/series', async (req, res) => {
 router.get('/series/seasons/:title', async (req, res) => {
 	try {
 		res.json(readdirSync('./videos/Series/'+req.params.title, { withFileTypes: true })
-		.filter(dirent => dirent.isDirectory())
-		.map(dirent => dirent.name));
+			.filter(dirent => dirent.isDirectory())
+			.map(dirent => dirent.name));
 	} catch {
 		res.status(400);
 	}
-	
 });
 
 // Getting all episdoes within a season

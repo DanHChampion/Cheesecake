@@ -32,7 +32,7 @@ const NavBar = () => {
 					<input id='searchbar' placeholder='Titles, peoples, genres' type='text'/>
 					<label htmlFor='searchbar' className='button' ><FontAwesomeIcon className='big-icon' icon={faMagnifyingGlass}/></label>
 				</div>
-				<a className='nav-item' href='#'><FontAwesomeIcon className='big-icon' icon={faBell}/></a>
+				<a role='notifications' className='nav-item' href='#'><FontAwesomeIcon className='big-icon' icon={faBell}/></a>
 				<Dropdown>
 					<a className='nav-item' href='#'>
 						<div className='img-wrapper'>
