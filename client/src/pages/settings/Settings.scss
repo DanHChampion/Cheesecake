@@ -1,0 +1,44 @@
+@import '../../assets/global.scss';
+
+.Settings{
+    @extend .flex-center;
+    flex-direction: column;
+    padding-top: $navbar-height;
+
+    .main {
+        @extend .flex-center;
+        width: 60vw;
+        background-color: $bg-hover-colour;
+        border-radius: 5px;
+
+
+        .container{
+            display: flex;
+            text-align: left;
+            justify-content: flex-start;
+            flex-direction: column;
+            padding: 10px;
+            padding-right: 0;
+            min-height: fit-content;
+            height: 700px;
+        }
+        .left{
+            width: 300px;
+            border-right: 2px grey solid;
+
+            .selector{
+                @extend .clickable;
+                padding: 10px ;
+                border-bottom: transparent 2px solid;
+                border-bottom-left-radius: 3px;
+            }
+            .active{
+                background-color: $bg-colour;
+                border-bottom: white 2px solid;
+            }
+        }
+        .right{
+            width: 100%;
+        }
+    };
+}

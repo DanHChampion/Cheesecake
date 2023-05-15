@@ -1,5 +1,4 @@
 import './Browse.scss';
-import NavBar from '../../components/NavBar.js';
 import Preview from '../../components/Preview.js';
 import Card from '../../components/Card.js';
 import usePreview from '../../hooks/usePreview';
@@ -32,7 +31,6 @@ const Browse = ({type}) => {
 
 	return (
 		<div className="Browse">
-			<NavBar/>
 			{visibleModal && <Preview previewObj={previewObj}/>}
 			<div className='header'>
 				<span>{type}</span>

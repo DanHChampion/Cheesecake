@@ -1,8 +1,7 @@
 import './Home.scss';
-import NavBar from '../../components/NavBar.js';
-import Carousel from '../../components/Carousel.js';
+import Carousel from './Carousel.js';
 import Preview from '../../components/Preview.js';
-import Billboard from '../../components/Billboard.js';
+import Billboard from './Billboard.js';
 import usePreview from '../../hooks/usePreview';
 import { useEffect, useState } from 'react';
 
@@ -16,7 +15,6 @@ const Home = () => {
 
 	return (
 		<div className="Home">
-			<NavBar/>
 			{visibleModal && <Preview previewObj={previewObj}/>}
 
 			<Billboard/>

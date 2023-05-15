@@ -7,6 +7,9 @@ import EditProfile from './pages/profile/EditProfile.js';
 import AddProfile from './pages/profile/AddProfile.js';
 import Browse from './pages/browse/Browse.js';
 import Experimental from './pages/experimental/Experimental.js';
+import Help from './pages/help/Help.js';
+import Settings from './pages/settings/Settings.js';
+import NavBar from './components/NavBar.js';
 
 function App() {
 	const userObject = sessionStorage.getItem('userObject');
@@ -27,6 +30,7 @@ function App() {
 
 	return (
 		<div id="app" className="App">
+			<NavBar/>
 			<BrowserRouter>
 				<Routes>
 					<Route path="/users" element={<Users/>} />
@@ -36,6 +40,8 @@ function App() {
 					<Route path="/series" element={<Browse type='series'/>} />
 					<Route path="/clips" element={<Browse type='clips'/>} />
 					<Route path="/experimental" element={<Experimental/>} />
+					<Route path="/help" element={<Help/>} />
+					<Route path="/settings" element={<Settings/>} />
 					<Route path="/*" element={<NotFound/>} />
 				</Routes>
 			</BrowserRouter>

@@ -1,8 +1,8 @@
 import './Carousel.scss';
 import { useRef, useEffect , useState } from 'react';
-import apiRequest from '../hooks/apiRequest';
+import apiRequest from '../../hooks/apiRequest';
 import PropTypes from 'prop-types';
-import Card from './Card';
+import Card from '../../components/Card';
 
 // props include
 // label

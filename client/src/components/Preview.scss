@@ -137,7 +137,8 @@
                 @extend .flex-center;
                 flex-direction: row;
                 padding: 20px;
-                height: 25vh;
+                min-height: 25vh;
+                height: fit-content;
                 text-align: left;
 
                 .container{
@@ -152,9 +153,11 @@
                     .name{
                         font-size: 25px;
                         padding-bottom: 10px;
+                        font-weight: bold;
                     }
                     .year{
                         padding-bottom: 10px;
+                        font-style: italic;
                     }
                 }
                 .right{
