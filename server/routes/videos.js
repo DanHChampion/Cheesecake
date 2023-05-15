@@ -65,7 +65,7 @@ router.get('/series/:title/:season', async (req, res) => {
 
 		let response = [];
 		for (const [index, name] of list.entries()) {
-			const epTitle = name.replace(/\.[^/.]+$/, "")
+			const epTitle = name.replace(/\.[^/.]+$/, '');
 			response.push({
 				'episode': index+1,
 				'title': epTitle,
