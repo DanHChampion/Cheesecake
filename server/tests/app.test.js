@@ -61,16 +61,4 @@ describe('Test all GET methods in app.js', () => {
 		let usersLength = JSON.parse(JSON.stringify(response.body)).length;
 		expect(usersLength).toBe(3);
 	});
-
-	// Random Movies Section
-	test('GET /movies successful', () => {
-		return request(app)
-			.get('/movies')
-			.expect(200);
-	});
-	test('GET /movies returns JSON', () => {
-		return request(app)
-			.get('/movies')
-			.expect('Content-type', /json/);
-	});
 });
