@@ -87,8 +87,8 @@ router.get('/all', async (req, res) => {
 		.map(dirent => dirent.name);
 
 	let response = [];
-	let index = 0
-	for (const [i, name] of moviesList.entries()) {
+	let index = 0;
+	moviesList.forEach(name => {
 		let files = readdirSync('./videos/Movies/'+name, { withFileTypes: true })
 			.map(dirent => dirent.name);
 		response.push({
@@ -98,12 +98,12 @@ router.get('/all', async (req, res) => {
 			'videopath': `${name}/${files[0]}`,
 		});
 		index ++;
-	}
+	});
 	const seriesList = readdirSync('./videos/Series', { withFileTypes: true })
 		.filter(dirent => dirent.isDirectory())
 		.map(dirent => dirent.name);
 
-	for (const [i, name] of seriesList.entries()) {
+	seriesList.forEach(name => {
 		let files = readdirSync('./videos/Series/'+name, { withFileTypes: true })
 			.map(dirent => dirent.name);
 		response.push({
@@ -113,7 +113,7 @@ router.get('/all', async (req, res) => {
 			'videopath': `${name}/${files[0]}`,
 		});
 		index ++;
-	}
+	});
 	res.json(response);
 });
 
