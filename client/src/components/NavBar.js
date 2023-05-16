@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faPlus, faFilm, faTvAlt, faVideo, faBell, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import logo from '../assets/logo.png';
+import PropTypes from 'prop-types';
 
-const NavBar = () => {
+const NavBar = ({ searchFunction }) => {
 
 	const getUserObject = () => {
 		return JSON.parse(sessionStorage.getItem('userObject'));
@@ -29,7 +30,7 @@ const NavBar = () => {
 			</div>
 			<div className='right-container'>
 				<div className='search-container'>
-					<input id='searchbar' placeholder='Titles, peoples, genres' type='text'/>
+					<input id='searchbar' placeholder='Titles, peoples, genres' type='text' onChange={(e) => {searchFunction(e.target.value);}}/>
 					<label htmlFor='searchbar' className='button' ><FontAwesomeIcon className='big-icon' icon={faMagnifyingGlass}/></label>
 				</div>
 				<a role='notifications' className='nav-item' href='#'><FontAwesomeIcon className='big-icon' icon={faBell}/></a>
@@ -46,3 +47,7 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+NavBar.propTypes = {
+	searchFunction: PropTypes.func.isRequired,
+};

@@ -1,0 +1,52 @@
+@import '../../assets/global.scss';
+
+.Search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 75px 50px;
+
+    .header{
+        width: 100%;
+        height: $navbar-height;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        span {
+            font-size: 30px;
+            text-transform: capitalize;
+            padding: 0px 30px;
+        }
+        select {
+            font-family: inherit;
+            height: fit-content;
+            text-transform: capitalize;
+            padding: 5px 10px;
+            font-size: 18px;
+            background-color: $bg-hover-colour;
+            border: 2px white solid;
+            color: white;
+            outline: none;
+            border-radius: 3px;
+        }
+        option{
+            background-color: $bg-hover-colour;
+        }
+
+    }
+
+    .grid{
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 100px ;
+        display: grid;
+        row-gap: 25px;
+        grid-template-columns: repeat(8, 12.5%);
+        height: fit-content;
+
+    }
+    
+
+}

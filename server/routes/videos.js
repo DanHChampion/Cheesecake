@@ -80,4 +80,41 @@ router.get('/series/:title/:season', async (req, res) => {
 
 });
 
+// Getting all videos
+router.get('/all', async (req, res) => {
+	const moviesList = readdirSync('./videos/Movies', { withFileTypes: true })
+		.filter(dirent => dirent.isDirectory())
+		.map(dirent => dirent.name);
+
+	let response = [];
+	let index = 0
+	for (const [i, name] of moviesList.entries()) {
+		let files = readdirSync('./videos/Movies/'+name, { withFileTypes: true })
+			.map(dirent => dirent.name);
+		response.push({
+			'id':index,
+			'title': name,
+			'type':'movie',
+			'videopath': `${name}/${files[0]}`,
+		});
+		index ++;
+	}
+	const seriesList = readdirSync('./videos/Series', { withFileTypes: true })
+		.filter(dirent => dirent.isDirectory())
+		.map(dirent => dirent.name);
+
+	for (const [i, name] of seriesList.entries()) {
+		let files = readdirSync('./videos/Series/'+name, { withFileTypes: true })
+			.map(dirent => dirent.name);
+		response.push({
+			'id':index,
+			'title': name,
+			'type':'series',
+			'videopath': `${name}/${files[0]}`,
+		});
+		index ++;
+	}
+	res.json(response);
+});
+
 module.exports = router;
