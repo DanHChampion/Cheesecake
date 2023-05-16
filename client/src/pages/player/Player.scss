@@ -1,14 +1,50 @@
+@import '../../assets/global.scss';
+
 .Player{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend .flex-center;
+    position: relative;
     flex-direction: column;
     background-color: black;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
     z-index: 5;
+
+    .overlay{
+        top: 0;
+        position: absolute;
+        min-width: 100%;
+        min-height: fit-content;
+        max-width: 100vw;
+        max-height: 100vh;
+        outline: none;
+        z-index: 2;
+
+        .header{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 50px;
+
+            .exit{
+                @extend .clickable;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                font-size: 25px;
+                font-weight: bold;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                padding: 5px;
+                transition: 200ms;
+            }
+            .exit:hover{
+                background-color: #3333335f;
+
+            }
+        }
+    }
 
     #video {
         min-width: 100%;

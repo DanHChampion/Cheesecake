@@ -26,6 +26,10 @@ function App() {
 		navigate('/search?q='+value);
 	};
 
+	const goBack = () => {
+		navigate(-1);
+	};
+
 	if(userObject === null) {
 		return (
 			<div id="app" className="App">
@@ -44,7 +48,7 @@ function App() {
 			<Routes>
 				<Route path="/users" element={<Users/>} />
 				<Route path="/home" element={<Home/>} />
-				<Route path="/watch/*" element={<Player/>}/>
+				<Route path="/watch/*" element={<Player goBack={goBack}/>} />
 				<Route path="/movies" element={<Browse type='movies'/>} />
 				<Route path="/series" element={<Browse type='series'/>} />
 				<Route path="/clips" element={<Browse type='clips'/>} />
