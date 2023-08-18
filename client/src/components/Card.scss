@@ -10,7 +10,7 @@
     border-radius: 10px;
     color: white;
     overflow: hidden;
-    border: 3px transparent solid;
+    border: 2px transparent solid;
     overflow: hidden;
 
     p{
@@ -32,5 +32,5 @@
 }
 .Card:hover {
     transform: scale(1.05);
-    border: 3px white solid;
+    border: 2px white solid;
 }
