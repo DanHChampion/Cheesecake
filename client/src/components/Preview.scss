@@ -21,7 +21,7 @@
             position:absolute;
             background-color: $bg-colour;
             width: 50vw;
-            height: fit-content;
+            min-height: fit-content;
             top: calc($navbar-height/2);
             z-index: 3;
             flex-direction: column;
