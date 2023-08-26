@@ -14,8 +14,8 @@
         right: 0px;
         display: flex;
         flex-direction: column;
-        background-color: #111;
-        border: 1px solid #222;
+        background-color: #0c0c0c;
+        border: 1px solid #111;
         visibility: hidden;
         opacity: 0;
         border-bottom-left-radius: 5px ;
@@ -31,7 +31,7 @@
         }
 
         .item:hover{
-            background-color: #222;
+            background-color: #111;
         }
     }
    

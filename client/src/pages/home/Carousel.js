@@ -1,5 +1,7 @@
 import './Carousel.scss';
 import { useRef, useEffect , useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import apiRequest from '../../hooks/apiRequest';
 import PropTypes from 'prop-types';
 import Card from '../../components/Card';
@@ -58,7 +60,7 @@ const Carousel = ( { label, previewObj, endpoint } ) => {
 		<>
 			<span style={{fontSize:'22px', fontWeight:'bold', textAlign:'left', width:'90%', marginTop:'10px'}}>{label}</span>
 			<div className="Carousel">
-				{state.left && <div className='scroll-arrow left-arrow' onClick={() => {goLeft();}}> &lt; </div>}
+				{state.left && <div className='scroll-arrow left-arrow' onClick={() => {goLeft();}}> <FontAwesomeIcon className='icon' icon={faChevronLeft}/> </div>}
 				{items &&
 					<div ref={wrapperRef} className='wrapper' onScroll={()=> {onSlide();}}>
 						<div ref={containerRef} className='container'>
@@ -68,7 +70,7 @@ const Carousel = ( { label, previewObj, endpoint } ) => {
 						</div>
 					</div>
 				}
-				{state.right && <div className='scroll-arrow right-arrow' onClick={() => {goRight();}}> &gt; </div>}
+				{state.right && <div className='scroll-arrow right-arrow' onClick={() => {goRight();}}> <FontAwesomeIcon className='icon' icon={faChevronRight}/> </div>}
 			</div>
 		</>
 	);

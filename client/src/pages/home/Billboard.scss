@@ -4,14 +4,13 @@
     align-items: center;
     flex-direction: column;
 
-    margin: 10px;
+    margin-bottom: 10px;
 
     height: 60vh;
-    width: 85vw;
-    background-color: black;
-    border: 1px black solid;
+    width: 100vw;
+    background-color: #0c0c0c;
+    border: 1px #0c0c0c solid;
     overflow: hidden;
-    border-radius: 20px;
 
     iframe{
         width: 100%;
