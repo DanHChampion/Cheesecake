@@ -16,8 +16,8 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        height: 15vw;
-        padding: 20px 0;
+        height: 18vw;
+        padding: 10px 0;
 
         .container {
             width: fit-content;
@@ -30,28 +30,33 @@
     }
     .scroll-arrow{
         position: absolute;
-        top: 20px;
+        top: 10px;
         z-index: 1;
         background-color: black;
-        opacity: 1%;
-        height: 15vw;
+        opacity: 0%;
+        height: 18vw;
         width: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        border-radius: 5px;
+        
+        transition: 200ms;
     }
     .left-arrow{
         left: 0;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
     .right-arrow{
         right: 0;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
     }
 }
 
 .Carousel:hover .scroll-arrow{
-    opacity: 20%;
+    opacity: 50%;
 }
 
 
