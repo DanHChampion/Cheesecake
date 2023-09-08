@@ -1,5 +1,5 @@
 import './Home.scss';
-import Carousel from '../../Carousel.js';
+import Carousel from '../../components/Carousel.js';
 import Preview from '../../components/Preview.js';
 import Billboard from './Billboard.js';
 import usePreview from '../../hooks/usePreview';
