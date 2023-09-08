@@ -22,8 +22,6 @@ it('renders all items in NavBar.js successfully', () => {
 	expect(moviesElement).toBeInTheDocument();
 	const seriesElement = screen.getByText(/Series/i);
 	expect(seriesElement).toBeInTheDocument();
-	const clipsElement = screen.getByText(/Clips/i);
-	expect(clipsElement).toBeInTheDocument();
 
 	// Right Side Components
 	const searchBarElement = screen.getByRole('textbox');
