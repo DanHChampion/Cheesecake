@@ -1,6 +1,10 @@
 // Imports 
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('');
 
+@font-face {
+  font-family: 'Varela Round';
+  src: url('VarelaRound-Regular.ttf') format('truetype');
+}
 
 // Variables
 $bg-colour: #101010;
@@ -8,8 +12,6 @@ $bg-hover-colour: #272727;
 $base-color: #c6538c;
 $navbar-height: 60px;
 $font-family: 'Varela Round','Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
-
-
 
 html {
   scroll-behavior: smooth;

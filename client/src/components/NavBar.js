@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faPlus, faFilm, faTvAlt, faBell, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import logo from '../assets/logo.png';
 import PropTypes from 'prop-types';
+import getImage from '../utils/getImage.js';
 
 const NavBar = ({ searchFunction }) => {
 
@@ -36,7 +37,7 @@ const NavBar = ({ searchFunction }) => {
 				<Dropdown>
 					<a className='nav-item' href='#'>
 						<div className='img-wrapper'>
-							<img src={userObject? userObject.icon : './default.png'} alt='Profile' />
+							<img src={userObject? getImage('_avatars/'+userObject.icon) : './default.png'} alt='Profile' />
 						</div>
 					</a>
 				</Dropdown>

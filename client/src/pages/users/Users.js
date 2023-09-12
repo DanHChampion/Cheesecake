@@ -3,6 +3,7 @@ import { useEffect , useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus , faPencil } from '@fortawesome/free-solid-svg-icons';
 import apiRequest from '../../hooks/apiRequest.js';
+import getImage from '../../utils/getImage.js';
 
 const Users = () => {
 	const [users, setUsers] = useState([]);
@@ -34,7 +35,7 @@ const Users = () => {
 				{users.map((user) => (
 					<div className='item' key={user.id}>
 						<a href={toggleEdit? '/edit/?id='+user.id : '/home'} onClick={toggleEdit? console.log('editing') : () => {logIn(user);}} className={toggleEdit? 'icon-wrapper jiggle' : 'icon-wrapper'}>
-							<img src={user.icon} alt={user.name+' Avatar'}/>
+							<img src={getImage('_avatars/'+user.icon)} alt={user.name+' Avatar'}/>
 							{toggleEdit && <FontAwesomeIcon className='edit' icon={faPencil}/>}
 						</a>
 						<p>{user.name}</p>

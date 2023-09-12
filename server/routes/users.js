@@ -154,12 +154,12 @@ let users = [
 	{
 		'id': '1',
 		'name': 'Dan',
-		'icon': 'https://i.pinimg.com/474x/d6/e2/b9/d6e2b92c45c41819cbd4000bb447c50e.jpg'
+		'icon': 'Batman.jpg'
 	},
 	{
 		'id': '2',
 		'name': 'Scott',
-		'icon': 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/263a1361-4930-4f55-b439-97b19a957b06/df0490e-e00e5729-8419-48a8-856c-881c66b2ff96.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI2M2ExMzYxLTQ5MzAtNGY1NS1iNDM5LTk3YjE5YTk1N2IwNlwvZGYwNDkwZS1lMDBlNTcyOS04NDE5LTQ4YTgtODU2Yy04ODFjNjZiMmZmOTYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-aogYUMgz9HQuqh5rLgH3pBd7HEcIQq2818kAoxdqJM'
+		'icon': 'Scott.jpg'
 	},
 ];
 
