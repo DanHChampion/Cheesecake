@@ -18,9 +18,9 @@ const Home = () => {
 			{visibleModal && <Preview previewObj={previewObj}/>}
 
 			<Billboard/>
-			<Carousel label={'Continue Watching'} previewObj={previewObj} endpoint={'contwatch'}/>
 			<Carousel label={'Movies'} previewObj={previewObj} endpoint={'videos/movies'}/>
 			<Carousel label={'Series'} previewObj={previewObj} endpoint={'videos/series'}/>
+			<Carousel label={'Continue Watching'} previewObj={previewObj} endpoint={'contwatch'}/>
 			<Carousel label={'Watchlist'} previewObj={previewObj} endpoint={'watchlist'}/>
 		</div>
 	);
