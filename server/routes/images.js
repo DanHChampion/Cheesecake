@@ -10,7 +10,7 @@ router.get('/avatars', async (req, res) => {
 	let response = [];
 	for (const [index, name] of list.entries()) {
 		response.push({
-            'id': index,
+			'id': index,
 			'path': name,
 		});
 	}
