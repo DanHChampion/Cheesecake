@@ -1,5 +1,4 @@
 import './Profile.scss';
-// import apiRequest from '../../hooks/apiRequest.js';
 import { useEffect, useState } from 'react';
 import ChangeIcon from '../../components/ChangeIcon';
 import apiRequest from '../../hooks/apiRequest';
@@ -10,7 +9,7 @@ const EditProfile = () => {
 	const queryParameters = new URLSearchParams(window.location.search);
 	const id = queryParameters.get('id');
 	const [name, setName] = useState('');
-	const [url, setUrl] = useState('');
+	const [iconPath, setIconPath] = useState('');
 
 	useEffect(() => getUserObject(), []);
 
@@ -18,7 +17,8 @@ const EditProfile = () => {
 		apiRequest().get( 'users/'+id, (res, err) => {
 			if(!err) {
 				setName(res.data.name);
-				setUrl(res.data.icon);
+				setIconPath(res.data.icon);
+				console.log(res.data.icon);
 			}
 		});
 	};
@@ -27,7 +27,7 @@ const EditProfile = () => {
 	const handleSubmit = () => {
 		const body = {
 			'name': name? name : null,
-			'icon': url? url : null
+			'icon': iconPath? iconPath : null
 		};
 		apiRequest().patch('users/'+id, body, (res, err) => {
 			if(!err) {
@@ -55,7 +55,7 @@ const EditProfile = () => {
 				<span>Edit Profile</span>
 				<p>Edit the profile for {name}.</p>
 				<div className='row'>
-					<ChangeIcon inputUrl={url} setState={setUrl} />
+					<ChangeIcon inputIconPath={iconPath} setState={setIconPath} />
 					<input type='text' className='input-text' placeholder='Name' defaultValue={name} onChange={(e) => setName(e.target.value)}></input>
 				</div>
 				<div className='row'>

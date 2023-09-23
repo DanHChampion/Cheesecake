@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 	const newUser = {
 		'id': count.toString(),
 		'name': req.body.name,
-		'icon': req.body.icon? req.body.icon : 'https://mir-s3-cdn-cf.behance.net/projects/max_808/22328711.54a2f9e311082.jpg'
+		'icon': req.body.icon? req.body.icon : 'avatar0.jpg'
 	};
 
 	try {

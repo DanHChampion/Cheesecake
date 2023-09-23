@@ -1,10 +1,20 @@
 @import '../assets/global.scss';
 
 .ChangeIcon{
-    position: relative;
     .editable{
         @extend .clickable;
     }
+
+    .popup-wrapper{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+
+    }
+
     .icon-wrapper{
         @extend .flex-center;
         width: 200px;
@@ -15,6 +25,7 @@
         transition: 300ms;
         font-size: 100px;
         position: relative;
+        cursor: pointer;
         
         img{
             width: 100%;
@@ -32,9 +43,12 @@
             right: 8px;
             font-size: 15px;
         }
-
-        
     }
+    .icon-wrapper:hover{
+        border: 3px white solid;
+        transform: scale(1.05);
+    }
+
     .editable:hover img{
         filter: brightness(0.6);
 
@@ -42,13 +56,50 @@
     .popup{
         @extend .flex-center;
         position: absolute;
-        top: -100px;
-        left: -100px;
+        top: 0;
+        left: 0;
         height: 100%;
-        padding: 100px;
-        width: 40vw;
+        width: 100vw;
         z-index: 1;
-        background-color: black;
-        border-radius: 10px;     
+        background-color: $bg-colour;
+        border-radius: 10px;
+        flex-direction: column;
+
+        .header {
+            width: 100%;
+            height: 10%;
+            position: relative;
+            @extend .flex-center;
+            flex-direction: row;
+
+            span {
+                position: absolute;
+                left: 40px;
+            }
+            button{
+                position: absolute;
+                right: 40px;
+            }
+        }
+ 
+        .avatars-list {
+            width: auto;
+            padding: 20px ;
+            display: grid;
+            row-gap: 25px;
+            column-gap: 25px;
+            grid-template-columns: repeat(4, auto);
+            overflow-y: scroll;
+            height: 90%;
+
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .avatars-list::-webkit-scrollbar {
+            display: none;
+          }
+
+
     }
 }

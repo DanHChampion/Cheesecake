@@ -8,13 +8,13 @@ import ChangeIcon from '../../components/ChangeIcon';
 
 const AddProfile = () => {
 	const [name, setName] = useState('');
-	const [url, setUrl] = useState('https://mir-s3-cdn-cf.behance.net/projects/404/22328711.54a2f9e311082.jpg');
+	const [iconPath, setIconPath] = useState('avatar0.jpg');
 
 	const handleSubmit = () => {
 
 		const body = {
 			'name': name === ''? 'Profile': name,
-			'icon': url
+			'icon': iconPath
 		};
 		apiRequest().post('users', body, (res, err) => {
 			if(!err) {
@@ -32,7 +32,7 @@ const AddProfile = () => {
 				<span>Add Profile</span>
 				<p>Create a new profile for someone else.</p>
 				<div className='row'>
-					<ChangeIcon inputUrl={url} setState={setUrl} />
+					<ChangeIcon inputIconPath={iconPath} setState={setIconPath} />
 					<input type='text' className='input-text' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}></input>
 				</div>
 				<div className='row'>

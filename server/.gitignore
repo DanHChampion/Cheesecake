@@ -9,10 +9,12 @@
 /coverage
 
 # video files
-/videos
+/videos/Movies/*
+/videos/Series/*
 
 # images files
-/images
+/images/*
+!/images/_avatars
 
 # production
 /build

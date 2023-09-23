@@ -28,11 +28,14 @@ const usersRoute = require('./routes/users.js');
 const watchlistRoute = require('./routes/watchlist.js');
 const streamRoute = require('./routes/stream.js');
 const videoRoute = require('./routes/videos.js');
+const imageRoute = require('./routes/images.js');
 
 app.use('/users', usersRoute);
 app.use('/watchlist', watchlistRoute);
 app.use('/stream', streamRoute);
 app.use('/videos', videoRoute);
+app.use('/images', imageRoute);
+
 
 // For images
 const dir = path.join(__dirname, 'images');
