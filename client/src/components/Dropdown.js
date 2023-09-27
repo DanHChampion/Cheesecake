@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const Dropdown = (props) => {
 
 	const logOut = () => {
-		sessionStorage.clear();
+		localStorage.clear();
 	};
 
 	return(

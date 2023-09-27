@@ -10,7 +10,7 @@ import getImage from '../utils/getImage.js';
 const NavBar = ({ searchFunction }) => {
 
 	const getUserObject = () => {
-		return JSON.parse(sessionStorage.getItem('userObject'));
+		return JSON.parse(localStorage.getItem('userObject'));
 	};
 
 	useEffect(() => {

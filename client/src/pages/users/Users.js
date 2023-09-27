@@ -21,11 +21,11 @@ const Users = () => {
 	};
 
 	const logOut = () => {
-		sessionStorage.clear();
+		localStorage.clear();
 	};
 
 	const logIn = (userObject) => {
-		sessionStorage.setItem('userObject', JSON.stringify(userObject));
+		localStorage.setItem('userObject', JSON.stringify(userObject));
 	};
 
 	return (

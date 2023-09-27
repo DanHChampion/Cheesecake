@@ -16,7 +16,7 @@ import NavBar from './components/NavBar.js';
 function App() {
 	const queryParameters = new URLSearchParams(window.location.search);
 
-	const userObject = sessionStorage.getItem('userObject');
+	const userObject = localStorage.getItem('userObject');
 	const navigate = useNavigate();
 
 	const [search, setSearch] = useState(queryParameters.get('q')? queryParameters.get('q'): '');
@@ -27,7 +27,7 @@ function App() {
 	};
 
 	const goBack = () => {
-		navigate(-1);
+		navigate('/home');
 	};
 
 	if(userObject === null) {
@@ -46,8 +46,9 @@ function App() {
 		<div id="app" className="App">
 			<NavBar searchFunction={handleSearch}/>
 			<Routes>
-				<Route path="/users" element={<Users/>} />
+				<Route path="/" element={<Home/>}/>
 				<Route path="/home" element={<Home/>} />
+				<Route path="/users" element={<Users/>} />
 				<Route path="/watch/*" element={<Player goBack={goBack}/>} />
 				<Route path="/movies" element={<Browse type='movies'/>} />
 				<Route path="/series" element={<Browse type='series'/>} />
