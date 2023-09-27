@@ -1,8 +1,11 @@
 import './Player.scss';
-import { useRef, useEffect , useState } from 'react';
+import { useRef, useEffect , useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import getImage from '../../utils/getImage';
 import mediaSource from '../../utils/mediaSource.js';
+import convertHMS from '../../utils/convertHMS';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClosedCaptioning, faExpand, faMinimize, faPause, faPlay, faRotateForward, faRotateBackward, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Player = ({ goBack }) => {
 	const queryParameters = new URLSearchParams(window.location.search);
@@ -10,23 +13,72 @@ const Player = ({ goBack }) => {
 	const videoPath = queryParameters.get('path');
 	const videoTitle= videoPath.split('/')[0];
 
+	const [paused,setPaused] = useState(false);
 	const [fullScreen,setFullScreen] = useState(false);
 	const [subtitles,setSubtitle] = useState(false);
-
+	const [slider, setSlider] = useState(0);
 
 	const videoRef = useRef(null);
+	const sliderRef = useRef(null);
 	const bodyRef = useRef(null);
 
-	const handlePlay = () => {
-		videoRef.current.play();
+	const handleKeyPress = useCallback((event) => {
+		console.log(`Key pressed: ${event.key}`);
+		if (event.key == 'f') {
+			toggleFullScreen();
+		}
+		if (event.key == ' ' || event.key == 'k') {
+			handlePause();
+		}
+		if (event.key == 'j' || event.key === 'ArrowLeft') {
+			handleSkip(-10);
+		}
+		if (event.key == 'l' || event.key === 'ArrowRight') {
+			handleSkip(10);
+		}
+		if (event.key == 'Escape'){
+			goBack();
+		}
+	}, [paused]);
+
+	useEffect(() => {
+		// attach the event listener
+		document.addEventListener('keydown', handleKeyPress);
+		// remove the event listener
+		return () => {
+			document.removeEventListener('keydown', handleKeyPress);
+		};
+	}, [handleKeyPress]);
+
+	const updateTimestamp = () => {
+		setSlider(sliderRef.current.value);
+		const newTimestamp = sliderRef.current.value;
+		videoRef.current.currentTime = newTimestamp;
+		updateSlider();
 	};
+
+	const updateSlider = () => {
+		setSlider(videoRef.current.currentTime);
+		sliderRef.current.style.backgroundSize = (sliderRef.current.value * 100)/ sliderRef.current.max + '% 100%';
+	};
+
+	const handleSkip = (value) => {
+		const newTimestamp = videoRef.current.currentTime + value;
+		videoRef.current.currentTime = newTimestamp;
+		updateSlider();
+	};
+
 	const handlePause = () => {
-		videoRef.current.pause();
+		if (paused){
+			videoRef.current.play();
+		} else{
+			videoRef.current.pause();
+		}
+		setPaused(!paused);
 	};
 
 	// Need to consider when using 'ESC' to exit fullscreen
 	const toggleFullScreen = () => {
-		console.log('FS:',fullScreen);
 		if (document.fullscreenElement === null) {
 			document.body.requestFullscreen();
 			setFullScreen(true);
@@ -46,40 +98,63 @@ const Player = ({ goBack }) => {
 
 	useEffect(() => getVideo(), []);
 
+	// Run Slide Loop
+	useEffect(() => {
+		updateSlider();
+		sliderRef.current.max = videoRef.current.duration;
+		const interval = setInterval(() => {
+			updateSlider();
+		}, 1000);
+		return () => {
+			clearInterval(interval);
+		};
+	}, [slider]
+	);
+
 	const getVideo = () => {
 		setVideoSrc(mediaSource(videoType, videoPath));
+	};
+
+	const time = () => {
+		return convertHMS(slider) + ' / ' + convertHMS(sliderRef.current.max - slider);
 	};
 
 	return (
 		<div className="Player">
 			<div className='overlay' ref={bodyRef}>
+				<div onClick={() => {handlePause();}} className='clickable-screen'></div>
 				<div className='header'>
-					<div>
-						{videoPath.split('/')[videoPath.split('/').length-1].split('.mp4')[0]}
-					</div>
 					<div onClick={() => {goBack();}} className='exit'>
-						X
+						<FontAwesomeIcon className='icon' icon={faChevronLeft}/> {videoPath.split('/')[videoPath.split('/').length-1].split('.mp4')[0]}
 					</div>
 				</div>
-				<div>
-					{/* MIDDLE BUTTONS HERE */}
+				<div className='slider'>
+					<input onChange={() => {updateTimestamp();}} ref={sliderRef} type='range' min='0' value={slider} max='1000' />
 				</div>
 				<div className='controls'>
-					<button onClick={() => {handlePlay();}}>
-						Play
+					<button onClick={() => {toggleSubtitles();}}>
+						<FontAwesomeIcon icon={faClosedCaptioning}/>
+					</button>
+					<button onClick={() => {handleSkip(-10);}}>
+						<FontAwesomeIcon icon={faRotateBackward}/>
 					</button>
 					<button onClick={() => {handlePause();}}>
-						Pause
+						<FontAwesomeIcon icon={!paused? faPause : faPlay}/>
 					</button>
-					<button onClick={() => {toggleSubtitles();}}>
-						ToggleSub
+					<button onClick={() => {handleSkip(10);}}>
+						<FontAwesomeIcon icon={faRotateForward}/>
 					</button>
 					<button onClick={() => {toggleFullScreen();}}>
-						{!fullScreen? 'Expand':'Shrink'}
+						<FontAwesomeIcon icon={!fullScreen? faExpand : faMinimize}/>
 					</button>
+					{slider &&
+					<div className='time'>
+						{time()}
+					</div>
+					}
 				</div>
 			</div>
-			<video id="video" ref={videoRef} controls autoPlay poster={getImage(videoTitle+'/preview.jpg')}>
+			<video id="video" ref={videoRef} autoPlay poster={getImage(videoTitle+'/preview.jpg')}>
 				{videoSrc &&
 				<source src={videoSrc} type='video/mp4'/>
 				}
