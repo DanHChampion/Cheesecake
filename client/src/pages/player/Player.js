@@ -1,11 +1,12 @@
 import './Player.scss';
+import apiRequest from '../../hooks/apiRequest';
 import { useRef, useEffect , useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import getImage from '../../utils/getImage';
 import mediaSource from '../../utils/mediaSource.js';
 import convertHMS from '../../utils/convertHMS';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClosedCaptioning, faExpand, faMinimize, faPause, faPlay, faRotateForward, faRotateBackward, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faClosedCaptioning, faExpand, faMinimize, faPause, faPlay, faRotateForward, faRotateBackward, faChevronLeft, faForwardStep } from '@fortawesome/free-solid-svg-icons';
 
 const Player = ({ goBack }) => {
 	const queryParameters = new URLSearchParams(window.location.search);
@@ -17,6 +18,7 @@ const Player = ({ goBack }) => {
 	const [fullScreen,setFullScreen] = useState(false);
 	const [subtitles,setSubtitle] = useState(false);
 	const [slider, setSlider] = useState(0);
+	const [nextEpisode,setNextEpisode] = useState(null);
 
 	const videoRef = useRef(null);
 	const sliderRef = useRef(null);
@@ -51,6 +53,8 @@ const Player = ({ goBack }) => {
 	}, [handleKeyPress]);
 
 	const updateTimestamp = () => {
+		if (sliderRef.current.value <= 0) sliderRef.current.value = 0;
+		else if ((sliderRef.current.value >= sliderRef.current.max)) sliderRef.current.max-0.1;
 		setSlider(sliderRef.current.value);
 		const newTimestamp = sliderRef.current.value;
 		videoRef.current.currentTime = newTimestamp;
@@ -64,7 +68,9 @@ const Player = ({ goBack }) => {
 
 	const handleSkip = (value) => {
 		const newTimestamp = videoRef.current.currentTime + value;
-		videoRef.current.currentTime = newTimestamp;
+		if (newTimestamp <= 0) {videoRef.current.currentTime = 0.1;}
+		else if (newTimestamp >= videoRef.current.duration) {videoRef.current.currentTime = videoRef.current.duration;}
+		else {videoRef.current.currentTime = newTimestamp;}
 		updateSlider();
 	};
 
@@ -98,6 +104,20 @@ const Player = ({ goBack }) => {
 
 	useEffect(() => getVideo(), []);
 
+	useEffect(() => getNextEpisode(), []);
+
+	const getNextEpisode = () => {
+		apiRequest().get( 'videos/'+videoType+'/'+videoPath, (res, err) => {
+			console.log(res);
+			if (res.data == null) {
+				setNextEpisode(undefined);
+			}
+			else if(!err && res !== null) {
+				setNextEpisode(res.data);
+			}
+		});
+	};
+
 	// Run Slide Loop
 	useEffect(() => {
 		updateSlider();
@@ -129,7 +149,7 @@ const Player = ({ goBack }) => {
 					</div>
 				</div>
 				<div className='slider'>
-					<input onChange={() => {updateTimestamp();}} ref={sliderRef} type='range' min='0' value={slider} max='1000' />
+					<input onChange={() => {updateTimestamp();}} ref={sliderRef} type='range' min='0.1' value={slider} max='1000' />
 				</div>
 				<div className='controls'>
 					<button onClick={() => {toggleSubtitles();}}>
@@ -147,10 +167,17 @@ const Player = ({ goBack }) => {
 					<button onClick={() => {toggleFullScreen();}}>
 						<FontAwesomeIcon icon={!fullScreen? faExpand : faMinimize}/>
 					</button>
-					{slider &&
-					<div className='time'>
-						{time()}
-					</div>
+					{nextEpisode !== undefined &&
+					<button className='next-episode'>
+						<a href={'/watch/?type=' + videoType +'&path=' + encodeURIComponent(videoTitle+'/'+nextEpisode)}>
+							<FontAwesomeIcon icon={faForwardStep}/>
+						</a>
+					</button>
+					}
+					{slider !== 0 &&
+						<div className='time'>
+							{time()}
+						</div>
 					}
 				</div>
 			</div>

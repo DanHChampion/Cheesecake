@@ -13,7 +13,7 @@ router.get('/:type/:path', function(req, res) {
 	}
 
 	let type = req.params.type.charAt(0).toUpperCase() + req.params.type.slice(1);
-	if (type === 'Clip' || type === 'Movie'){
+	if (type === 'Movie'){
 		type = type + 's';
 	}
 	const path = decodeURIComponent(req.params.path);

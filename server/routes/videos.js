@@ -53,7 +53,7 @@ router.get('/series/seasons/:title', async (req, res) => {
 	}
 });
 
-// Getting all episdoes within a season
+// Getting all episodes within a season
 router.get('/series/:title/:season', async (req, res) => {
 	try {
 		const season = req.params.season;
@@ -74,6 +74,34 @@ router.get('/series/:title/:season', async (req, res) => {
 	}
 	catch{
 		res.status(400);
+	}
+
+});
+
+// Getting next episode based on given episode
+router.get('/series/:title/:season/:episode', async (req, res) => {
+	try {
+		// Get list
+		const season = req.params.season;
+		const title = req.params.title;
+		const episode = req.params.episode;
+		const list = readdirSync('./videos/Series/'+title+'/'+season, { withFileTypes: true })
+			.map(dirent => dirent.name);
+
+		// Find next episode
+		let flag = false;
+		for (const [index, name] of list.entries()) {
+			if (name === episode){
+				if (list[index+1] !== undefined) {
+					flag = true;
+					res.json(season+'/'+list[index+1]);
+				}
+			}
+		}
+		if (!flag) res.json(null);
+	}
+	catch{
+		res.status(404);
 	}
 
 });
