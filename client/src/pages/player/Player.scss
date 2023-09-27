@@ -48,10 +48,10 @@
                 height: 50px;
                 font-weight: bold;
                 font-size: inherit;
-                transition: 300ms;
+                transition: 150ms;
             }
             .exit:hover{
-                font-size: 31px;
+                filter: brightness(0.7);
             }
         }
 
@@ -103,19 +103,20 @@
                 @extend .flex-center;
                 @extend .clickable;
                 font-size: 40px;
-                width: 100px;
+                width: 80px;
                 background-color: transparent;
                 color: white;
                 outline: none;
                 border: none;
-                transition: 200ms;
-                padding: 20px;
+                transition: 150ms;
+                margin: 10px;
             }
             button:hover{
                 font-size: 50px;
             }
 
             .next-episode{
+                transform: scaleX(1.3);
                 position: absolute;
                 right: 30px;
             }
@@ -123,8 +124,8 @@
             .time {
                 position: absolute;
                 left: 60px;
-                font-size: 18px;
-                color: rgba(250, 250, 250, 0.5);
+                font-size: 19px;
+                color: white;
             }
         }
     }

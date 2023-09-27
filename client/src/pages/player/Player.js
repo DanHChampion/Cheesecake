@@ -8,7 +8,7 @@ import convertHMS from '../../utils/convertHMS';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClosedCaptioning, faExpand, faMinimize, faPause, faPlay, faRotateForward, faRotateBackward, faChevronLeft, faForwardStep } from '@fortawesome/free-solid-svg-icons';
 
-const Player = ({ goBack }) => {
+const Player = ({ navigateTo }) => {
 	const queryParameters = new URLSearchParams(window.location.search);
 	const videoType = queryParameters.get('type');
 	const videoPath = queryParameters.get('path');
@@ -39,7 +39,8 @@ const Player = ({ goBack }) => {
 			handleSkip(10);
 		}
 		if (event.key == 'Escape'){
-			goBack();
+			toggleFullScreen(true);
+			navigateTo('/home');
 		}
 	}, [paused]);
 
@@ -83,13 +84,12 @@ const Player = ({ goBack }) => {
 		setPaused(!paused);
 	};
 
-	// Need to consider when using 'ESC' to exit fullscreen
-	const toggleFullScreen = () => {
-		if (document.fullscreenElement === null) {
+	const toggleFullScreen = (exitOnly = false) => {
+		if (exitOnly === false && document.fullscreenElement === null) {
 			document.body.requestFullscreen();
 			setFullScreen(true);
 		}
-		else {
+		else if (document.fullscreenElement !== null){
 			document.exitFullscreen();
 			setFullScreen(false);
 		}
@@ -144,7 +144,7 @@ const Player = ({ goBack }) => {
 			<div className='overlay' ref={bodyRef}>
 				<div onClick={() => {handlePause();}} className='clickable-screen'></div>
 				<div className='header'>
-					<div onClick={() => {goBack();}} className='exit'>
+					<div onClick={() => {toggleFullScreen(true); navigateTo('/home');}} className='exit'>
 						<FontAwesomeIcon className='icon' icon={faChevronLeft}/> {videoPath.split('/')[videoPath.split('/').length-1].split('.mp4')[0]}
 					</div>
 				</div>
@@ -193,5 +193,5 @@ const Player = ({ goBack }) => {
 export default Player;
 
 Player.propTypes = {
-	goBack: PropTypes.func.isRequired,
+	navigateTo: PropTypes.func.isRequired,
 };

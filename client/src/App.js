@@ -26,8 +26,8 @@ function App() {
 		navigate('/search?q='+value);
 	};
 
-	const goBack = () => {
-		navigate('/home');
+	const navigateTo = (path) => {
+		navigate(path);
 	};
 
 	if(userObject === null) {
@@ -49,7 +49,7 @@ function App() {
 				<Route path="/" element={<Home/>}/>
 				<Route path="/home" element={<Home/>} />
 				<Route path="/users" element={<Users/>} />
-				<Route path="/watch/*" element={<Player goBack={goBack}/>} />
+				<Route path="/watch/*" element={<Player navigateTo={navigateTo}/>} />
 				<Route path="/movies" element={<Browse type='movies'/>} />
 				<Route path="/series" element={<Browse type='series'/>} />
 				<Route path="/search" element={<Search search={search}/>} />
