@@ -53,6 +53,27 @@ const Player = ({ navigateTo }) => {
 		};
 	}, [handleKeyPress]);
 
+	useEffect(() => {
+		let timeout = 0;
+
+		const displayOpa = () => {
+			bodyRef.current.style.opacity = 1;
+			bodyRef.current.style.cursor = 'default';
+
+			clearTimeout(timeout);
+
+			timeout = setTimeout(() => {
+				bodyRef.current.style.opacity = 0;
+				bodyRef.current.style.cursor = 'none';
+			}, 2000);
+		};
+
+		bodyRef.current.addEventListener('mousemove', displayOpa);
+
+		return () => {
+			bodyRef.current.removeEventListener('mousemove', displayOpa);
+		};
+	}, []);
 	const updateTimestamp = () => {
 		if (sliderRef.current.value <= 0) sliderRef.current.value = 0;
 		else if ((sliderRef.current.value >= sliderRef.current.max)) sliderRef.current.max-0.1;
@@ -144,8 +165,10 @@ const Player = ({ navigateTo }) => {
 			<div className='overlay' ref={bodyRef}>
 				<div onClick={() => {handlePause();}} className='clickable-screen'></div>
 				<div className='header'>
-					<div onClick={() => {toggleFullScreen(true); navigateTo('/home');}} className='exit'>
-						<FontAwesomeIcon className='icon' icon={faChevronLeft}/> {videoPath.split('/')[videoPath.split('/').length-1].split('.mp4')[0]}
+					<div onClick={() => {toggleFullScreen(true);}} className='exit'>
+						<a href='/home'>
+							<FontAwesomeIcon className='icon' icon={faChevronLeft}/> {videoPath.split('/')[videoPath.split('/').length-1].split('.mp4')[0]}
+						</a>
 					</div>
 				</div>
 				<div className='slider'>
