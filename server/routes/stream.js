@@ -27,6 +27,8 @@ router.get('/:type/:path', function(req, res) {
 	const start = Number(range.replace(/\D/g, ''));
 	const end = Math.min(start + CHUNK_SIZE, videoSize - 1);
 
+	if (end < 0) end = 0; 
+
 	const contentLength = end - start + 1;
 	const headers = {
 		'Content-Range': `bytes ${start}-${end}/${videoSize}`,
