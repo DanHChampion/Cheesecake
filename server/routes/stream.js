@@ -25,9 +25,9 @@ router.get('/:type/:path', function(req, res) {
 	// Example: "bytes=32324-"
 	const CHUNK_SIZE = 10 ** 6; // 1MB
 	const start = Number(range.replace(/\D/g, ''));
-	const end = Math.min(start + CHUNK_SIZE, videoSize - 1);
+	let end = Math.min(start + CHUNK_SIZE, videoSize - 1);
 
-	if (end < 0) end = 0; 
+	if (end < 0) end = 0;
 
 	const contentLength = end - start + 1;
 	const headers = {
