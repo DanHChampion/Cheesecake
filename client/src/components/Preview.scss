@@ -51,27 +51,97 @@
                 background-image: linear-gradient(to bottom, rgba(255,255,255,0), $bg-colour 90%);
                 width: 100%;
                 height: 5em;
-              }
+            }
 
-            .exit{
+            .button{
                 @extend .clickable;
                 position: absolute;
+                width: 40px;
+                height: 40px;
+                outline: none;
+                border: none;
+                border-radius: 50%;
+                background-color: $bg-hover-colour;
+                color: white;
+            }
+
+            .exit{
                 top: 10px;
                 right: 10px;
                 z-index: 1;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                outline: none;
-                border: none;
-                background-color: $bg-hover-colour;
                 transition: 150ms;
-                color: white;
                 font-size: 25px;
             }
             .exit:hover{
                 transform: scale(0.9);
             }
+            .more-buttons-wrapper{
+                position: absolute;
+                top: 10px;
+                right: 55px;
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+                background: $bg-hover-colour;
+                z-index: 1;
+                transition: 150ms;
+
+                .add-image{
+                    @extend .flex-center;
+                    position: absolute;
+                    top: 0;
+                    right: 0px;
+                    z-index: 1;
+                    font-size: 20px;
+                    transition: 150ms;
+    
+                    label{
+                        @extend .clickable;
+                    }
+    
+                    input{
+                        display:none;
+                    }
+                    p{
+                        display: none;
+                        position: absolute;
+                        top: 35px;
+                        font-size: 14px;
+                        height: 20px;
+                        width: 170px;
+                    }
+                }
+                .add-image:hover{
+                    transform: scale(0.9);
+                    filter: brightness(1.4);
+                }
+                .add-image:hover p{
+                    display: block;
+                    text-shadow: 0 0 5px black;
+                }
+    
+                .coverphoto{
+                    z-index: 3;
+                }
+    
+                .coverphoto:hover ~ .preview{
+                    right: 45px;
+                }
+                .coverphoto:hover ~ .title{
+                    right: 90px;
+                }
+            }
+            .more-buttons-wrapper:hover{
+                width: 130px;
+            }
+            .more-buttons-wrapper:hover .preview{
+                right: 45px;
+            }
+            .more-buttons-wrapper:hover .title{
+                right: 90px;
+            }
+            
+
             .button-container{
                 @extend .flex-center;
                 flex-direction: row;
@@ -89,7 +159,7 @@
                     bottom: 80px;
                 }
 
-                .button {
+                .play-button {
                     @extend .flex-center, .clickable;
                     border-radius: 2px;
                     padding: 15px 30px;
@@ -129,7 +199,7 @@
                 .icon-button:hover{
                     opacity: 100%;
                 }
-                .button:hover{
+                .play-button:hover{
                     background-color: lightgrey;
                 }
             }

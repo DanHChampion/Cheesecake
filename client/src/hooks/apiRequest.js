@@ -21,8 +21,8 @@ export default function apiRequest() {
 			});
 	};
 
-	const post = async (endpoint, body, callback) => {
-		axios.post(BACKEND_URL + endpoint, body)
+	const post = async (endpoint, body, config = {}, callback) => {
+		axios.post(BACKEND_URL + endpoint, body, config)
 			.then(callback)
 			.catch(err => {
 				if(!err) return;

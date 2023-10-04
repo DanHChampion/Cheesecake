@@ -2,10 +2,11 @@ import './Preview.scss';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes , faPlus , faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faTimes , faPlus , faImages , faPlay } from '@fortawesome/free-solid-svg-icons';
 import Episodes from './Episodes';
 import getImage from '../utils/getImage';
 import tmdbApi from '../hooks/tmdbApi';
+import apiRequest from '../hooks/apiRequest';
 
 const Preview = ({ previewObj }) => {
 	const itemData = previewObj.itemData;
@@ -42,19 +43,55 @@ const Preview = ({ previewObj }) => {
 		});
 	}, []);
 
+	function handleSubmit(event) {
+		event.preventDefault();
+		const fieldname = event.target.name;
+		let body = {};
+		body[fieldname] = event.target.files[0];
+		const config = {
+			headers: {
+				'content-type': 'multipart/form-data',
+			},
+		};
+		apiRequest().post('images/upload/'+ fieldname +'/' + itemData.title, body, config, (res, err) => {
+			if(!err) {
+				console.log(res.status);
+			} else {
+				console.error(err);
+			}
+		});
+	}
+
 	return(
 		<div className='Preview'>
 			<div className='background' />
 			<div className='scrollable-wrapper' onClick={(e) => {if(e.target === e.currentTarget){previewObj.closePreview(false);}}}>
 				<div className="popup">
-					<button className='exit' onClick={() => {previewObj.closePreview(false);}}>
+					<button className='exit button' onClick={() => {previewObj.closePreview(false);}}>
 						<FontAwesomeIcon icon={faTimes}/>
 					</button>
+					<div className='more-buttons-wrapper'>
+						<div className='add-image button coverphoto'>
+							<label htmlFor='coverphoto'><FontAwesomeIcon icon={faImages}/></label>
+							<input id='coverphoto' type='file' name='coverphoto' onChange={(e) => {handleSubmit(e);}}/>
+							<p>Change Item Poster</p>
+						</div>
+						<div className='add-image button preview'>
+							<label htmlFor='preview'><FontAwesomeIcon icon={faImages}/></label>
+							<input id='preview' type='file' name='preview' onChange={(e) => {handleSubmit(e);}}/>
+							<p>Change Preview Image</p>
+						</div>
+						<div className='add-image button title'>
+							<label htmlFor='title'><FontAwesomeIcon icon={faImages}/></label>
+							<input id='title' type='file' name='title' onChange={(e) => {handleSubmit(e);}}/>
+							<p>Change Title Logo</p>
+						</div>
+					</div>
 					<div className='img-wrapper'>
 						<img className='poster' src={getImage(itemData.title+'/preview.jpg')} alt={itemData.title +' Poster'} onError={(e) => e.target.style.display = 'none'}/>
 						<div className='button-container'>
 							<img src={getImage(itemData.title+'/title.png')} alt={itemData.title +' Title'} onError={(e) => e.target.style.display = 'none'}/>
-							<a href={'/watch/?type=' + itemData.type +'&path=' + encodeURIComponent(itemData.videopath)} className='button'>
+							<a href={'/watch/?type=' + itemData.type +'&path=' + encodeURIComponent(itemData.videopath)} className='play-button'>
 								<FontAwesomeIcon icon={faPlay}/> PLAY
 							</a>
 							<button className='icon-button'><FontAwesomeIcon icon={faPlus} /></button>
