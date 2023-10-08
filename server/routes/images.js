@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { readdirSync } = require('fs');
-const multer  = require('multer')
+const multer = require('multer');
 
 // Upload Images using Multer
 const storage = multer.diskStorage({
@@ -9,12 +9,12 @@ const storage = multer.diskStorage({
 		let path = `./images/${req.params.title}`;
 		console.log('Destination:', path);
 		callback(null, path);
-	  },
+	},
 	filename: (req, file, callback) => {
 		let fileExt = '.jpg';
 		if (file.fieldname === 'title') fileExt = '.png';
 		callback(null, file.fieldname + fileExt);
-	  }
+	}
 });
 
 const upload = multer({ storage: storage });
