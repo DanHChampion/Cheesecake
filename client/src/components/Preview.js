@@ -74,7 +74,7 @@ const Preview = ({ previewObj }) => {
 						<div className='add-image button coverphoto'>
 							<label htmlFor='coverphoto'><FontAwesomeIcon icon={faImages}/></label>
 							<input id='coverphoto' type='file' name='coverphoto' onChange={(e) => {handleSubmit(e);}}/>
-							<p>Change Item Poster</p>
+							<p>Change Poster</p>
 						</div>
 						<div className='add-image button preview'>
 							<label htmlFor='preview'><FontAwesomeIcon icon={faImages}/></label>
@@ -84,7 +84,7 @@ const Preview = ({ previewObj }) => {
 						<div className='add-image button title'>
 							<label htmlFor='title'><FontAwesomeIcon icon={faImages}/></label>
 							<input id='title' type='file' name='title' onChange={(e) => {handleSubmit(e);}}/>
-							<p>Change Title Logo</p>
+							<p>Change Title Image</p>
 						</div>
 					</div>
 					<div className='img-wrapper'>
