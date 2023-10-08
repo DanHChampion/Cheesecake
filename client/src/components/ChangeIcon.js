@@ -33,7 +33,7 @@ const ChangeIcon = ({inputIconPath, setState}) => {
 	const getUserObject = () => {
 		apiRequest().get( 'users/'+id, (res, err) => {
 			if(!err) {
-				setIconPath(res.data.icon);
+				setIconPath(res.data.avatar);
 			}
 		});
 	};

@@ -33,9 +33,9 @@ const Users = () => {
 			<span>Who&apos;s watching?</span>
 			<div className='wrapper'>
 				{users.map((user) => (
-					<div className='item' key={user.id}>
-						<a href={toggleEdit? '/edit/?id='+user.id : '/home'} onClick={toggleEdit? console.log('editing') : () => {logIn(user);}} className={toggleEdit? 'icon-wrapper jiggle' : 'icon-wrapper'}>
-							<img src={getImage('_avatars/'+user.icon)} alt={user.name+' Avatar'}/>
+					<div className='item' key={user._id}>
+						<a href={toggleEdit? '/edit/?id='+user._id : '/home'} onClick={toggleEdit? console.log('editing') : () => {logIn(user);}} className={toggleEdit? 'icon-wrapper jiggle' : 'icon-wrapper'}>
+							<img src={getImage('_avatars/'+user.avatar)} alt={user.name+' Avatar'}/>
 							{toggleEdit && <FontAwesomeIcon className='edit' icon={faPencil}/>}
 						</a>
 						<p>{user.name}</p>

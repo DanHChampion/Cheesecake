@@ -14,7 +14,7 @@ const AddProfile = () => {
 
 		const body = {
 			'name': name === ''? 'Profile': name,
-			'icon': iconPath
+			'avatar': iconPath
 		};
 		apiRequest().post('users', body, (res, err) => {
 			if(!err) {

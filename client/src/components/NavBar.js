@@ -37,7 +37,7 @@ const NavBar = ({ searchFunction }) => {
 				<Dropdown>
 					<a className='nav-item' href='#'>
 						<div className='img-wrapper'>
-							<img src={userObject? getImage('_avatars/'+userObject.icon) : './default.png'} alt='Profile' />
+							<img src={userObject? getImage('_avatars/'+userObject.avatar) : 'avatar0.jpg'} alt='Profile' />
 						</div>
 					</a>
 				</Dropdown>

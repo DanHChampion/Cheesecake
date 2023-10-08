@@ -17,8 +17,8 @@ const EditProfile = () => {
 		apiRequest().get( 'users/'+id, (res, err) => {
 			if(!err) {
 				setName(res.data.name);
-				setIconPath(res.data.icon);
-				console.log(res.data.icon);
+				setIconPath(res.data.avatar);
+				console.log(res.data.avatar);
 			}
 		});
 	};
@@ -27,7 +27,7 @@ const EditProfile = () => {
 	const handleSubmit = () => {
 		const body = {
 			'name': name? name : null,
-			'icon': iconPath? iconPath : null
+			'avatar': iconPath? iconPath : null
 		};
 		apiRequest().patch('users/'+id, body, (res, err) => {
 			if(!err) {
