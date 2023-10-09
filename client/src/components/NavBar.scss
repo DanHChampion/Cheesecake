@@ -13,8 +13,8 @@
     color: white;
     font-family: $font-family;
     z-index: 2;
-    letter-spacing: 2px;
-    font-size: 13px;
+    letter-spacing: 1px;
+    font-size: 14px;
 
     .container {
         flex-direction: row;
@@ -38,7 +38,9 @@
         height: inherit;
         min-width: fit-content;
         padding: 0 20px 0 10px;
-        
+        font-weight: bold;
+        letter-spacing: 2px;
+                
         span{
             padding: 8px 1px;
             background: 
@@ -76,7 +78,6 @@
 
     }
     .nav-item:hover{
-        text-shadow: 0 0 10px #555;
         span {
             background-size: 0 0.1em, 100% 0.1em;
         }
