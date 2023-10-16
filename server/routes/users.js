@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const getUser = require('../helpers/getUser');
 
 // // Getting all
 // router.get('/', async (req, res) => {
@@ -119,21 +120,6 @@ router.delete('/:id', getUser, async (req, res) => {
 		res.status(500).json({ message: err.message });
 	}
 });
-
-async function getUser(req, res, next) {
-	let user;
-	try {
-		user = await User.findById(req.params.id);
-		if (user == null) {
-			return res.status(404).json({ message: 'Cannot find user' });
-		}
-	} catch (err) {
-		return res.status(500).json({ message: err.message });
-	}
-
-	res.user = user;
-	next();
-}
 
 async function createUser(body) {
 	const user = new User({

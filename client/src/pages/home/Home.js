@@ -13,6 +13,16 @@ const Home = () => {
 		setVisibleModal(previewObj.isOpen);
 	}, [previewObj]);
 
+	const getUserObject = () => {
+		return JSON.parse(localStorage.getItem('userObject'));
+	};
+
+	useEffect(() => {
+		setUserObject(getUserObject());
+	},[]);
+
+	const [userObject,setUserObject] = useState(getUserObject());
+
 	return (
 		<div className="Home">
 			{visibleModal && <Preview previewObj={previewObj}/>}
@@ -20,7 +30,7 @@ const Home = () => {
 			<Billboard/>
 			<Carousel label={'Movies'} previewObj={previewObj} endpoint={'videos/movies'}/>
 			<Carousel label={'Series'} previewObj={previewObj} endpoint={'videos/series'}/>
-			<Carousel label={'Continue Watching'} previewObj={previewObj} endpoint={'contwatch'}/>
+			<Carousel label={'Continue Watching for ' + userObject.name} previewObj={previewObj} type={'CW'} endpoint={'continuewatching/' + userObject._id}/>
 			<Carousel label={'Watchlist'} previewObj={previewObj} endpoint={'watchlist'}/>
 		</div>
 	);

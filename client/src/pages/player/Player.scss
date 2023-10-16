@@ -15,6 +15,7 @@
     }
 
     .overlay{
+        @extend .flex-center;
         position: relative;
         width: 100vw;
         min-height: 100vh;
@@ -59,13 +60,13 @@
             @extend .flex-center;
             position: absolute;
             bottom: 80px;
-            width: 100%;
+            width: 96vw;
             height: 46px;
 
             input{
                 @extend .clickable;
                 -webkit-appearance: none;
-                width: 96vw;
+                width: 100%;
                 height: 8px;
                 background: rgba(250, 250, 250, 0.5);
                 background-image: linear-gradient($primary-colour, $primary-colour);
@@ -86,11 +87,20 @@
                 border: none;
                 background: transparent;
             }
+            .time {
+                @extend .flex-center;
+                justify-content: flex-end;
+                font-size: 16px;
+                color: white;
+                height: 46px;
+                min-width: fit-content;
+                padding-left: 10px ;
+            }      
         }
             
         .slider:hover input{
             height: 10px;
-        }        
+        }  
 
         .controls{
             @extend .flex-center;
@@ -117,15 +127,8 @@
 
             .next-episode{
                 transform: scaleX(1.3);
-                position: absolute;
                 right: 30px;
-            }
-
-            .time {
                 position: absolute;
-                left: 60px;
-                font-size: 19px;
-                color: white;
             }
         }
     }

@@ -3,13 +3,14 @@ import { useRef, useEffect , useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import apiRequest from '../hooks/apiRequest';
+import shuffle from '../utils/shuffle';
 import PropTypes from 'prop-types';
 import Card from './Card';
 
 // props include
 // label
 // endpoint
-const Carousel = ( { label, previewObj, endpoint } ) => {
+const Carousel = ( { label, previewObj, endpoint, type = 'default' } ) => {
 	const [items,setItems] = useState(null);
 
 	const [scrollX, setScrollX] = useState(0);
@@ -26,9 +27,19 @@ const Carousel = ( { label, previewObj, endpoint } ) => {
 	const getItems = () => {
 		apiRequest().get( endpoint, (res, err) => {
 			if(!err) {
-				setItems(res.data);
+				setItems(orderItems(res.data));
 			}
 		});
+	};
+
+	const orderItems = (items) => {
+		if (type === 'CW') {
+			return items.reverse();
+		}
+		if (type === 'default') {
+			return shuffle(items);
+		}
+		return items;
 	};
 
 	useEffect(() => getItems(), []);
@@ -56,6 +67,8 @@ const Carousel = ( { label, previewObj, endpoint } ) => {
 		});
 	};
 
+	if (items !== null && items.length === 0) return null;
+
 	return (
 		<>
 			<span style={{fontSize:'22px', fontWeight:'bold', textAlign:'left', width:'90%', marginTop:'10px'}}>{label}</span>
@@ -65,7 +78,7 @@ const Carousel = ( { label, previewObj, endpoint } ) => {
 					<div ref={wrapperRef} className='wrapper' onScroll={()=> {onSlide();}}>
 						<div ref={containerRef} className='container'>
 							{items.map((item) => (
-								<Card key={item.id} item={item} previewObj={previewObj}/>
+								<Card key={item.id !== undefined? item.id: item._id} item={item} previewObj={previewObj} continueWatching={type === 'CW'}/>
 							))}
 						</div>
 					</div>
@@ -82,4 +95,5 @@ Carousel.propTypes = {
 	label: PropTypes.string.isRequired,
 	endpoint: PropTypes.string.isRequired,
 	previewObj: PropTypes.object.isRequired,
+	type: PropTypes.string,
 };

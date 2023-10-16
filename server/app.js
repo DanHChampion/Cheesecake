@@ -29,40 +29,19 @@ const watchlistRoute = require('./routes/watchlist.js');
 const streamRoute = require('./routes/stream.js');
 const videoRoute = require('./routes/videos.js');
 const imageRoute = require('./routes/images.js');
+const continueWatchingRoute = require('./routes/continueWatching.js');
+
 
 app.use('/users', usersRoute);
 app.use('/watchlist', watchlistRoute);
 app.use('/stream', streamRoute);
 app.use('/videos', videoRoute);
 app.use('/images', imageRoute);
+app.use('/continuewatching', continueWatchingRoute);
 
 
 // For images
 const dir = path.join(__dirname, 'images');
 app.use(express.static(dir));
 
-app.get('/contwatch', (req, res) => { // Might need to change name of endpoint
-	res.status(200);
-	res.setHeader('Content-Type', 'application/json');
-	res.json(continue_watching_list);
-});
-
 module.exports = app;
-
-const continue_watching_list = [
-	{
-		'id': 1,
-		'title': 'Breaking Bad',
-		'timestamp': null
-	},
-	{
-		'id': 2,
-		'title': 'Power Rangers: SPD',
-		'timestamp': null
-	},
-	{
-		'id': 3,
-		'title': 'Scott Pilgrim vs The World',
-		'timestamp': null
-	}
-];

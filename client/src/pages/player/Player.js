@@ -1,21 +1,23 @@
 import './Player.scss';
 import apiRequest from '../../hooks/apiRequest';
 import { useRef, useEffect , useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import useFullscreenStatus from '../../hooks/useFullscreenStatus';
+// import PropTypes from 'prop-types';
 import getImage from '../../utils/getImage';
 import mediaSource from '../../utils/mediaSource.js';
 import convertHMS from '../../utils/convertHMS';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClosedCaptioning, faExpand, faMinimize, faPause, faPlay, faRotateForward, faRotateBackward, faChevronLeft, faForwardStep } from '@fortawesome/free-solid-svg-icons';
 
-const Player = ({ navigateTo }) => {
+const Player = () => {
 	const queryParameters = new URLSearchParams(window.location.search);
 	const videoType = queryParameters.get('type');
 	const videoPath = queryParameters.get('path');
+	const videoStartTime = queryParameters.get('start')? parseFloat(queryParameters.get('start')) : 0;
 	const videoTitle= videoPath.split('/')[0];
 
 	const [paused,setPaused] = useState(false);
-	const [fullScreen,setFullScreen] = useState(false);
+	// const [fullScreen,setFullScreen] = useState(false);
 	const [subtitles,setSubtitle] = useState(false);
 	const [slider, setSlider] = useState(0);
 	const [nextEpisode,setNextEpisode] = useState(null);
@@ -23,6 +25,27 @@ const Player = ({ navigateTo }) => {
 	const videoRef = useRef(null);
 	const sliderRef = useRef(null);
 	const bodyRef = useRef(null);
+
+	let fullScreen, setFullScreen;
+
+	try {
+		[fullScreen, setFullScreen] = useFullscreenStatus(bodyRef);
+	} catch (e) {
+		console.log('Fullscreen not supported');
+		fullScreen = false;
+		setFullScreen = undefined;
+	}
+
+	const getUserObject = () => {
+		return JSON.parse(localStorage.getItem('userObject'));
+	};
+
+	useEffect(() => {
+		setUserObject(getUserObject());
+	},[]);
+
+	const [userObject,setUserObject] = useState(getUserObject());
+
 
 	const handleKeyPress = useCallback((event) => {
 		console.log(`Key pressed: ${event.key}`);
@@ -37,10 +60,6 @@ const Player = ({ navigateTo }) => {
 		}
 		if (event.key == 'l' || event.key === 'ArrowRight') {
 			handleSkip(10);
-		}
-		if (event.key == 'Escape'){
-			toggleFullScreen(true);
-			navigateTo('/home');
 		}
 	}, [paused]);
 
@@ -121,9 +140,26 @@ const Player = ({ navigateTo }) => {
 		console.log('SUB:',subtitles);
 	};
 
+	const updateContinueWatching = () => {
+		const body = {
+			'type': videoType,
+			'title': videoTitle,
+			'path': videoPath,
+			'timestamp': videoRef.current.currentTime,
+			'duration': videoRef.current.duration
+		};
+		apiRequest().post('continuewatching/'+ userObject._id, body, {}, (res, err) => {
+			if(!err) {
+				console.log(res.status);
+			} else {
+				console.error(err);
+			}
+		});
+	};
+
 	const [videoSrc,setVideoSrc] = useState(null);
 
-	useEffect(() => getVideo(), []);
+	useEffect(() => {getVideo(); handleSkip(videoStartTime);}, []);
 
 	useEffect(() => getNextEpisode(), []);
 
@@ -145,6 +181,7 @@ const Player = ({ navigateTo }) => {
 		sliderRef.current.max = videoRef.current.duration;
 		const interval = setInterval(() => {
 			updateSlider();
+			updateContinueWatching();
 		}, 1000);
 		return () => {
 			clearInterval(interval);
@@ -157,7 +194,11 @@ const Player = ({ navigateTo }) => {
 	};
 
 	const time = () => {
-		return convertHMS(slider) + ' / ' + convertHMS(sliderRef.current.max - slider);
+		if (isNaN(sliderRef.current.max)) {
+			return '';
+		}
+		return convertHMS(sliderRef.current.max - slider);
+		// return convertHMS(slider) + ' / ' + convertHMS(sliderRef.current.max - slider);
 	};
 
 	return (
@@ -172,7 +213,12 @@ const Player = ({ navigateTo }) => {
 					</div>
 				</div>
 				<div className='slider'>
-					<input onChange={() => {updateTimestamp();}} ref={sliderRef} type='range' min='0.1' value={slider} max='1000' />
+					<input onChange={() => {updateTimestamp();}} ref={sliderRef} type='range' min='0.1' value={slider} max='1000000' />
+					{slider !== 0 &&
+						<div className='time'>
+							{time()}
+						</div>
+					}
 				</div>
 				<div className='controls'>
 					<button onClick={() => {toggleSubtitles();}}>
@@ -197,11 +243,6 @@ const Player = ({ navigateTo }) => {
 						</a>
 					</button>
 					}
-					{slider !== 0 &&
-						<div className='time'>
-							{time()}
-						</div>
-					}
 				</div>
 			</div>
 			<video id="video" ref={videoRef} autoPlay poster={getImage(videoTitle+'/preview.jpg')}>
@@ -215,6 +256,6 @@ const Player = ({ navigateTo }) => {
 
 export default Player;
 
-Player.propTypes = {
-	navigateTo: PropTypes.func.isRequired,
-};
+// Player.propTypes = {
+// 	navigateTo: PropTypes.func.isRequired,
+// };
