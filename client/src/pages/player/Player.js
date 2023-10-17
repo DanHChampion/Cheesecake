@@ -17,7 +17,7 @@ const Player = () => {
 	const videoTitle= videoPath.split('/')[0];
 
 	const [paused,setPaused] = useState(false);
-	// const [fullScreen,setFullScreen] = useState(false);
+	const [seekValue,setSeekValue] = useState(0);
 	const [subtitles,setSubtitle] = useState(false);
 	const [slider, setSlider] = useState(0);
 	const [nextEpisode,setNextEpisode] = useState(null);
@@ -25,6 +25,7 @@ const Player = () => {
 	const videoRef = useRef(null);
 	const sliderRef = useRef(null);
 	const bodyRef = useRef(null);
+	const seekerRef = useRef(null);
 
 	let fullScreen, setFullScreen;
 
@@ -75,11 +76,16 @@ const Player = () => {
 	useEffect(() => {
 		let timeout = 0;
 
-		const displayOpa = () => {
+		const mouseMove = (event) => {
 			bodyRef.current.style.opacity = 1;
 			bodyRef.current.style.cursor = 'default';
 
 			clearTimeout(timeout);
+
+			// Seeking
+			if (event.target.id === 'timeline'){
+				seek(event);
+			}
 
 			timeout = setTimeout(() => {
 				bodyRef.current.style.opacity = 0;
@@ -87,10 +93,10 @@ const Player = () => {
 			}, 2000);
 		};
 
-		bodyRef.current.addEventListener('mousemove', displayOpa);
+		bodyRef.current.addEventListener('mousemove', mouseMove);
 
 		return () => {
-			bodyRef.current.removeEventListener('mousemove', displayOpa);
+			bodyRef.current.removeEventListener('mousemove', mouseMove);
 		};
 	}, []);
 	const updateTimestamp = () => {
@@ -201,6 +207,20 @@ const Player = () => {
 		// return convertHMS(slider) + ' / ' + convertHMS(sliderRef.current.max - slider);
 	};
 
+	// Timeline Tracker
+	const seek = (e) => {
+		// Get width of slider
+		// get mouseX position
+		const sliderRect = e.target.getBoundingClientRect();
+		let x = e.clientX - sliderRect.left;
+		if (x < 0) x = 0;
+		setSeekValue(x);
+		// find time/value of slider
+		// const = duration * left/;
+		// Style left: to that position
+		// Update time
+	};
+
 	return (
 		<div className="Player">
 			<div className='overlay' ref={bodyRef}>
@@ -213,7 +233,15 @@ const Player = () => {
 					</div>
 				</div>
 				<div className='slider'>
-					<input onChange={() => {updateTimestamp();}} ref={sliderRef} type='range' min='0.1' value={slider} max='1000000' />
+					<input id='timeline' onChange={() => {updateTimestamp();}} ref={sliderRef} type='range' min='0.1' value={slider} max='1000000' />
+					{slider !== 0 &&
+						<div className='seeker' style={{left:seekValue}} ref={seekerRef}>
+							<div className='thumbnail-container'>
+								<img/>
+								<p>{convertHMS((seekValue/sliderRef.current.offsetWidth)*videoRef.current.duration)}</p>
+							</div>
+						</div>
+					}
 					{slider !== 0 &&
 						<div className='time'>
 							{time()}
