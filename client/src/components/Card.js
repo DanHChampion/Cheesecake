@@ -38,7 +38,7 @@ const Card = ({ item , previewObj, continueWatching }) => {
 	// if (deleted) return null;
 
 	return(
-		<div className="Card" style={deleted?{ transition:'500ms', width: 0, border:0, margin: 0 }: {}} onClick={() => {handleCardClick();}} >
+		<div className="Card" style={deleted?{ transition:'500ms', width: 0, border:0, margin: 0, opacity:0 }: {}} onClick={() => {handleCardClick();}} >
 			<p>{item.title}</p>
 			<img src={getImage(item.title+'/coverphoto.jpg')} alt={item.title} onError={(e) => e.target.style.display = 'none'}/>
 			{ continueWatching &&

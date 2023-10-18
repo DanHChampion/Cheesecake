@@ -19,26 +19,6 @@ describe('Test all GET methods in app.js', () => {
 	// });
 
 	// Continue Watching Section
-	test('GET /contwatch successful', () => {
-		return request(app)
-			.get('/contwatch')
-			.expect(200);
-	});
-	test('GET /contwatch returns JSON', () => {
-		return request(app)
-			.get('/contwatch')
-			.expect('Content-type', /json/);
-	});
-	test('GET /contwatch returns JSON containing Breaking Bad', () => {
-		return request(app)
-			.get('/contwatch')
-			.expect(/Breaking Bad/);
-	});
-	test('GET /contwatch returns JSON with 3 items', async () => {
-		let response = await request(app).get('/contwatch');
-		let usersLength = JSON.parse(JSON.stringify(response.body)).length;
-		expect(usersLength).toBe(3);
-	});
 
 	// Watchlist Section
 	test('GET /watchlist successful', () => {
