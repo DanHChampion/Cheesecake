@@ -71,7 +71,7 @@ const Carousel = ( { label, previewObj, endpoint, type = 'default' } ) => {
 
 	return (
 		<>
-			<span style={{fontSize:'22px', fontWeight:'bold', textAlign:'left', width:'90%', marginTop:'10px'}}>{label}</span>
+			<span style={{fontSize:'26px', letterSpacing:'1px', fontWeight:'bold', textAlign:'left', width:'90%', marginTop:'10px'}}>{label}</span>
 			<div className="Carousel">
 				{state.left && <div className='scroll-arrow left-arrow' onClick={() => {goLeft();}}> <FontAwesomeIcon className='icon' icon={faChevronLeft}/> </div>}
 				{items &&

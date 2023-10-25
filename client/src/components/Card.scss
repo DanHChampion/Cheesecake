@@ -12,6 +12,7 @@
     overflow: hidden;
     border: 2px transparent solid;
     overflow: hidden;
+    filter: drop-shadow(0 5px 5px black);
 
     p{
         @extend .flex-center;

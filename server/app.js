@@ -23,6 +23,13 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+
+app.get('/recommend', (req, res) => { // Might need to change name of endpoint
+	res.status(200);
+	res.setHeader('Content-Type', 'application/json');
+	res.json(recommended);
+});
+
 // Routes
 const usersRoute = require('./routes/users.js');
 const watchlistRoute = require('./routes/watchlist.js');
@@ -45,3 +52,41 @@ const dir = path.join(__dirname, 'images');
 app.use(express.static(dir));
 
 module.exports = app;
+
+const recommended = [
+	{
+		'id': 7,
+		'title': 'Banana'
+	},
+	{
+		'id': 8,
+		'title': 'My Friend Dahmer'
+	},
+	{
+		'id': 9,
+		'title': 'Gold'
+	},
+	{
+		'id': 17,
+		'title': 'Captain Fall'
+	},
+	{
+		'id': 18,
+		'title': 'In Time'
+	},
+	{
+		'id': 19,
+		'title': 'The Hunger Games'
+	},{
+		'id': 27,
+		'title': 'Pixels'
+	},
+	{
+		'id': 28,
+		'title': 'Hoops'
+	},
+	{
+		'id': 29,
+		'title': 'Paradise PD'
+	}
+];

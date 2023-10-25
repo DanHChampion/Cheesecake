@@ -11,6 +11,7 @@
     height: 60vh;
     width: 90vw;
     overflow: hidden;
+    filter: drop-shadow(0 10px 10px black);
 
     .img-wrapper{
         position: relative;
@@ -18,8 +19,7 @@
         height: 100%;
         background-color: rgb(39, 39, 39);
         overflow: hidden;
-        border-top-right-radius: 20px;
-        border-top-left-radius: 20px;
+        border-radius: 20px;
 
         .poster{
             position: absolute;
@@ -28,17 +28,6 @@
             top: -50px; left: 0;
         }
     }
-    .img-wrapper:after {
-        content: "";
-        position: absolute;
-        z-index: 1;
-        bottom: 0;
-        left: 0;
-        pointer-events: none;
-        background-image: linear-gradient(to bottom, rgba(255,255,255,0), $bg-colour 90%);
-        width: 100%;
-        height: 5em;
-      }
 
     .exit{
         @extend .clickable;

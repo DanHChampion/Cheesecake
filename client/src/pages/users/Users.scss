@@ -59,6 +59,8 @@
             transition: 300ms;
             font-size: 100px;
             position: relative;
+            filter: drop-shadow(0 5px 5px black);
+
 
 
             img{
@@ -86,11 +88,11 @@
         }
         .jiggle{
             @include jiggle(300ms);
-            filter: brightness(0.75);
+            filter: drop-shadow(0 5px 5px black) brightness(0.75);
         }
         .jiggle:hover{
             animation-name: none;
-            filter: none;
+            filter: drop-shadow(0 5px 5px black);
         }
 
     }
