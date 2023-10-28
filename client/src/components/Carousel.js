@@ -49,6 +49,10 @@ const Carousel = ( { label, previewObj, endpoint, type = 'default' } ) => {
 			wrapperRef.current.scrollTo(scrollX - wrapperRef.current.offsetWidth, 0);
 		} else {
 			wrapperRef.current.scrollTo(0, 0);
+			setState({
+				left: false,
+				right: state.right
+			});
 		}
 	};
 	const goRight = () => {
@@ -83,7 +87,7 @@ const Carousel = ( { label, previewObj, endpoint, type = 'default' } ) => {
 						</div>
 					</div>
 				}
-				{state.right && <div className='scroll-arrow right-arrow' onClick={() => {goRight();}}> <FontAwesomeIcon className='icon' icon={faChevronRight}/> </div>}
+				{(state.right && items !== null && items.length > 7) && <div className='scroll-arrow right-arrow' onClick={() => {goRight();}}> <FontAwesomeIcon className='icon' icon={faChevronRight}/> </div>}
 			</div>
 		</>
 	);

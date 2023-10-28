@@ -71,14 +71,13 @@
         color: white;
         font-size: 20px;
         cursor: pointer;
-        transition: 200ms;
+        transition: 100ms;
         opacity: 70%;
         pointer-events:visible;
         z-index: 2;
     }
     button:hover{
         opacity: 100%;
-        transform: scale(1.2);
         display: flex;
     }
 }
