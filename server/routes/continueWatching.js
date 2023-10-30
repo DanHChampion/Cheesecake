@@ -26,7 +26,10 @@ router.post('/:id', getUser, async (req, res) => {
 	try {
 		// Delete previous CW if exist
 		//get ID of previous by finding matching title with other
-		await ContinueWatching.findOneAndRemove({'title': req.body.title});
+		let continueWatchingList = await ContinueWatching.find({_id: {$in: res.user.continueWatching}});
+		const removeItem = continueWatchingList.filter((item) => item.title === req.body.title);
+		if (removeItem.length !== 0) await ContinueWatching.findByIdAndRemove(removeItem[0]._id.toString());
+
 
 		const continueWatching = new ContinueWatching({
 			type: req.body.type,
@@ -38,11 +41,12 @@ router.post('/:id', getUser, async (req, res) => {
 		await continueWatching.save();
 
 		// Update User's list of CW id's
-		const awaitList = await ContinueWatching.find();
+		const awaitList = await ContinueWatching.find({_id: {$in: res.user.continueWatching}});
 		let newList = [];
 		awaitList.forEach(function (item) {
 			newList.push(item._id);
 		});
+		newList.push(continueWatching._id);
 		res.user.continueWatching = newList;
 		await res.user.save();
 		res.status(201).json('Successful');
