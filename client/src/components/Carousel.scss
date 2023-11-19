@@ -7,58 +7,79 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 30px;
+    transition: 500ms;
+    height: fit-content;
 
-    .wrapper {
-        width: 100%;
+    span{
+        font-size:26px;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: left;
+        width: 90%;
+        height: 2vw;
+        padding-bottom: 5px;
+    }
+
+    .main {
         position: relative;
-        scroll-behavior: smooth;
-        overflow: hidden;
         display: flex;
-        flex-direction: row;
+        justify-content: flex-start;
+        flex-direction: column;
         align-items: center;
-        height: 18vw;
-        padding: 12px 0;
-
-        .container {
-            width: fit-content;
-            height: 100%;
+        width: 100%;
+    
+        .wrapper {
+            width: 100%;
+            position: relative;
+            scroll-behavior: smooth;
+            overflow: hidden;
             display: flex;
             flex-direction: row;
             align-items: center;
-            margin: 0 50px;
+            height: 18vw;
+            padding-top: 10px;
+            padding-bottom: 25px;
+    
+            .container {
+                width: fit-content;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin: 0 50px;
+            }
+        }
+        .scroll-arrow{
+            position: absolute;
+            top: 10px;
+            z-index: 1;
+            background-color: black;
+            opacity: 0%;
+            height: 18vw;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 200ms;
+        }
+        .left-arrow{
+            left: 0;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .right-arrow{
+            right: 0;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
         }
     }
-    .scroll-arrow{
-        position: absolute;
-        top: 10px;
-        z-index: 1;
-        background-color: black;
-        opacity: 0%;
-        height: 18vw;
-        width: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        
-        transition: 200ms;
+    
+    .main:hover .scroll-arrow{
+        opacity: 50%;
     }
-    .left-arrow{
-        left: 0;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
     }
-    .right-arrow{
-        right: 0;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-    }
-}
-
-.Carousel:hover .scroll-arrow{
-    opacity: 50%;
-}
+    
 
 
 

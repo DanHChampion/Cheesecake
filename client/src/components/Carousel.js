@@ -10,8 +10,9 @@ import Card from './Card';
 // props include
 // label
 // endpoint
-const Carousel = ( { label, previewObj, endpoint, type = 'default' } ) => {
+const Carousel = ( { label, previewObj, endpoint = undefined, loadItems = [], type = 'default' } ) => {
 	const [items,setItems] = useState(null);
+	const [deleteCount,setDeleteCount] = useState(0);
 
 	const [scrollX, setScrollX] = useState(0);
 	const [state, setState] = useState(
@@ -25,11 +26,15 @@ const Carousel = ( { label, previewObj, endpoint, type = 'default' } ) => {
 
 
 	const getItems = () => {
-		apiRequest().get( endpoint, (res, err) => {
-			if(!err) {
-				setItems(orderItems(res.data));
-			}
-		});
+		if (endpoint === undefined) {
+			setItems(orderItems(loadItems));
+		} else {
+			apiRequest().get( endpoint, (res, err) => {
+				if(!err) {
+					setItems(orderItems(res.data));
+				}
+			});
+		}
 	};
 
 	const orderItems = (items) => {
@@ -71,24 +76,32 @@ const Carousel = ( { label, previewObj, endpoint, type = 'default' } ) => {
 		});
 	};
 
-	if (items !== null && items.length === 0) return null;
+	const deleteOne = () => {
+		setDeleteCount(deleteCount + 1);
+	};
+
+	if (items !== null && items.length === 0 ) return null;
 
 	return (
 		<>
-			<span style={{fontSize:'26px', letterSpacing:'1px', fontWeight:'bold', textAlign:'left', width:'90%', marginTop:'10px'}}>{label}</span>
-			<div className="Carousel">
-				{state.left && <div className='scroll-arrow left-arrow' onClick={() => {goLeft();}}> <FontAwesomeIcon className='icon' icon={faChevronLeft}/> </div>}
-				{items &&
-					<div ref={wrapperRef} className='wrapper' onScroll={()=> {onSlide();}}>
-						<div ref={containerRef} className='container'>
-							{items.map((item) => (
-								<Card key={item.id !== undefined? item.id: item._id} item={item} previewObj={previewObj} continueWatching={type === 'CW'}/>
-							))}
+			{items &&
+			<div className='Carousel' style={(items.length - deleteCount) === 0?{height:'0px'}:{}}>
+				<span>{label}</span>
+				<div className="main">
+					{state.left && <div className='scroll-arrow left-arrow' onClick={() => {goLeft();}}> <FontAwesomeIcon className='icon' icon={faChevronLeft}/> </div>}
+					{items &&
+						<div ref={wrapperRef} className='wrapper' onScroll={()=> {onSlide();}}>
+							<div ref={containerRef} className='container'>
+								{items.map((item) => (
+									<Card key={item.id !== undefined? item.id: item._id} item={item} previewObj={previewObj} continueWatching={type === 'CW'} deleteOne={deleteOne}/>
+								))}
+							</div>
 						</div>
-					</div>
-				}
-				{(state.right && items !== null && items.length > 7) && <div className='scroll-arrow right-arrow' onClick={() => {goRight();}}> <FontAwesomeIcon className='icon' icon={faChevronRight}/> </div>}
+					}
+					{(state.right && items !== null && items.length > 7) && <div className='scroll-arrow right-arrow' onClick={() => {goRight();}}> <FontAwesomeIcon className='icon' icon={faChevronRight}/> </div>}
+				</div>
 			</div>
+			}
 		</>
 	);
 };
@@ -97,7 +110,8 @@ export default Carousel;
 
 Carousel.propTypes = {
 	label: PropTypes.string.isRequired,
-	endpoint: PropTypes.string.isRequired,
 	previewObj: PropTypes.object.isRequired,
+	endpoint: PropTypes.string,
+	loadItems: PropTypes.array,
 	type: PropTypes.string,
 };

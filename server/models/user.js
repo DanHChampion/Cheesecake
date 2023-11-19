@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema({
 	continueWatching: [{
 		type: mongoose.ObjectId,
 		ref: 'ContinueWatching'
+	}],
+	watchlists: [{
+		type: mongoose.ObjectId,
+		ref: 'Watchlist'
 	}]
 });
 

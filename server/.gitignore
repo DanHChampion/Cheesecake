@@ -12,9 +12,9 @@
 /videos/Movies/*
 /videos/Series/*
 
-# images files
-/images/*
-!/images/_avatars
+# static files
+/static/*
+!/static/_avatars
 
 # production
 /build

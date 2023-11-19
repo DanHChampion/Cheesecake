@@ -19,6 +19,7 @@ const Player = () => {
 	const [paused,setPaused] = useState(false);
 	const [seekValue,setSeekValue] = useState(0);
 	const [subtitles,setSubtitle] = useState(false);
+	// const [videoSub,setVideoSub] = useState(null);
 	const [slider, setSlider] = useState(0);
 	const [nextEpisode,setNextEpisode] = useState(null);
 
@@ -249,6 +250,11 @@ const Player = () => {
 					}
 				</div>
 				<div className='controls'>
+					{/* <input type='file' onChange={(e) => {
+						setVideoSub(e.target.files[0]);
+						console.log(e.target.files[0]);
+					} */}
+					{/* }/> */}
 					<button onClick={() => {toggleSubtitles();}}>
 						<FontAwesomeIcon icon={faClosedCaptioning}/>
 					</button>
@@ -273,10 +279,17 @@ const Player = () => {
 					}
 				</div>
 			</div>
-			<video id="video" ref={videoRef} autoPlay poster={getImage(videoTitle+'/preview.jpg')}>
-				{videoSrc &&
-				<source src={videoSrc} type='video/mp4'/>
+			<video id="video" crossOrigin="anonymous" ref={videoRef} autoPlay poster={getImage(videoTitle+'/preview.jpg')}>
+				{videoSrc &&<>
+					<source src={videoSrc.source} type='video/mp4'/>
+					<track
+						src={videoSrc.track}
+						default
+					/>
+				</>
 				}
+				{/* {(videoSub && subtitles) && */}
+				{/* } */}
 			</video>
 		</div>
 	);

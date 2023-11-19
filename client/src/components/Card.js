@@ -6,7 +6,7 @@ import { faPlay, faTimes } from '@fortawesome/free-solid-svg-icons';
 import apiRequest from '../hooks/apiRequest';
 import { useState } from 'react';
 
-const Card = ({ item , previewObj, continueWatching }) => {
+const Card = ({ item , previewObj, continueWatching, deleteOne }) => {
 
 	const handleCardClick = () => {
 		if (continueWatching){
@@ -29,6 +29,7 @@ const Card = ({ item , previewObj, continueWatching }) => {
 			if(!err) {
 				console.log(res.status);
 				setDeleted(true);
+				deleteOne();
 			} else {
 				console.error(err);
 			}
@@ -57,7 +58,8 @@ const Card = ({ item , previewObj, continueWatching }) => {
 Card.propTypes = {
 	item: PropTypes.object.isRequired,
 	previewObj: PropTypes.object.isRequired,
-	continueWatching: PropTypes.bool.isRequired
+	continueWatching: PropTypes.bool.isRequired,
+	deleteOne: PropTypes.func.isRequired
 };
 
 export default Card;

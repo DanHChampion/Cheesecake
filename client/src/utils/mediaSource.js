@@ -10,5 +10,10 @@ export default function mediaSource(type, path) {
 
 
 	// Return Endpoint (and Metadata?)
-	return URL + 'stream/'+ type + '/' + pathEncoded;
+
+	let object = {
+		'source': URL + 'stream/'+ type + '/' + pathEncoded,
+		'track': URL + '_captions/en.vtt'
+	};
+	return object;
 }

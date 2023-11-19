@@ -6,7 +6,7 @@ const multer = require('multer');
 // Upload Images using Multer
 const storage = multer.diskStorage({
 	destination: function (req, file, callback) {
-		let path = `./images/${req.params.title}`;
+		let path = `./static/${req.params.title}`;
 		console.log('Destination:', path);
 		callback(null, path);
 	},
@@ -21,7 +21,7 @@ const upload = multer({ storage: storage });
 
 // Getting avatars
 router.get('/avatars', async (req, res) => {
-	const list = readdirSync('./images/_avatars', { withFileTypes: true })
+	const list = readdirSync('./static/_avatars', { withFileTypes: true })
 		.map(dirent => dirent.name);
 
 	let response = [];

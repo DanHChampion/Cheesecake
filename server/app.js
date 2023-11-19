@@ -47,8 +47,8 @@ app.use('/images', imageRoute);
 app.use('/continuewatching', continueWatchingRoute);
 
 
-// For images
-const dir = path.join(__dirname, 'images');
+// For static
+const dir = path.join(__dirname, 'static');
 app.use(express.static(dir));
 
 module.exports = app;

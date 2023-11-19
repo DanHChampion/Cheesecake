@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Home from './pages/home/Home.js';
 import Users from './pages/users/Users.js';
 import Player from './pages/player/Player.js';
+import Watchlist from './pages/watchlist/Watchlist.js';
 import NotFound from './pages/notfound/NotFound.js';
 import EditProfile from './pages/profile/EditProfile.js';
 import AddProfile from './pages/profile/AddProfile.js';
@@ -50,6 +51,7 @@ function App() {
 				<Route path="/home" element={<Home/>} />
 				<Route path="/users" element={<Users/>} />
 				<Route path="/watch/*" element={<Player navigateTo={navigateTo}/>} />
+				<Route path="/watchlist" element={<Watchlist/>} />
 				<Route path="/movies" element={<Browse type='movies'/>} />
 				<Route path="/series" element={<Browse type='series'/>} />
 				<Route path="/search" element={<Search search={search}/>} />

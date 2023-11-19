@@ -14,6 +14,15 @@
         position: fixed;
     }
 
+    video::cue {
+        background-color: transparent;
+        font-size: 30px !important;
+        font-family: $font-family;
+        font-weight: bold;
+        text-shadow: 0px 0px 10px black;
+        line-height: 10px;
+    }
+
     .overlay{
         @extend .flex-center;
         position: relative;
