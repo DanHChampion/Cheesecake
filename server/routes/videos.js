@@ -13,10 +13,10 @@ router.get('/movies', async (req, res) => {
 		let files = readdirSync('./videos/Movies/'+name, { withFileTypes: true })
 			.map(dirent => dirent.name);
 		response.push({
-			'id':index,
+			'_id':index,
 			'title': name,
 			'type':'movie',
-			'videopath': `${name}/${files[0]}`,
+			'path': `${name}/${files[0]}`,
 		});
 	}
 	res.json(response);
@@ -33,10 +33,10 @@ router.get('/series', async (req, res) => {
 		let files = readdirSync('./videos/Series/'+name, { withFileTypes: true })
 			.map(dirent => dirent.name);
 		response.push({
-			'id':index,
+			'_id':index,
 			'title': name,
 			'type':'series',
-			'videopath': `${name}/${files[0]}`,
+			'path': `${name}/${files[0]}`,
 		});
 	}
 	res.json(response);
@@ -67,7 +67,7 @@ router.get('/series/:title/:season', async (req, res) => {
 			response.push({
 				'episode': index+1,
 				'title': epTitle,
-				'videopath': title+'/'+season+'/'+name,
+				'path': title+'/'+season+'/'+name,
 			});
 		}
 		res.json(response);
@@ -121,7 +121,7 @@ router.get('/all', async (req, res) => {
 			'id':index,
 			'title': name,
 			'type':'movie',
-			'videopath': `${name}/${files[0]}`,
+			'path': `${name}/${files[0]}`,
 		});
 		index ++;
 	});
@@ -136,7 +136,7 @@ router.get('/all', async (req, res) => {
 			'id':index,
 			'title': name,
 			'type':'series',
-			'videopath': `${name}/${files[0]}`,
+			'path': `${name}/${files[0]}`,
 		});
 		index ++;
 	});

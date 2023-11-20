@@ -46,6 +46,9 @@ const Search = ({ search }) => {
 					))}
 				</div>
 			}
+			{(items == null || items.length == 0) &&
+				<span> No Results Found!</span>
+			}
 		</div>
 	);
 };

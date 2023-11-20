@@ -33,7 +33,7 @@ const Billboard = () => {
 					<img className='poster' src={getImage(items.title+'/preview.jpg')} alt={items.title +' Poster'} onError={(e) => e.target.style.display = 'none'}/>
 					<div className='button-container'>
 						<img src={getImage(items.title+'/title.png')} alt={items.title +' Title'} onError={(e) => e.target.style.display = 'none'}/>
-						<a href={'/watch/?type=' + items.type +'&path=' + encodeURIComponent(items.videopath)} className='button'>
+						<a href={'/watch/?type=' + items.type +'&path=' + encodeURIComponent(items.path)} className='button'>
 							<FontAwesomeIcon icon={faPlay}/> PLAY
 						</a>
 						<button className='icon-button'><FontAwesomeIcon icon={faPlus} /></button>

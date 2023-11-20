@@ -229,7 +229,7 @@ const Player = () => {
 				<div className='header'>
 					<div onClick={() => {toggleFullScreen(true);}} className='exit'>
 						<a href='/home'>
-							<FontAwesomeIcon className='icon' icon={faChevronLeft}/> {videoPath.split('/')[videoPath.split('/').length-1].split('.mp4')[0]}
+							<FontAwesomeIcon className='icon' icon={faChevronLeft}/> {videoPath.split('/')[videoPath.split('/').length-1].split('.mp4')[0].split('.mkv')[0]}
 						</a>
 					</div>
 				</div>

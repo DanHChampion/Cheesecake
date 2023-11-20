@@ -8,12 +8,16 @@ export default function mediaSource(type, path) {
 	// Get Video Type
 	const pathEncoded = encodeURIComponent(path);
 
+	console.log(path);
+
+	// Get all .vtt files
+
 
 	// Return Endpoint (and Metadata?)
 
-	let object = {
+	let mediaObject = {
 		'source': URL + 'stream/'+ type + '/' + pathEncoded,
-		'track': URL + '_captions/en.vtt'
+		'track': URL + '/en.vtt'
 	};
-	return object;
+	return mediaObject;
 }

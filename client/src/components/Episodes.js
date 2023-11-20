@@ -54,7 +54,7 @@ const Episodes = ({itemData}) => {
 			<div className='container'>
 				{episodes &&
 					episodes.map((episode) => (
-						<a href={'/watch/?type=series&path=' + encodeURIComponent(episode.videopath)} key={episode.episode} className='item'>
+						<a href={'/watch/?type=series&path=' + encodeURIComponent(episode.path)} key={episode.episode} className='item'>
 							<span className='number'>{episode.episode}</span>
 							<img src={getImage(itemData.title+'/preview.jpg')}></img>
 							<span>{episode.title}</span>

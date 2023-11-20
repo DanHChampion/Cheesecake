@@ -58,8 +58,8 @@ const Card = ({ item , previewObj, continueWatching, deleteOne }) => {
 Card.propTypes = {
 	item: PropTypes.object.isRequired,
 	previewObj: PropTypes.object.isRequired,
-	continueWatching: PropTypes.bool.isRequired,
-	deleteOne: PropTypes.func.isRequired
+	continueWatching: PropTypes.bool,
+	deleteOne: PropTypes.func
 };
 
 export default Card;

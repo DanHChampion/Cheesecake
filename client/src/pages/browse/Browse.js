@@ -15,12 +15,23 @@ const Browse = ({type}) => {
 	const previewObj = usePreview();
 	const [visibleModal, setVisibleModal] = useState(previewObj.isOpen);
 
+	const getUserObject = () => {
+		return JSON.parse(localStorage.getItem('userObject'));
+	};
+
+	useEffect(() => {
+		setUserObject(getUserObject());
+	},[]);
+
+	const [userObject,setUserObject] = useState(getUserObject());
+
 	useEffect(() => {
 		setVisibleModal(previewObj.isOpen);
 	}, [previewObj]);
 
 	const getItems = () => {
-		apiRequest().get( 'videos/'+type, (res, err) => {
+		let endpoint = type == 'watchlist' ? 'watchlist/' + userObject._id :'videos/'+type;
+		apiRequest().get( endpoint, (res, err) => {
 			if(!err) {
 				setItems(res.data);
 			}
@@ -34,19 +45,24 @@ const Browse = ({type}) => {
 			{visibleModal && <Preview previewObj={previewObj}/>}
 			<div className='header'>
 				<span>{type}</span>
-				<select>
-					<option value="all">All {type}</option>
-					<option value="action">Action</option>
-					<option value="comedy">Comedy</option>
-					<option value="horror">Horror</option>
-				</select>
+				{type != 'watchlist' &&
+					<select>
+						<option value="all">All {type}</option>
+						<option value="action">Action</option>
+						<option value="comedy">Comedy</option>
+						<option value="horror">Horror</option>
+					</select>
+				}
 			</div>
 			{items &&
 				<div className='grid'>
 					{items.map((item) => (
-						<Card key={item.id} item={item} previewObj={previewObj}/>
+						<Card key={item._id} item={item} previewObj={previewObj}/>
 					))}
 				</div>
+			}
+			{(items == null || items.length == 0 && type == 'watchlist') &&
+				<span> Find movies and series to add to your watchlist!</span>
 			}
 		</div>
 	);

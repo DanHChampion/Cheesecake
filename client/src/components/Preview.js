@@ -2,7 +2,7 @@ import './Preview.scss';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes , faPlus , faImages , faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faTimes , faPlus , faImages , faPlay, faCheck } from '@fortawesome/free-solid-svg-icons';
 import Episodes from './Episodes';
 import getImage from '../utils/getImage';
 import tmdbApi from '../hooks/tmdbApi';
@@ -14,9 +14,21 @@ const Preview = ({ previewObj }) => {
 	const type = itemData.type === 'movie'? 'movie' : 'tv';
 	const name = itemData.title.substring(0, itemData.title.lastIndexOf(' '));
 
+	const getUserObject = () => {
+		return JSON.parse(localStorage.getItem('userObject'));
+	};
+
+	useEffect(() => {
+		setUserObject(getUserObject());
+		getWatchlist();
+	},[]);
+
+	const [userObject,setUserObject] = useState(getUserObject());
+
 	const [apiData, setApiData] = useState();
 	const [credits, setCredits] = useState();
 	const [keywords, setKeywords] = useState();
+	const [watchlistItem, setWatchlistItem] = useState(null);
 
 	useEffect(() => {
 		const searchEndpoint = 'search/'+ type +'?query='+encodeURIComponent(name)+'&';
@@ -62,6 +74,52 @@ const Preview = ({ previewObj }) => {
 		});
 	}
 
+	const getWatchlist = () => {
+		apiRequest().get( 'watchlist/'+ userObject._id, (res, err) => {
+			if(!err) {
+				for (const item of res.data) {
+					if (itemData.title == item.title) {
+						setWatchlistItem(item);
+						console.log(item.title);
+						break;
+					}
+				}
+			}
+		});
+	};
+
+
+	function handleWatchlist() {
+		console.log(watchlistItem);
+		if (watchlistItem) {
+			apiRequest().delete('watchlist/'+userObject._id+'/'+ (watchlistItem._id), (res, err) => {
+				if(!err) {
+					console.log(res.status);
+					console.log('delete');
+					setWatchlistItem(null);
+				} else {
+					console.error(err);
+				}
+			});
+		}
+		else {
+			let body = {
+				'type':itemData.type,
+				'title': itemData.title,
+				'path': itemData.path
+			};
+			apiRequest().post('watchlist/'+ userObject._id, body,{} , (res, err) => {
+				if(!err) {
+					console.log(res.status);
+					console.log('add');
+					setWatchlistItem(res.data);
+				} else {
+					console.error(err);
+				}
+			});
+		}
+	}
+
 	return(
 		<div className='Preview'>
 			<div className='background' />
@@ -91,10 +149,12 @@ const Preview = ({ previewObj }) => {
 						<img className='poster' src={getImage(itemData.title+'/preview.jpg')} alt={itemData.title +' Poster'} onError={(e) => e.target.style.display = 'none'}/>
 						<div className='button-container'>
 							<img src={getImage(itemData.title+'/title.png')} alt={itemData.title +' Title'} onError={(e) => e.target.style.display = 'none'}/>
-							<a href={'/watch/?type=' + itemData.type +'&path=' + encodeURIComponent(itemData.videopath)} className='play-button'>
+							<a href={'/watch/?type=' + itemData.type +'&path=' + encodeURIComponent(itemData.path)} className='play-button'>
 								<FontAwesomeIcon icon={faPlay}/> PLAY
 							</a>
-							<button className='icon-button'><FontAwesomeIcon icon={faPlus} /></button>
+							<button className='icon-button' onClick={() => {handleWatchlist();}}>
+								<FontAwesomeIcon icon={watchlistItem ? faCheck :faPlus} />
+							</button>
 						</div>
 					</div>
 					{apiData &&
