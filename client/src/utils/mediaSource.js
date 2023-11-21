@@ -12,12 +12,16 @@ export default function mediaSource(type, path) {
 
 	// Get all .vtt files
 
+	const title = path.split('/')[0];
+
+	console.log('tietle', title);
+
 
 	// Return Endpoint (and Metadata?)
 
 	let mediaObject = {
 		'source': URL + 'stream/'+ type + '/' + pathEncoded,
-		'track': URL + '/en.vtt'
+		'track': URL + title + '/en.vtt'
 	};
 	return mediaObject;
 }
