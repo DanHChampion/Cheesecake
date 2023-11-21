@@ -2,7 +2,7 @@ import './Billboard.scss';
 import getImage from '../../utils/getImage.js';
 import apiRequest from '../../hooks/apiRequest.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus , faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { useEffect , useState } from 'react';
 
 
@@ -36,7 +36,6 @@ const Billboard = () => {
 						<a href={'/watch/?type=' + items.type +'&path=' + encodeURIComponent(items.path)} className='button'>
 							<FontAwesomeIcon icon={faPlay}/> PLAY
 						</a>
-						<button className='icon-button'><FontAwesomeIcon icon={faPlus} /></button>
 					</div>
 				</div>
 			}

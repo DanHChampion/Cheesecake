@@ -1,15 +1,16 @@
 @import '../assets/global.scss';
 @import './NavBar.scss';
 
-.Dropdown{
+.Notification{
     height: inherit;
     position: relative;
 
     .content{
+        @extend .flex-center;
         transition: 300ms;
         position: absolute;
         width: 200px;
-        height: fit-content;
+        height: 60px;
         top: $navbar-height;
         right: 0px;
         display: flex;
@@ -37,11 +38,11 @@
     }
    
 }
-.Dropdown:hover .img-wrapper{
+.Notification:hover .img-wrapper{
     border: 1px white solid;
 }
 
-.Dropdown:hover .content{
+.Notification:hover .content{
     visibility: visible;
     opacity: 1;
 }

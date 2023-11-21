@@ -24,13 +24,12 @@ router.get('/:id', getUser, async (req, res) => {
 router.post('/:id', getUser, async (req, res) => {
 	try {
 		// Check if watchlist already exist
-		const inList = await Watchlist.findOne({title: req.body.title});
-		console.log('inlist:',inList);
-		if (inList !== null) {
+		let watchlistList = await Watchlist.find({_id: {$in: res.user.watchlist}});
+		const inList = watchlistList.filter((item) => item.title === req.body.title);
+		if (inList.length !== 0) {
 			res.status(403).json('Already in list');
 			return;
 		}
-		console.log(req.body);
 
 		const watchlist = new Watchlist({
 			type: req.body.type,
@@ -39,7 +38,6 @@ router.post('/:id', getUser, async (req, res) => {
 		});
 		await watchlist.save();
 
-		console.log('here now');
 
 		// Update User's list of watchlist id's
 		const awaitList = await Watchlist.find({_id: {$in: res.user.watchlist}});
@@ -50,8 +48,6 @@ router.post('/:id', getUser, async (req, res) => {
 		newList.push(watchlist._id);
 		res.user.watchlist = newList;
 		await res.user.save();
-
-		console.log(newList);
 
 		res.status(201).json(watchlist);
 	} catch (err) {
@@ -69,7 +65,6 @@ router.delete('/:id/:wid', getUser, async (req, res) => {
 		const newList = res.user.watchlist.filter(function(id) { return id.toString() !== wid;});
 		res.user.watchlist = newList;
 		await res.user.save();
-		console.log(wid, 'should be deleted' ,newList);
 		res.status(201).json('Successful');
 	} catch (err) {
 		console.log(err);
