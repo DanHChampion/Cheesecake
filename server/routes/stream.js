@@ -1,7 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-
+const videoDir = process.env.VIDEODIR? process.env.VIDEODIR : './videos';
 
 // Video Streaming Element
 // Code from: https://youtu.be/ZjBLbXUuyWg
@@ -18,7 +19,7 @@ router.get('/:type/:path', function(req, res) {
 	}
 	const path = decodeURIComponent(req.params.path);
 
-	const videoPath = `./videos/${type}/${path}`; // Relative to app.js
+	const videoPath = `${videoDir}/${type}/${path}`; // Relative to app.js
 	const videoSize = fs.statSync(videoPath).size;
 
 	// Parse Range

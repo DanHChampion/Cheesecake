@@ -1,16 +1,19 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const { readdirSync } = require('fs');
+const videoDir = process.env.VIDEODIR? process.env.VIDEODIR : './videos';
+console.log('Video Directory:',videoDir);
 
 // Getting movie
 router.get('/movies', async (req, res) => {
-	const list = readdirSync('./videos/Movies', { withFileTypes: true })
+	const list = readdirSync(videoDir+'/Movies', { withFileTypes: true })
 		.filter(dirent => dirent.isDirectory())
 		.map(dirent => dirent.name);
 
 	let response = [];
 	for (const [index, name] of list.entries()) {
-		let files = readdirSync('./videos/Movies/'+name, { withFileTypes: true })
+		let files = readdirSync(videoDir+'/Movies/'+name, { withFileTypes: true })
 			.map(dirent => dirent.name);
 		response.push({
 			'_id':index,
@@ -24,13 +27,13 @@ router.get('/movies', async (req, res) => {
 
 // Getting series
 router.get('/series', async (req, res) => {
-	const list = readdirSync('./videos/Series', { withFileTypes: true })
+	const list = readdirSync(videoDir+'/Series', { withFileTypes: true })
 		.filter(dirent => dirent.isDirectory())
 		.map(dirent => dirent.name);
 
 	let response = [];
 	for (const [index, name] of list.entries()) {
-		let files = readdirSync('./videos/Series/'+name, { withFileTypes: true })
+		let files = readdirSync(videoDir+'/Series/'+name, { withFileTypes: true })
 			.map(dirent => dirent.name);
 		response.push({
 			'_id':index,
@@ -45,7 +48,7 @@ router.get('/series', async (req, res) => {
 // Getting series seasons folders
 router.get('/series/seasons/:title', async (req, res) => {
 	try {
-		res.json(readdirSync('./videos/Series/'+req.params.title, { withFileTypes: true })
+		res.json(readdirSync(videoDir+'/Series/'+req.params.title, { withFileTypes: true })
 			.filter(dirent => dirent.isDirectory())
 			.map(dirent => dirent.name));
 	} catch {
@@ -58,7 +61,7 @@ router.get('/series/:title/:season', async (req, res) => {
 	try {
 		const season = req.params.season;
 		const title = req.params.title;
-		const list = readdirSync('./videos/Series/'+title+'/'+season, { withFileTypes: true })
+		const list = readdirSync(videoDir+'/Series/'+title+'/'+season, { withFileTypes: true })
 			.map(dirent => dirent.name);
 
 		let response = [];
@@ -85,7 +88,7 @@ router.get('/series/:title/:season/:episode', async (req, res) => {
 		const season = req.params.season;
 		const title = req.params.title;
 		const episode = req.params.episode;
-		const list = readdirSync('./videos/Series/'+title+'/'+season, { withFileTypes: true })
+		const list = readdirSync(videoDir+'/Series/'+title+'/'+season, { withFileTypes: true })
 			.map(dirent => dirent.name);
 
 		// Find next episode
@@ -108,14 +111,14 @@ router.get('/series/:title/:season/:episode', async (req, res) => {
 
 // Getting all videos
 router.get('/all', async (req, res) => {
-	const moviesList = readdirSync('./videos/Movies', { withFileTypes: true })
+	const moviesList = readdirSync(videoDir+'/Movies', { withFileTypes: true })
 		.filter(dirent => dirent.isDirectory())
 		.map(dirent => dirent.name);
 
 	let response = [];
 	let index = 0;
 	moviesList.forEach(name => {
-		let files = readdirSync('./videos/Movies/'+name, { withFileTypes: true })
+		let files = readdirSync(videoDir+'/Movies/'+name, { withFileTypes: true })
 			.map(dirent => dirent.name);
 		response.push({
 			'id':index,
@@ -125,12 +128,12 @@ router.get('/all', async (req, res) => {
 		});
 		index ++;
 	});
-	const seriesList = readdirSync('./videos/Series', { withFileTypes: true })
+	const seriesList = readdirSync(videoDir+'/Series', { withFileTypes: true })
 		.filter(dirent => dirent.isDirectory())
 		.map(dirent => dirent.name);
 
 	seriesList.forEach(name => {
-		let files = readdirSync('./videos/Series/'+name, { withFileTypes: true })
+		let files = readdirSync(videoDir+'/Series/'+name, { withFileTypes: true })
 			.map(dirent => dirent.name);
 		response.push({
 			'id':index,
