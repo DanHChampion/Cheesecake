@@ -1,12 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const { readdirSync } = require('fs');
+const { existsSync, readdirSync, mkdirSync } = require('fs');
 const multer = require('multer');
 
 // Upload Images using Multer
 const storage = multer.diskStorage({
 	destination: function (req, file, callback) {
 		let path = `./static/${req.params.title}`;
+		// Check if path exists
+		if (!existsSync(path)){
+			// Create folder
+			mkdirSync(path, { recursive: true });
+		}
 		console.log('Destination:', path);
 		callback(null, path);
 	},
