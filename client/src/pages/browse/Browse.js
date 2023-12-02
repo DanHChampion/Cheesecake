@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 const Browse = ({type}) => {
 
 	const [items,setItems] = useState(null);
+	const [message,setMessage] = useState('');
 
 	const previewObj = usePreview();
 	const [visibleModal, setVisibleModal] = useState(previewObj.isOpen);
@@ -34,6 +35,9 @@ const Browse = ({type}) => {
 		apiRequest().get( endpoint, (res, err) => {
 			if(!err) {
 				setItems(res.data);
+				if (res.data.length == 0 && type == 'watchlist') {
+					setMessage('Find movies and series to add to your watchlist!');
+				}
 			}
 		});
 	};
@@ -61,9 +65,7 @@ const Browse = ({type}) => {
 					))}
 				</div>
 			}
-			{(items == null || items.length == 0 && type == 'watchlist') &&
-				<span> Find movies and series to add to your watchlist!</span>
-			}
+			{message}
 		</div>
 	);
 };

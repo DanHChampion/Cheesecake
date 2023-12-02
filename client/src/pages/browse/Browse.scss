@@ -25,14 +25,14 @@
             text-transform: capitalize;
             padding: 5px 10px;
             font-size: 16px;
-            background-color: $bg-hover-colour;
+            background-color: $bg-lighter-colour;
             color: white;
             outline: none;
             border:none;
             border-radius: 18px;
         }
         option{
-            background-color: $bg-hover-colour;
+            background-color: $bg-lighter-colour;
         }
 
     }
@@ -43,7 +43,7 @@
         padding: 20px 100px ;
         display: grid;
         row-gap: 25px;
-        grid-template-columns: repeat(7, 14.2%);
+        grid-template-columns: repeat(8, auto);
         height: fit-content;
 
     }

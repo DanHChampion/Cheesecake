@@ -40,7 +40,7 @@ const Card = ({ item , previewObj, continueWatching, deleteOne }) => {
 
 	return(
 		<div className="Card" style={deleted?{ transition:'500ms', width: 0, border:0, margin: 0, opacity:0 }: {}} onClick={() => {handleCardClick();}} >
-			<p>{item.title}</p>
+			<div className='title'>{item.title}</div>
 			<img src={getImage(item.title+'/coverphoto.jpg')} alt={item.title} onError={(e) => e.target.style.display = 'none'}/>
 			{ continueWatching &&
 				<a href={'/watch/?type=' + item.type +'&path=' + encodeURIComponent(item.path)+'&start='+item.timestamp} className='overlay'>

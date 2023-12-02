@@ -1,20 +1,23 @@
 import './Experimental.scss';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const Experimental = () => {
 
-	const [iframeURL, setIframeURL] = useState();
+	// const [iframeURL, setIframeURL] = useState();
 
 	return (
 		<div className='Experimental'>
-			<div className='search'>
+			{/* <div className='search'>
 				<input id='url' type='text' onClick={(e) => {setIframeURL(e.target.value);}}/>
 				<label htmlFor='url'>Search</label>
 			</div>
-
 			<div className='iframe-wrapper'>
 				<iframe src={iframeURL}/>
+			</div> */}
+			<div className='input-line code'>
+				{'>'} <input className='code' type='text'/>
 			</div>
+
 		</div>
 	);
 };

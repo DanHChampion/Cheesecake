@@ -4,12 +4,55 @@
   src: url('VarelaRound-Regular.ttf') format('truetype');
 }
 
-// Variables
+// General Variables
 $primary-colour: #c6538c;
+$bg-darker-colour: #0c0c0c; 
 $bg-colour: #101010;
-$bg-hover-colour: #272727;
-$navbar-height: 60px;
+$bg-lighter-colour: #272727;
+$highlight-colour: #eeeeee;
 $font-family: 'Varela Round','Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+$font-colour: #eeeeee;
+$transition: 200ms;
+
+// Navbar
+$navbar-bg-colour: $bg-darker-colour;
+$navbar-font-colour: $font-colour;
+$navbar-font-size: 14px;
+$navbar-icon-colour: $navbar-font-colour;
+$navbar-height: 60px;
+$navbar-logo: url('../assets/logo.png');
+$search-bar-bg-colour: transparent;
+$search-bar-highlight-colour: $navbar-icon-colour;
+
+// Carousel
+$header-font-size: 24px;
+$carousel-button-colour: $bg-darker-colour;
+$carousel-button-opacity: 90%;
+
+// Card
+$card-bg-colour: $bg-darker-colour; 
+$card-height: 16vw;
+$card-aspect-ratio: calc(2/3);
+$card-border-radius: 10px;
+$card-font-colour: $font-colour;
+$card-hover-colour: $highlight-colour;
+$card-progress-bar-left-colour: $primary-colour;
+$card-progress-bar-right-colour: #eeeeee2c;
+$card-drop-shadow-colour: transparent;
+
+// Dropdown
+$dropdown-bg-colour: $bg-darker-colour;
+$dropdown-hover-colour: $bg-colour;
+$dropdown-font-colour: $font-colour;
+$dropdown-font-size: 14px;
+$dropdown-icon-colour: $dropdown-font-colour;
+$dropdown-border-radius: 5px;
+
+// Notifications
+$notifications-bg-colour: $bg-darker-colour;
+$notifications-font-colour: $font-colour;
+$notifications-border-radius: 5px;
+
 
 html {
   scroll-behavior: smooth;
@@ -25,18 +68,13 @@ body {
   user-select: none; /* Standard syntax */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .App {
   text-align: center;
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
   background-color: $bg-colour;
-  color: white;
+  color: $font-colour;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
@@ -56,22 +94,23 @@ a{
   justify-content: center;
 }
 
-.debug-border {
-  border: 1px blue solid;
-}
-
 .clickable{
   cursor: pointer;
 }
 
-.background{
+.fill {
+  width: 100%;
+  height: 100%;
+}
+
+.darken-overlay{
   @extend .flex-center;
   position: fixed;
   top: 0;
   left:0;
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: #0c0c0cbe;
   opacity: 50%;
 }
 

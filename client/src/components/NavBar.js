@@ -4,7 +4,7 @@ import Notification from './Notification.js';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faPlus, faFilm, faTvAlt, faBell, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import logo from '../assets/logo.png';
+// import logo from '../assets/logo.png';
 import PropTypes from 'prop-types';
 import getImage from '../utils/getImage.js';
 
@@ -23,7 +23,7 @@ const NavBar = ({ searchFunction }) => {
 	return(
 		<div className="NavBar">
 			<div className='left-container'>
-				<a className='nav-item' href='/home'><img className='logo' src={logo} alt='Logo' /></a>
+				<a className='nav-item logo' href='/home'></a>
 				<a className='nav-item' href='/home'><FontAwesomeIcon className='icon' icon={faHouse}/><span>HOME</span></a>
 				<a className='nav-item' href='/watchlist'><FontAwesomeIcon className='icon' icon={faPlus}/><span>WATCHLIST</span></a>
 				<a className='nav-item' href='/movies'><FontAwesomeIcon className='icon' icon={faFilm}/><span>MOVIES</span></a>

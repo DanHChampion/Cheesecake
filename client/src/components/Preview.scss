@@ -61,7 +61,7 @@
                 outline: none;
                 border: none;
                 border-radius: 50%;
-                background-color: $bg-hover-colour;
+                background-color: $bg-lighter-colour;
                 color: white;
             }
 
@@ -82,7 +82,7 @@
                 width: 40px;
                 height: 40px;
                 border-radius: 20px;
-                background: $bg-hover-colour;
+                background: $bg-lighter-colour;
                 z-index: 1;
                 transition: 150ms;
 
@@ -158,6 +158,16 @@
                     max-height: 200px;
                     bottom: 80px;
                 }
+                h1{
+                    // Title
+                    position: absolute;
+                    width: 500px;
+                    max-height: 200px;
+                    left: 0px;
+                    bottom: 80px;
+                    font-size: 24px;
+                    text-align: left;
+                }
 
                 .play-button {
                     @extend .flex-center, .clickable;
@@ -189,7 +199,7 @@
                     border-radius: 50%;
                     outline: none;
                     border: 2px white solid;
-                    background-color: $bg-hover-colour;
+                    background-color: $bg-lighter-colour;
                     transition: 150ms;
                     color: white;
                     font-size: 25px;

@@ -86,7 +86,7 @@ const Carousel = ( { label, previewObj, endpoint = undefined, loadItems = [], ty
 		<>
 			{items &&
 			<div className='Carousel' style={(items.length - deleteCount) === 0?{overflowY:'hidden', height:'0px'}:{}}>
-				<span>{label}</span>
+				<div className='header'>{label}</div>
 				<div className="main">
 					{state.left && <div className='scroll-arrow left-arrow' onClick={() => {goLeft();}}> <FontAwesomeIcon className='icon' icon={faChevronLeft}/> </div>}
 					{items &&

@@ -8,8 +8,8 @@ import { useEffect , useState } from 'react';
 
 const Billboard = () => {
 
-	const [items,setItems] = useState(null);
-
+	const [item,setItem] = useState(null);
+	const [missingTitleImage, setMissingTitleImage] = useState(null);
 
 	useEffect(() => {
 		getRandomItem();
@@ -21,19 +21,20 @@ const Billboard = () => {
 				// Pick random one
 				let rgn = Math.floor(Math.random()*res.data.length);
 				console.log(rgn);
-				setItems(res.data[rgn]);
+				setItem(res.data[rgn]);
 			}
 		});
 	};
 
 	return(
 		<div className="Billboard">
-			{items &&
+			{item &&
 				<div className='img-wrapper'>
-					<img className='poster' src={getImage(items.title+'/preview.jpg')} alt={items.title +' Poster'} onError={(e) => e.target.style.display = 'none'}/>
+					<img className='poster' src={getImage(item.title+'/preview.jpg')} alt={item.title +' Poster'} onError={(e) => e.target.style.display = 'none'}/>
 					<div className='button-container'>
-						<img src={getImage(items.title+'/title.png')} alt={items.title +' Title'} onError={(e) => e.target.style.display = 'none'}/>
-						<a href={'/watch/?type=' + items.type +'&path=' + encodeURIComponent(items.path)} className='button'>
+						<img src={getImage(item.title+'/title.png')} alt={item.title +' Title'} onError={(e) => {e.target.style.display = 'none'; setMissingTitleImage(true);}}/>
+						{missingTitleImage && <h1>{item.title}</h1>}
+						<a href={'/watch/?type=' + item.type +'&path=' + encodeURIComponent(item.path)} className='button'>
 							<FontAwesomeIcon icon={faPlay}/> PLAY
 						</a>
 					</div>

@@ -40,7 +40,7 @@
         border-radius: 50%;
         outline: none;
         border: none;
-        background-color: $bg-hover-colour;
+        background-color: $bg-lighter-colour;
         transition: 150ms;
         color: white;
         font-size: 25px;
@@ -63,6 +63,16 @@
             max-width: 250px;
             max-height: 200px;
             bottom: 80px;
+        }
+        h1{
+            // Title
+            position: absolute;
+            width: 500px;
+            max-height: 200px;
+            left: 0px;
+            bottom: 80px;
+            font-size: 24px;
+            text-align: left;
         }
 
         .button {
@@ -95,7 +105,7 @@
             border-radius: 50%;
             outline: none;
             border: 2px white solid;
-            background-color: $bg-hover-colour;
+            background-color: $bg-lighter-colour;
             transition: 150ms;
             color: white;
             font-size: 25px;

@@ -29,6 +29,7 @@ const Preview = ({ previewObj }) => {
 	const [credits, setCredits] = useState();
 	const [keywords, setKeywords] = useState();
 	const [watchlistItem, setWatchlistItem] = useState(null);
+	const [missingTitleImage, setMissingTitleImage] = useState(null);
 
 	useEffect(() => {
 		const searchEndpoint = 'search/'+ type +'?query='+encodeURIComponent(name)+'&';
@@ -122,7 +123,7 @@ const Preview = ({ previewObj }) => {
 
 	return(
 		<div className='Preview'>
-			<div className='background' />
+			<div className='darken-overlay' />
 			<div className='scrollable-wrapper' onClick={(e) => {if(e.target === e.currentTarget){previewObj.closePreview(false);}}}>
 				<div className="popup">
 					<button className='exit button' onClick={() => {previewObj.closePreview(false);}}>
@@ -148,7 +149,8 @@ const Preview = ({ previewObj }) => {
 					<div className='img-wrapper'>
 						<img className='poster' src={getImage(itemData.title+'/preview.jpg')} alt={itemData.title +' Poster'} onError={(e) => e.target.style.display = 'none'}/>
 						<div className='button-container'>
-							<img src={getImage(itemData.title+'/title.png')} alt={itemData.title +' Title'} onError={(e) => e.target.style.display = 'none'}/>
+							<img src={getImage(itemData.title+'/title.png')} alt={itemData.title +' Title'} onError={(e) => {e.target.style.display = 'none'; setMissingTitleImage(true);}}/>
+							{missingTitleImage && <h1>{itemData.title}</h1>}
 							<a href={'/watch/?type=' + itemData.type +'&path=' + encodeURIComponent(itemData.path)} className='play-button'>
 								<FontAwesomeIcon icon={faPlay}/> PLAY
 							</a>
