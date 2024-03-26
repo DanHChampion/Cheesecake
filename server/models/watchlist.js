@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const watchlistSchema = new mongoose.Schema({
-	type: {
+	type: { // Movie or Series
 		type: String,
 		required:true
 	},

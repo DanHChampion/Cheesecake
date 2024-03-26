@@ -153,7 +153,7 @@ const Player = () => {
 			'title': videoTitle,
 			'path': videoPath,
 			'timestamp': videoRef.current.currentTime,
-			'duration': videoRef.current.duration
+			'duration': videoRef.current.duration? videoRef.current.duration : 0
 		};
 		apiRequest().post('continuewatching/'+ userObject._id, body, {}, (res, err) => {
 			if(!err) {

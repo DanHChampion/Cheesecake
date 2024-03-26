@@ -4,8 +4,10 @@ const router = express.Router();
 const fs = require('fs');
 const videoDir = process.env.VIDEODIR? process.env.VIDEODIR : './videos';
 
-// Video Streaming Element
-// Code from: https://youtu.be/ZjBLbXUuyWg
+/**
+ * GET - Video Streaming Element
+ * Code from: https://youtu.be/ZjBLbXUuyWg
+ */
 router.get('/:type/:path', function(req, res) {
 	const range = req.headers.range;
 	if (!range) {
@@ -13,12 +15,10 @@ router.get('/:type/:path', function(req, res) {
 		return;
 	}
 
-	let type = req.params.type.charAt(0).toUpperCase() + req.params.type.slice(1);
-	if (type === 'Movie'){
-		type = type + 's';
-	}
-	const path = decodeURIComponent(req.params.path);
+	let type = req.params.type === 'movie'? req.params.type+'s': req.params.type;
+	type = type.charAt(0).toUpperCase() + type.slice(1);
 
+	const path = decodeURIComponent(req.params.path);
 	const videoPath = `${videoDir}/${type}/${path}`; // Relative to app.js
 	const videoSize = fs.statSync(videoPath).size;
 

@@ -6,10 +6,12 @@ const app = express();
 const mongoose = require('mongoose');
 
 // Database
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
-const db = mongoose.connection;
-db.on('error', (error) => console.error(error));
-db.once('open', () => console.log('Connected to Database!'));
+if (process.env.DATABASE_URL) {
+	mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+	const db = mongoose.connection;
+	db.on('error', (error) => console.error(error));
+	db.once('open', () => console.log('Connected to Database!'));
+}
 
 // JSON Middleware
 app.use(express.json());
@@ -22,7 +24,6 @@ const corsOptions = {
 	optionSuccessStatus:200
 };
 app.use(cors(corsOptions));
-
 
 app.get('/recommend', (req, res) => { // Might need to change name of endpoint
 	res.status(200);
@@ -38,14 +39,12 @@ const videoRoute = require('./routes/videos.js');
 const imageRoute = require('./routes/images.js');
 const continueWatchingRoute = require('./routes/continueWatching.js');
 
-
 app.use('/users', usersRoute);
 app.use('/watchlist', watchlistRoute);
 app.use('/stream', streamRoute);
 app.use('/videos', videoRoute);
 app.use('/images', imageRoute);
 app.use('/continuewatching', continueWatchingRoute);
-
 
 // For static
 const dir = path.join(__dirname, 'static');

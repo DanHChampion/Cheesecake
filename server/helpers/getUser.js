@@ -1,6 +1,5 @@
 const User = require('../models/user');
 
-// Gets User given an id
 async function getUser(req, res, next) {
 	let user;
 	try {
@@ -11,7 +10,6 @@ async function getUser(req, res, next) {
 	} catch (err) {
 		return res.status(500).json({ message: err.message });
 	}
-
 	res.user = user;
 	next();
 }

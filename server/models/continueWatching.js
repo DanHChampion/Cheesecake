@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
-
 const continueWatchingSchema = new mongoose.Schema({
-	type: {
+	type: {	// 'movie' or 'series'
 		type: String,
 		required:true
 	},
