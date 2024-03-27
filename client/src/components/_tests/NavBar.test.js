@@ -10,7 +10,7 @@ it('renders all items in NavBar.js successfully', () => {
 	};
 
 	function mockSearch() {
-		return
+		return;
 	}
 	render(<NavBar searchFunction={mockSearch} userObject={mockUser} />);
 
