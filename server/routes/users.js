@@ -30,7 +30,7 @@ router.get('/:id', getUser, (req, res) => {
  */
 router.post('/', async (req, res) => {
 	try {
-		const { newUserId } = await createUser(req.body);
+		const newUserId = await createUser(req.body);
 		res.status(201).json(newUserId);
 	} catch (err) {
 		res.status(400).json({ message: err.message });

@@ -11,8 +11,7 @@ const videoDir = process.env.VIDEODIR? process.env.VIDEODIR : './videos';
 router.get('/:type/:path', function(req, res) {
 	const range = req.headers.range;
 	if (!range) {
-		res.status(400).send('Requires Range header');
-		return;
+		return res.status(400).send('Requires Range header');
 	}
 
 	let type = req.params.type === 'movie'? req.params.type+'s': req.params.type;

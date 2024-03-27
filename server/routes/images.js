@@ -5,7 +5,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
 	destination: function (req, file, callback) {
-		let path = `./static/${req.params.title}`;
+		const path = `./static/${req.params.title}`;
 		if (!existsSync(path)){
 			mkdirSync(path, { recursive: true });
 		}
@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 		callback(null, path);
 	},
 	filename: (req, file, callback) => {
-		let fileExt = file.fieldname === 'title'? '.png' :'.jpg';
+		const fileExt = file.fieldname === 'title'? '.png' :'.jpg';
 		callback(null, file.fieldname + fileExt);
 	}
 });
@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 /**
- * GET - Avatar Icons List
+ * GET - Avatar icons list
  */
 router.get('/avatars', async (req, res) => {
 	const avatarsList = readdirSync('./static/_avatars', { withFileTypes: true })

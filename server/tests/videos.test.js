@@ -22,7 +22,7 @@ afterEach(() => {
 	jest.clearAllMocks();
 });
 
-describe('GET /movies', () => {
+describe('GET /videos/movies', () => {
 	it('responds with JSON containing a list of movie objects', async () => {
 		fsMock._setMockFiles({
 			'./videos/Movies': [
@@ -62,7 +62,7 @@ describe('GET /movies', () => {
 	});
 });
 
-describe('GET /series', () => {
+describe('GET /videos/series', () => {
 	it('responds with JSON containing a list of series', async () => {
 		fsMock._setMockFiles({
 			'./videos/Series': [
@@ -98,7 +98,7 @@ describe('GET /series', () => {
 	});
 });
 
-describe('GET /series/seasons/:title', () => {
+describe('GET /videos/series/seasons/:title', () => {
 	it('responds with JSON containing a list of seasons for a given series title', async () => {
 		fsMock._setMockFiles({
 			'./videos/Series/Series1': [
@@ -143,7 +143,7 @@ describe('GET /series/seasons/:title', () => {
 	});
 });
 
-describe('GET /series/:title/:season', () => {
+describe('GET /videos/series/:title/:season', () => {
 	it('responds with JSON containing a list of Episode objects for a given series title and season', async () => {
 		fsMock._setMockFiles({
 			'./videos/Series/Series1': [
@@ -198,7 +198,7 @@ describe('GET /series/:title/:season', () => {
 	});
 });
 
-describe('GET /series/:title/:season/:episode', () => {
+describe('GET /videos/series/:title/:season/:episode', () => {
 	it('responds with JSON containing the next episode for a given series title, season, and episode', async () => {
 		fsMock._setMockFiles({
 			'./videos/Series/Series1': [
@@ -268,7 +268,7 @@ describe('GET /series/:title/:season/:episode', () => {
 	});
 });
 
-describe('GET /all', () => {
+describe('GET /videos/all', () => {
 	it('responds with JSON containing a list of all videos (Movies + Series)', async () => {
 		fsMock._setMockFiles({
 			'./videos/Movies': [
