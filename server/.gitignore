@@ -11,6 +11,7 @@
 # video files
 /videos/Movies/*
 /videos/Series/*
+!/videos/Movies/Test Movie
 
 # static files
 /static/*
