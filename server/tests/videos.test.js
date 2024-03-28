@@ -55,7 +55,7 @@ describe('GET /videos/movies', () => {
 			expect(movie).toHaveProperty('path');
 		});
 	});
-	it('responds with 404 if Movies directory doesn\'t exist', async () => {
+	it('responds with 404 if Movies directory does not exist', async () => {
 		fsMock._setMockFiles({});
 		const response = await request(app).get('/movies');
 		expect(response.statusCode).toBe(404);
@@ -249,7 +249,7 @@ describe('GET /videos/series/:title/:season/:episode', () => {
 		expect(response.statusCode).toBe(200);
 		expect(response.body).toBe(null);
 	});
-	it('responds with 404 if episode not found', async () => {
+	it('responds with 404 if episode is not found', async () => {
 		fsMock._setMockFiles({
 			'./videos/Series/Series1': [
 				new FakeDirent('Season1', true),

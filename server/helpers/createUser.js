@@ -6,9 +6,7 @@ async function createUser(body) {
 		avatar: body.avatar
 	});
 	const newUser = await user.save();
-	return {
-		userId: newUser._id
-	};
+	return { userId: newUser._id };
 }
 
 module.exports = createUser;
