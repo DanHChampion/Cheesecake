@@ -22,9 +22,10 @@ router.get('/:id', getUser, async (req, res) => {
 router.post('/:id', getUser, async (req, res) => {
 	try {
 		const currentWatchlist = await Watchlist.find({userId: res.user._id});
-		const checkList = currentWatchlist.filter((item) => item.title === req.body.title);
-		if (checkList.length !== 0) {
-			return res.status(403).json({ message: 'Already in list' });
+		if (req.body.title !== undefined) {
+			if (currentWatchlist.some(item => item.title === req.body.title)) {
+				return res.status(403).json({ message: 'Already in list' });
+			}
 		}
 		const watchlist = await createWatchlist(res.user, req.body);
 		res.status(201).json(watchlist);
@@ -45,7 +46,6 @@ router.delete('/:id/:wid', getUser, async (req, res) => {
 	try {
 		const userWatchlist = await Watchlist.find({userId: res.user._id});
 		const wid = req.params.wid;
-		console.log(userWatchlist);
 		if (!userWatchlist.some(item => item._id.toString() === wid)){
 			return res.status(404).json({ message: 'This user does not have this watchlist item'});
 		}

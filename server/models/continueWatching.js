@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const continueWatchingSchema = new mongoose.Schema({
+	userId: {
+		type: mongoose.ObjectId,
+		required:true
+	},
 	type: {	// 'movie' or 'series'
 		type: String,
 		required:true
