@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/', router);
 
 jest.mock('../models/user');
-jest.mock('../models/continuewatching');
+jest.mock('../models/continueWatching');
 jest.mock('../helpers/createContinueWatching');
 
 

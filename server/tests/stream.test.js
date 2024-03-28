@@ -3,15 +3,12 @@ const express = require('express');
 const fs = require('fs');
 const router = require('../routes/stream');
 const app = express();
+const { Readable } = require('stream');
 app.use('/', router);
 
 jest.mock('fs');
 fs.statSync.mockReturnValue({ size: 10000 });
-fs.createReadStream.mockReturnValue({
-	pipe: jest.fn((res) => {
-		res.end('test'); // Pipe some data to the response
-	}),
-});
+fs.createReadStream.mockReturnValue(Readable.from('test'));
 
 describe('GET /stream', () => {
 	it('should return video content with correct range header', async () => {
