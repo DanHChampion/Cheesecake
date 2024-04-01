@@ -5,6 +5,9 @@ const { existsSync } = require('fs');
 const getMediaFiles = require('../helpers/getMediaFiles');
 const getDirectories = require('../helpers/getDirectories');
 const videoDir = process.env.VIDEODIR? process.env.VIDEODIR : './videos';
+if (!existsSync(videoDir)) {
+	throw new Error('Video Directory not found...');
+}
 console.log('Video Directory:',videoDir);
 
 /**

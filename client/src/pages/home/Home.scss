@@ -1,7 +1,6 @@
 @import '../../assets/global.scss';
 
-.Home {
-    @extend .flex-center;
-    padding-top: $navbar-height;
-    flex-direction: column;
+
+.Home{
+    @extend .page;
 }

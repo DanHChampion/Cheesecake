@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const URL = 'https://api.themoviedb.org/3/';
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-const USE_API = false;
+const USE_API = process.env.USE_API;
 
 export default function tmdbApi() {
 

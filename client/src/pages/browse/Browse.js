@@ -46,26 +46,28 @@ const Browse = ({type}) => {
 
 	return (
 		<div className="Browse">
-			{visibleModal && <Preview previewObj={previewObj}/>}
-			<div className='header'>
-				<span>{type}</span>
-				{type != 'watchlist' &&
-					<select>
-						<option value="all">All {type}</option>
-						<option value="action">Action</option>
-						<option value="comedy">Comedy</option>
-						<option value="horror">Horror</option>
-					</select>
-				}
-			</div>
-			{items &&
-				<div className='grid'>
-					{items.map((item) => (
-						<Card key={item._id} item={item} previewObj={previewObj}/>
-					))}
+			<div className='page-content'>
+				{visibleModal && <Preview previewObj={previewObj}/>}
+				<div className='header'>
+					<span>{type}</span>
+					{type != 'watchlist' &&
+						<select>
+							<option value="all">All {type}</option>
+							<option value="action">Action</option>
+							<option value="comedy">Comedy</option>
+							<option value="horror">Horror</option>
+						</select>
+					}
 				</div>
-			}
-			{message}
+				{items &&
+					<div className='grid'>
+						{items.map((item) => (
+							<Card key={item._id} item={item} previewObj={previewObj}/>
+						))}
+					</div>
+				}
+				{message}
+			</div>
 		</div>
 	);
 };

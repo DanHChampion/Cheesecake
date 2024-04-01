@@ -51,12 +51,14 @@ const ChangeIcon = ({inputIconPath, setState}) => {
 						<button className='button' onClick={() => {setPopup(false);}}>CANCEL</button>
 					</div>
 					{avatars &&
-					<div className='avatars-list'>
-						{avatars.map((avatar) => (
-							<div key={avatar.id} onClick={() => handleChange(avatar.path)} className='icon-wrapper'>
-								<img src={getImage('_avatars/'+ avatar.path)}/>
-							</div>
-						))}
+					<div className='avatars-wrapper'>
+						<div className='avatars-list'>
+							{avatars.map((avatar) => (
+								<div key={avatar.id} onClick={() => handleChange(avatar.path)} className='icon-wrapper'>
+									<img src={getImage('_avatars/'+ avatar.path)}/>
+								</div>
+							))}
+						</div>
 					</div>
 					}
 				</div>
