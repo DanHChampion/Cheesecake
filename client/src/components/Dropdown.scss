@@ -20,6 +20,7 @@
         border-bottom-left-radius: $dropdown-border-radius;
         border-bottom-right-radius: $dropdown-border-radius;
         font-size: $dropdown-font-size;
+        pointer-events: none;
         
         .item{
             padding: 10px;
@@ -36,12 +37,12 @@
             background-color: $dropdown-hover-colour;
         }
     }
-   
-}
-.Dropdown:hover a .img-wrapper{
-    border: 1px white solid;
-}
-
-.Dropdown:hover .content{
-    opacity: 1;
+    a:hover .img-wrapper{
+        border: 1px white solid;
+    }
+    a:hover + .content,
+    .content:hover{
+        pointer-events: all;
+        opacity: 1;
+    }
 }

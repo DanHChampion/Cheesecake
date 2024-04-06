@@ -1,6 +1,6 @@
 // import axios from 'axios';
 
-const URL = 'http://localhost:8080/';
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 export default function mediaSource(type, path) {
 	// Get Video MetaData

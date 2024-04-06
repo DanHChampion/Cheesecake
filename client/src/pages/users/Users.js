@@ -48,7 +48,11 @@ const Users = () => {
 					<p>Add Profile</p>
 				</div>
 			</div>
-			<button className='button' onClick={() => {setToggleEdit(!toggleEdit);}}>{toggleEdit? 'DONE' : 'MANAGE PROFILES'}</button>
+			{ users.length !== 0 &&
+				<button className='button' onClick={() => {setToggleEdit(!toggleEdit);}}>
+					{toggleEdit? 'DONE' : 'MANAGE PROFILES'}
+				</button>
+			}
 		</div>
 	);
 };

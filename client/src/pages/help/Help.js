@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle , faClipboardQuestion , faBug, faFileLines } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle , faBug, faFileLines } from '@fortawesome/free-solid-svg-icons';
 import './Help.scss';
 
 const Help = () => {
@@ -10,12 +10,6 @@ const Help = () => {
 			icon: faInfoCircle,
 			description: 'Information about this website and its creator and more...',
 			link: '/about'
-		},
-		{
-			name: 'Request for Movies/Series',
-			icon: faClipboardQuestion,
-			description: 'Submit titles to be added to Cheesecake.',
-			link: '/request'
 		},
 		{
 			name: 'Report a Bug',

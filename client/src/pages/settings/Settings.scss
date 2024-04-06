@@ -7,38 +7,103 @@
 
     .main {
         @extend .flex-center;
+        flex-direction: column;
         width: 60vw;
-        background-color: $bg-lighter-colour;
+        margin-top: 20px;
+        // background-color: $bg-lighter-colour;
         border-radius: 5px;
 
-
-        .container{
-            display: flex;
-            text-align: left;
-            justify-content: flex-start;
-            flex-direction: column;
-            padding: 10px;
-            padding-right: 0;
-            min-height: fit-content;
-            height: 700px;
-        }
-        .left{
-            width: 300px;
-            border-right: 2px grey solid;
-
-            .selector{
-                @extend .clickable;
-                padding: 10px ;
-                border-bottom: transparent 2px solid;
-                border-bottom-left-radius: 3px;
-            }
-            .active{
-                background-color: $bg-colour;
-                border-bottom: white 2px solid;
-            }
-        }
-        .right{
+        .header{
             width: 100%;
+            height: $navbar-height;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            span {
+                font-size: 30px;
+                text-transform: capitalize;
+                padding: 0px 30px;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+        }
+
+        section {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 200px;
+            border-top: 1px grey solid;
+            padding: 30px;
+            border: 1px solid red;
+
+            .left-section {
+                border: 1px solid blue;
+                width: 300px;
+                h2 {
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                }
+            };
+            .right-section {
+                border: 1px solid green;
+                width: 100%;
+            }
+        }
+
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
         }
     };
 }

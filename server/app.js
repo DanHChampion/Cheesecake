@@ -7,9 +7,12 @@ const mongoose = require('mongoose');
 
 // Database
 if (process.env.DATABASE_URL) {
-	mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+	mongoose.connect(process.env.DATABASE_URL, { 
+		useNewUrlParser: true,
+		serverSelectionTimeoutMS: 1000
+	});
 	const db = mongoose.connection;
-	db.on('error', (error) => console.error(error));
+	db.on('error', (error) => {throw new Error(error)});
 	db.once('open', () => console.log('Connected to Database!'));
 }
 
@@ -18,8 +21,16 @@ app.use(express.json());
 
 // CORS Policy
 const cors = require('cors');
+const allowedOrigins = ['http://localhost:3000', 'http://192.168.0.5:3000'];
+
 const corsOptions = {
-	origin:'http://localhost:3000',
+	origin: function (origin, callback) {
+		if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+			callback(null, true);
+		} else {
+			callback(new Error('Not allowed by CORS'));
+		}
+	},
 	credentials:true, //access-control-allow-credentials:true
 	optionSuccessStatus:200
 };

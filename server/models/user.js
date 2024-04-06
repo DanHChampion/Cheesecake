@@ -8,15 +8,7 @@ const userSchema = new mongoose.Schema({
 	avatar: {
 		type: String,
 		required: true
-	},
-	continueWatching: [{
-		type: mongoose.ObjectId,
-		ref: 'ContinueWatching'
-	}],
-	watchlist: [{
-		type: mongoose.ObjectId,
-		ref: 'Watchlist'
-	}]
+	}
 });
 
 module.exports = mongoose.model('User', userSchema);

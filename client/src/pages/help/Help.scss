@@ -8,18 +8,16 @@
 
     h1{
         position: absolute;
-        top: 180px;
+        top: 140px;
         font-size: 40px;
     }
 
     .container {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        width: 1000px;
-        border-radius: 5px;
+        @extend .flex-center;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 30px;
+        width: 500px;
 
 
         .item{
@@ -31,8 +29,9 @@
             border: 3px solid transparent;
             text-align: left;
             border-radius: 10px;
-            transition: 300ms;
+            transition: $transition;
             background-color: $bg-lighter-colour;
+            margin-top: 20px;
 
 
 
