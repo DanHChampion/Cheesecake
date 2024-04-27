@@ -5,15 +5,6 @@ const app = express();
 
 const mongoose = require('mongoose');
 
-// Suppress DeprecationWarning (Workaround)
-process.on('warning', (warning) => {
-	if (warning.name === 'DeprecationWarning' && warning.message.includes('punycode')) {
-	  	// Ignore the punycode deprecation warning
-	  	return;
-	}
-	console.warn(warning);
-});
-
 // Database
 if (process.env.DATABASE_URL) {
 	mongoose.connect(process.env.DATABASE_URL, {
