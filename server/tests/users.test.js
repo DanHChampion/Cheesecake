@@ -183,6 +183,7 @@ describe('DELETE /users/:id', () => {
 		expect(response3.statusCode).toBe(404);
 		expect(response3.body.message).toBe('Cannot find user');
 	});
+	// Should delete all Continue watching and Watchlist of related user
 	it('responds with 404 if a specific user is not found', async () => {
 		const response = await request(app).delete('/3');
 		expect(response.statusCode).toBe(404);

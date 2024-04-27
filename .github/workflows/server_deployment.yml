@@ -19,6 +19,6 @@ jobs:
       - name: Install dependencies and run Eslint and Unit tests
         run: |
           cd server
-          npm i --dev
+          npm i --also=dev
           npm run lint
           npm test

@@ -4,9 +4,6 @@ on:
   push:
     paths:
       - "client/**"
-  pull_request:
-    paths:
-      - "client/**"
   workflow_dispatch:
 
 jobs:
@@ -22,7 +19,7 @@ jobs:
       - name: Install dependencies, build, and run Eslint and Unit tests
         run: |
           cd client
-          npm i --dev
+          npm i --also=dev
           npm run build --if-present
           npm run lint
           npm test
