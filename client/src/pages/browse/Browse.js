@@ -50,14 +50,14 @@ const Browse = ({type}) => {
 				{visibleModal && <Preview previewObj={previewObj}/>}
 				<div className='header'>
 					<span>{type}</span>
-					{type != 'watchlist' &&
+					{/* {type != 'watchlist' &&
 						<select>
 							<option value="all">All {type}</option>
 							<option value="action">Action</option>
 							<option value="comedy">Comedy</option>
 							<option value="horror">Horror</option>
 						</select>
-					}
+					} */}
 				</div>
 				{items &&
 					<div className='grid'>
