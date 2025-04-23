@@ -39,6 +39,7 @@ router.post('/:id', getUser, async (req, res) => {
 		res.status(500).json({ message: err.message });
 	}
 });
+
 /**
  * DELETE - An item from Continue Watching List
  */

@@ -18,12 +18,12 @@ $highlight-colour: #eeeeee;
 $font-family: 'Varela Round','Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 $font-colour: #eeeeee;
 $transition: 200ms;
-$colour-scheme: dark; // light or dark
+$colour-scheme: dark;
 
 // Navbar
 $navbar-bg-colour: $bg-darker-colour;
 $navbar-font-colour: $font-colour;
-$navbar-font-size: 14px;
+$navbar-font-size: 16px;
 $navbar-icon-colour: $navbar-font-colour;
 $navbar-height: 60px;
 $navbar-logo: url('../assets/logo.png');

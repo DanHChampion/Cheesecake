@@ -54,7 +54,6 @@ function App() {
 				<Route path="/movies" element={<Browse type='movies'/>} />
 				<Route path="/series" element={<Browse type='series'/>} />
 				<Route path="/search" element={<Search search={search}/>} />
-				{/* <Route path="/experimental" element={<Experimental/>} /> */}
 				<Route path="/help" element={<Help/>} />
 				{/* <Route path="/settings" element={<Settings/>} /> */}
 				<Route path="/*" element={<NotFound/>} />
