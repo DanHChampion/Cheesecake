@@ -1,4 +1,5 @@
-import { render, screen, act} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { act } from 'react';
 import '@testing-library/jest-dom';
 import Card from '../Card';
 
@@ -13,11 +14,12 @@ it('renders all items in Card.js successfully', () => {
 		closePreview: null
 	};
 
-	render(<Card item={mockItemData} previewObj={mockPreviewObj}/>);
+	act(() => {
+		render(<Card item={mockItemData} previewObj={mockPreviewObj} />);
+	});
 
 	const title = screen.getByText('Breaking Bad');
 	expect(title).toBeInTheDocument();
 	const coverPhotoElement = screen.getByRole('img');
 	expect(coverPhotoElement).toBeInTheDocument();
-
 });
