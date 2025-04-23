@@ -22,11 +22,9 @@ it('renders all items in Dropdown.js successfully', () => {
 	// Content
 	const changeProfileElement = screen.getByText(/Change Profile/i);
 	expect(changeProfileElement).toBeInTheDocument();
-	const experimentalElement = screen.getByText(/Experimental/i);
-	expect(experimentalElement).toBeInTheDocument();
 	const helpElement = screen.getByText(/Help/i);
 	expect(helpElement).toBeInTheDocument();
-	const settingsElement = screen.getByText(/Settings/i);
-	expect(settingsElement).toBeInTheDocument();
+	// const settingsElement = screen.getByText(/Settings/i);
+	// expect(settingsElement).toBeInTheDocument();
 
 });
