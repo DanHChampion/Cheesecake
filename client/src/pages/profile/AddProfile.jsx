@@ -1,7 +1,7 @@
 import './Profile.scss';
 import apiRequest from '../../hooks/apiRequest.js';
 import { useState } from 'react';
-import ChangeIcon from '../../components/ChangeIcon';
+import ChangeIcon from '../../components/ChangeIcon.jsx';
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faTrash } from '@fortawesome/free-solid-svg-icons';

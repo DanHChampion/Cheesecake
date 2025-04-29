@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import NavBar from '../NavBar';
 
-it('renders all items in NavBar.js successfully', () => {
+it('renders all items in NavBar.jsx successfully', () => {
 	const mockUser = {
 		'id': '1',
 		'name': 'Dan',

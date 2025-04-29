@@ -1,8 +1,8 @@
 import './Home.scss';
-import Carousel from '../../components/Carousel.js';
-import Preview from '../../components/Preview.js';
-import Billboard from './Billboard.js';
-import usePreview from '../../hooks/usePreview';
+import Carousel from '../../components/Carousel.jsx';
+import Preview from '../../components/Preview.jsx';
+import Billboard from './Billboard.jsx';
+import usePreview from '../../hooks/usePreview.js';
 import { useEffect, useState } from 'react';
 
 const Home = () => {

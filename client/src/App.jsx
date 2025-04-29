@@ -1,17 +1,16 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Home from './pages/home/Home.js';
-import Users from './pages/users/Users.js';
-import Player from './pages/player/Player.js';
-import NotFound from './pages/notfound/NotFound.js';
-import EditProfile from './pages/profile/EditProfile.js';
-import AddProfile from './pages/profile/AddProfile.js';
-import Browse from './pages/browse/Browse.js';
-import Search from './pages/search/Search.js';
-// import Experimental from './pages/experimental/Experimental.js';
-import Help from './pages/help/Help.js';
-// import Settings from './pages/settings/Settings.js';
-import NavBar from './components/NavBar.js';
+import Home from './pages/home/Home.jsx';
+import Users from './pages/users/Users.jsx';
+import Player from './pages/player/Player.jsx';
+import NotFound from './pages/notfound/NotFound.jsx';
+import EditProfile from './pages/profile/EditProfile.jsx';
+import AddProfile from './pages/profile/AddProfile.jsx';
+import Browse from './pages/browse/Browse.jsx';
+import Search from './pages/search/Search.jsx';
+import Help from './pages/help/Help.jsx';
+// import Settings from './pages/settings/Settings.jsx';
+import NavBar from './components/NavBar.jsx';
 
 function App() {
 	const queryParameters = new URLSearchParams(window.location.search);

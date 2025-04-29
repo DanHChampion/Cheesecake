@@ -1,8 +1,8 @@
 import './Search.scss';
-import Preview from '../../components/Preview.js';
-import Card from '../../components/Card.js';
-import usePreview from '../../hooks/usePreview';
-import apiRequest from '../../hooks/apiRequest';
+import Preview from '../../components/Preview.jsx';
+import Card from '../../components/Card.jsx';
+import usePreview from '../../hooks/usePreview.js';
+import apiRequest from '../../hooks/apiRequest.js';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
