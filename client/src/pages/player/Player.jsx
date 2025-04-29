@@ -1,11 +1,11 @@
 import './Player.scss';
-import apiRequest from '../../hooks/apiRequest';
+import apiRequest from '../../hooks/apiRequest.js';
 import { useRef, useEffect , useState, useCallback } from 'react';
-import useFullscreenStatus from '../../hooks/useFullscreenStatus';
+import useFullscreenStatus from '../../hooks/useFullscreenStatus.js';
 // import PropTypes from 'prop-types';
-import getImage from '../../utils/getImage';
+import getImage from '../../utils/getImage.js';
 import mediaSource from '../../utils/mediaSource.js';
-import convertHMS from '../../utils/convertHMS';
+import convertHMS from '../../utils/convertHMS.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClosedCaptioning, faExpand, faMinimize, faPause, faPlay, faRotateForward, faRotateBackward, faChevronLeft, faForwardStep } from '@fortawesome/free-solid-svg-icons';
 

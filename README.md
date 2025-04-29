@@ -64,15 +64,15 @@ cp .env.example .env
 ```
 
 ### Client .env variables
-`REACT_APP_BACKEND_URL`
+`VITE_BACKEND_URL`
 - This is the URL of the server. If you are running the server locally, this should be `http://localhost:5000`.
 - If you are running the server on a different port, update this variable to match the port.
 
-`REACT_APP_TMDB_API_KEY`
+`VITE_TMDB_API_KEY`
 - This is the API key for The Movie Database (TMDB). You can get a free API key by signing up at [TMDB](https://www.themoviedb.org/).
 - This is only used when fetching movie and TV show data from TMDB. If you are using your own movie and TV show data, you can leave this variable blank.
 
-`REACT_APP_USE_TMDB_API`
+`VITE_USE_TMDB_API`
 - This is a boolean value that determines whether to use the TMDB API or not. If you are using your own movie and TV show data, set this variable to `false` or `0`.
 
 `HOST`
@@ -128,7 +128,7 @@ cp .env.example .env
 
 `ALLOWED_ORIGINS`
 - This is a comma-separated list of allowed origins for CORS.
-- If you are running the client and server on different domains, update this variable to match the domain of the client. For example, `http://localhost:3000`.
+- If you are running the client and server on different domains, update this variable to match the domain of the client. For example, `http://localhost:5173`.
 
 ## Running the application
 To run the application, you need to start both the client and the server. You can do this by running the following commands in separate terminal windows:

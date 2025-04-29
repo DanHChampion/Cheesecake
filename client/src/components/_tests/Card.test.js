@@ -3,7 +3,7 @@ import { act } from 'react';
 import '@testing-library/jest-dom';
 import Card from '../Card';
 
-it('renders all items in Card.js successfully', () => {
+it('renders all items in Card.jsx successfully', () => {
 	const mockItemData = {
 		title: 'Breaking Bad'
 	};

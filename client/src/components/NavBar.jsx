@@ -1,6 +1,6 @@
 import './NavBar.scss';
-import Dropdown from './Dropdown.js';
-// import Notification from './Notification.js';
+import Dropdown from './Dropdown.jsx';
+// import Notification from './Notification.jsx';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faPlus, faFilm, faTvAlt, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';

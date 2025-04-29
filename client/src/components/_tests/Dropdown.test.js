@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Dropdown from '../Dropdown';
 
-it('renders all items in Dropdown.js successfully', () => {
+it('renders all items in Dropdown.jsx successfully', () => {
 	const mockUser = {
 		'id': '1',
 		'name': 'Dan',
