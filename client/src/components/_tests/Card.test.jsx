@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { act } from 'react';
 import '@testing-library/jest-dom';
 import Card from '../Card';
 
@@ -14,9 +13,7 @@ it('renders all items in Card.jsx successfully', () => {
 		closePreview: null
 	};
 
-	act(() => {
-		render(<Card item={mockItemData} previewObj={mockPreviewObj} />);
-	});
+	render(<Card item={mockItemData} previewObj={mockPreviewObj} />);
 
 	const title = screen.getByText('Breaking Bad');
 	expect(title).toBeInTheDocument();
