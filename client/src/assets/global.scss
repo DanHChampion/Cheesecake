@@ -5,7 +5,7 @@
 }
 
 // Cheesecake Colours:
-// Light: #fdeca6 
+// Light: #fdeca6
 // Dark: #a47d53
 
 // General Variables
@@ -23,7 +23,7 @@ $colour-scheme: dark;
 // Navbar
 $navbar-bg-colour: $bg-darker-colour;
 $navbar-font-colour: $font-colour;
-$navbar-font-size: 16px;
+$navbar-font-size: 14px;
 $navbar-icon-colour: $navbar-font-colour;
 $navbar-height: 60px;
 $navbar-logo: url('../assets/logo.png');
@@ -60,8 +60,6 @@ $notifications-font-colour: $font-colour;
 $notifications-border-radius: 5px;
 
 
-
-
 html {
   scroll-behavior: smooth;
   background-color: $bg-colour;
@@ -72,9 +70,9 @@ body {
   margin: 0;
   font-family: $font-family;
   background-color: $bg-colour;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  // -webkit-user-select: none; /* Safari */
+  // -ms-user-select: none; /* IE 10 and IE 11 */
+  // user-select: none; /* Standard syntax */
 }
 
 .App {

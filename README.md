@@ -126,6 +126,10 @@ cp .env.example .env
 - This is the port that the server will run on. If you are running the server locally, this should be `5000`.
 - If you are running the server on a different port, update this variable to match the port.
 
+`ALLOWED_ORIGINS`
+- This is a comma-separated list of allowed origins for CORS.
+- If you are running the client and server on different domains, update this variable to match the domain of the client. For example, `http://localhost:3000`.
+
 ## Running the application
 To run the application, you need to start both the client and the server. You can do this by running the following commands in separate terminal windows:
 ```bash
@@ -137,6 +141,6 @@ cd server
 npm start
 ```
 
-# 🎬 Enjoy your movies and TV shows! 📺
+## 🎬 Enjoy your movies and series! 📺
 
 

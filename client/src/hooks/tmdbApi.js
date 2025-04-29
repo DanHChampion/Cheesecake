@@ -7,7 +7,7 @@ const USE_API = process.env.REACT_APP_USE_TMDB_API;
 export default function tmdbApi() {
 
 	const get = async (endpoint, callback) => {
-		if (!USE_API) return;
+		if (USE_API === 'false') return;
 		axios.get(URL + endpoint + 'api_key=' + API_KEY)
 			.then(callback)
 			.catch(err => {

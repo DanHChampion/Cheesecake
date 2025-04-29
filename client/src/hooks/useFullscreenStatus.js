@@ -1,3 +1,4 @@
+// Code sourced from: https://stackoverflow.com/questions/64485142/is-fullscreenchange-event-supported-in-react
 import { useState , useLayoutEffect } from 'react';
 
 export default function useFullscreenStatus(elRef) {
@@ -40,5 +41,3 @@ function getBrowserFullscreenElementProp() {
 		throw new Error('fullscreenElement is not supported by this browser');
 	}
 }
-
-// Code sourced from: https://stackoverflow.com/questions/64485142/is-fullscreenchange-event-supported-in-react

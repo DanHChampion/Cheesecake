@@ -31,6 +31,9 @@ router.get('/movies', async (req, res) => {
 			});
 		}
 	}
+	if (response.length === 0) {
+		return res.status(404).send();
+	}
 	res.json(response);
 });
 
@@ -53,6 +56,9 @@ router.get('/series', async (req, res) => {
 				'path': name,
 			});
 		}
+	}
+	if (response.length === 0) {
+		return res.status(404).send();
 	}
 	res.json(response);
 });
