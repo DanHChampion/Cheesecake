@@ -7,7 +7,7 @@
 </p>
 
 ## Description
-*Cheesecake* is a web application that allows you to stream your movies and TV shows from your own server. It is designed to be easy to use and set up, with a focus on simplicity and performance. It's my alternative to Plex or Jellyfin! *Cheesecake* is built using the **MERN** stack **(MongoDB, Express.js, React.js, Node.js)** and is designed to be self-hosted.
+*Cheesecake* is a web application that allows you to stream your movies and TV shows from your own server. It is designed to be easy to use and set up, with a focus on simplicity and performance. It's my alternative to [Plex](https://www.plex.tv/) or [Jellyfin](https://jellyfin.org/)! *Cheesecake* is built using the **MERN** stack **(MongoDB, Express.js, React.js, Node.js)** and is designed to be self-hosted.
 
 ## Current Features
 - **Stream** your movies and TV shows from your own server
