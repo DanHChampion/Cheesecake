@@ -8,16 +8,16 @@
 
     margin: 20px 0px;
 
-    height: 60vh;
+    height: $billboard-height;
     width: 90vw;
     overflow: hidden;
-    filter: drop-shadow(0 10px 10px $bg-darker-colour);
+    filter: drop-shadow(0 10px 5px $billboard-drop-shadow-colour);
 
     .img-wrapper{
         position: relative;
         width: 100%;
         height: 100%;
-        background: $card-bg-colour;
+        background: $billboard-bg-colour;
         overflow: hidden;
         border-radius: 20px;
 
@@ -40,7 +40,7 @@
         border-radius: 50%;
         outline: none;
         border: none;
-        background-color: $bg-lighter-colour;
+        background-color: $billboard-bg-colour;
         transition: 150ms;
         color: white;
         font-size: 25px;

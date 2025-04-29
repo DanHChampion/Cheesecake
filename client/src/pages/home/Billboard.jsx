@@ -10,6 +10,7 @@ const Billboard = () => {
 
 	const [item,setItem] = useState(null);
 	const [missingTitleImage, setMissingTitleImage] = useState(null);
+	const [noVideos, setNoVideos] = useState(false);
 
 	useEffect(() => {
 		getRandomItem();
@@ -22,13 +23,22 @@ const Billboard = () => {
 				let rgn = Math.floor(Math.random()*res.data.length);
 				console.log(rgn);
 				setItem(res.data[rgn]);
+			} else if (err.response.status === 404) {
+				console.log('No items found!');
+				setNoVideos(true);
 			}
 		});
 	};
 
 	return(
 		<div className="Billboard">
-			{item &&
+			{noVideos &&
+				<div className='no-videos'>
+					<h1>No videos found!</h1>
+					<p>Try adding some videos to your library or check your configuration.</p>
+				</div>
+			}
+			{item && !noVideos &&
 				<div className='img-wrapper'>
 					<img className='poster' src={getImage(item.title+'/preview.jpg')} alt={item.title +' Poster'} onError={(e) => e.target.style.display = 'none'}/>
 					<div className='button-container'>

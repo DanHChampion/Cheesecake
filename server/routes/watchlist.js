@@ -3,11 +3,19 @@ const router = express.Router();
 const Watchlist = require('../models/watchlist');
 const getUser = require('../helpers/getUser');
 const createWatchlist = require('../helpers/createWatchlist');
+const hasContent = require('../helpers/hasContent');
 
 /**
  * GET - Watchlist of a user
  */
 router.get('/:id', getUser, async (req, res) => {
+	if (!req.params.id) {
+		return res.status(400).json({ message: 'Bad formatting' });
+	}
+	// check if any videos are available
+	if (!(await hasContent())) {
+		return res.status(404).json({ message: 'No content available' });
+	}
 	try {
 		const watchlist = await Watchlist.find({userId: res.user._id});
 		res.json(watchlist);
@@ -20,6 +28,9 @@ router.get('/:id', getUser, async (req, res) => {
  * POST - Add new item to user's Watchlist
  */
 router.post('/:id', getUser, async (req, res) => {
+	if (!req.params.id) {
+		return res.status(400).json({ message: 'Bad formatting' });
+	}
 	try {
 		const currentWatchlist = await Watchlist.find({userId: res.user._id});
 		if (req.body.title !== undefined) {
@@ -42,7 +53,10 @@ router.post('/:id', getUser, async (req, res) => {
  * DELETE - Item from user's Watchlist given Item Id
  */
 router.delete('/:id/:wid', getUser, async (req, res) => {
-	// Validate REQ.BODY
+	if (!req.params.id || !req.params.wid) {
+		return res.status(400).json({ message: 'Bad formatting' });
+	}
+	// Validate req.body
 	try {
 		const userWatchlist = await Watchlist.find({userId: res.user._id});
 		const wid = req.params.wid;

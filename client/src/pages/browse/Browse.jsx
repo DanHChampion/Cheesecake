@@ -38,6 +38,8 @@ const Browse = ({type}) => {
 				if (res.data.length == 0 && type == 'watchlist') {
 					setMessage('Find movies and series to add to your watchlist!');
 				}
+			} else if (err.response.status === 404) {
+				setMessage('No videos found!');
 			}
 		});
 	};
@@ -66,7 +68,7 @@ const Browse = ({type}) => {
 						))}
 					</div>
 				}
-				{message}
+				{message && <h2>{message}</h2>}
 			</div>
 		</div>
 	);

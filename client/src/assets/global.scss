@@ -44,7 +44,7 @@ $card-font-colour: $font-colour;
 $card-hover-colour: $highlight-colour;
 $card-progress-bar-left-colour: $primary-colour;
 $card-progress-bar-right-colour: #eeeeee2c;
-$card-drop-shadow-colour: transparent;
+$card-drop-shadow-colour: black;
 
 // Dropdown
 $dropdown-bg-colour: $bg-darker-colour;
@@ -58,6 +58,15 @@ $dropdown-border-radius: 5px;
 $notifications-bg-colour: $bg-darker-colour;
 $notifications-font-colour: $font-colour;
 $notifications-border-radius: 5px;
+
+// Billboard
+$billboard-bg-colour: $bg-darker-colour;
+$billboard-font-colour: $font-colour;
+$billboard-font-size: 14px;
+$billboard-border-radius: 5px;
+$billboard-height: 60vh;
+$billboard-drop-shadow-colour: black;
+
 
 
 html {
