@@ -9,14 +9,16 @@
     width: 100%;
     transition: $transition;
     height: calc($card-height + 50px);
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 
     .header{
         font-size: $header-font-size;
         letter-spacing: 1px;
         font-weight: bold;
         text-align: left;
-        width: 90%;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 60px;
     }
 
     .main {
