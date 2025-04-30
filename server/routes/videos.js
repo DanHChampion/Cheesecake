@@ -4,6 +4,7 @@ const router = express.Router();
 const { existsSync } = require('fs');
 const getMediaFiles = require('../helpers/getMediaFiles');
 const getDirectories = require('../helpers/getDirectories');
+
 const videoDir = process.env.VIDEODIR? process.env.VIDEODIR : './videos';
 // TO-BE FIXED
 // if (!existsSync(videoDir)) {
@@ -12,7 +13,7 @@ const videoDir = process.env.VIDEODIR? process.env.VIDEODIR : './videos';
 console.log('Video Directory:',videoDir);
 
 /**
- * GET - All Movies
+ * GET - All movies
  */
 router.get('/movies', async (req, res) => {
 	if (!existsSync(videoDir+'/Movies')) {
@@ -38,7 +39,7 @@ router.get('/movies', async (req, res) => {
 });
 
 /**
- * GET - All Series
+ * GET - All series
  */
 router.get('/series', async (req, res) => {
 	if (!existsSync(videoDir+'/Series')) {
@@ -64,7 +65,7 @@ router.get('/series', async (req, res) => {
 });
 
 /**
- * GET - All Seasons of given Series
+ * GET - All seasons of given series
  */
 router.get('/series/seasons/:title', async (req, res) => {
 	if (!existsSync(videoDir+'/Series/'+req.params.title)) {
@@ -75,7 +76,7 @@ router.get('/series/seasons/:title', async (req, res) => {
 });
 
 /**
- * GET - All Episodes in a Season
+ * GET - All episodes in a season
  */
 router.get('/series/:title/:season', async (req, res) => {
 	const season = req.params.season;
@@ -98,7 +99,7 @@ router.get('/series/:title/:season', async (req, res) => {
 });
 
 /**
- * GET - Getting Next Episode based on given Episode
+ * GET - Getting next episode based on given episode
  */
 router.get('/series/:title/:season/:episode', async (req, res) => {
 	const season = req.params.season;
@@ -122,11 +123,11 @@ router.get('/series/:title/:season/:episode', async (req, res) => {
 		const firstEpisodeOfNextSeason = nextSeasonEpisodeList[0];
 		return res.json(`${nextSeason}/${firstEpisodeOfNextSeason}`);
 	}
-	return res.json(null);
+	return res.status(404).send();
 });
 
 /**
- * GET - All Videos (Movies + Series)
+ * GET - All videos (Movies + Series)
  */
 router.get('/all', async (req, res) => {
 	let response = [];
@@ -163,6 +164,47 @@ router.get('/all', async (req, res) => {
 		return res.status(404).send();
 	}
 	res.json(response);
+});
+
+/**
+ * GET - A random video (Movies + Series)
+ */
+router.get('/random', async (req, res) => {
+	let response = [];
+	let index = 0;
+	if (existsSync(videoDir+'/Movies')) {
+		const moviesList = await getDirectories(videoDir+'/Movies');
+		for (const movieTitle of moviesList) {
+			let validFiles = await getMediaFiles(videoDir+'/Movies/'+movieTitle);
+			if (validFiles[0] !== undefined) {
+				response.push({
+					'_id': index++,
+					'title': movieTitle,
+					'type':'movie',
+					'path': `${movieTitle}/${validFiles[0]}`,
+				});
+			}
+		}
+	}
+	if (existsSync(videoDir+'/Series')) {
+		const seriesList = await getDirectories(videoDir+'/Series');
+		for (const seriesTitle of seriesList) {
+			let validDirectories = await getDirectories(videoDir+'/Series/'+seriesTitle);
+			if (validDirectories[0] !== undefined) {
+				response.push({
+					'_id': index++,
+					'title': seriesTitle,
+					'type':'series',
+					'path': seriesTitle,
+				});
+			}
+		}
+	}
+	if (response.length === 0) {
+		return res.status(404).send();
+	}
+	const randomIndex = Math.floor(Math.random() * response.length);
+	res.json(response[randomIndex]);
 });
 
 module.exports = router;

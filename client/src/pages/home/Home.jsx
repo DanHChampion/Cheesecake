@@ -28,8 +28,7 @@ const Home = () => {
 			<div className='page-content'>
 				{visibleModal && <Preview previewObj={previewObj}/>}
 
-				<Billboard/>
-				{/* <Carousel label={'Recommended'} previewObj={previewObj} endpoint={'recommend'}/> */}
+				<Billboard previewObj={previewObj}/>
 				<Carousel label={'Continue watching for ' + userObject.name} previewObj={previewObj} type={'CW'} endpoint={'continuewatching/' + userObject._id}/>
 				<Carousel label={'Movies'} previewObj={previewObj} endpoint={'videos/movies'}/>
 				<Carousel label={'Series'} previewObj={previewObj} endpoint={'videos/series'}/>

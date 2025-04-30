@@ -31,51 +31,40 @@
         }
     }
 
-    .exit{
-        @extend .clickable;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 1;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        outline: none;
-        border: none;
-        background-color: $billboard-bg-colour;
-        transition: 150ms;
-        color: white;
-        font-size: 25px;
-    }
-    .exit:hover{
-        transform: scale(0.9);
-    }
-    .button-container{
-        @extend .flex-center;
-        flex-direction: row;
+    .details-container{
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
         position: absolute;
         z-index: 1;
         bottom: 80px;
         left: 80px;
         width: fit-content;
+        height: fit-content;
+        padding: 20px 30px;
+        border-radius: 20px;
+        gap: 20px;
 
         img{
             // Title card
-            position: absolute;
-            max-width: 250px;
-            max-height: 200px;
-            bottom: 80px;
+            max-width: 400px;
+            max-height: 300px;
         }
         h1{
             // Title
-            position: absolute;
             width: 500px;
             max-height: 200px;
-            left: 0px;
-            bottom: 80px;
             font-size: 24px;
             text-align: left;
         }
+    }
+
+    .button-container{
+        @extend .flex-center;
+        flex-direction: row;
+        z-index: 1;
+        width: fit-content;
 
         .button {
             @extend .flex-center, .clickable;
@@ -87,38 +76,35 @@
             border: none;
             outline: none;
             margin: 5px;
-            font-size: 15px;
+            font-size: 16px;
             font-family: inherit;
             white-space: nowrap;
             transition: 200ms;
             filter: drop-shadow(0 8px 6px black);
             font-weight: bold;
+            box-sizing: border-box;
 
             svg{
                 margin-right: 15px;
                 font-size: 20px;
             }
+
+            &:hover{
+                background-color: darken(white, 20%);
+            }
         }
-        .icon-button{
-            @extend .flex-center, .clickable;
-            z-index: 1;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .info{
             outline: none;
-            border: 2px white solid;
             background-color: $bg-lighter-colour;
             transition: 150ms;
             color: white;
-            font-size: 25px;
-            opacity: 70%;
             margin: 0 10px;
-        }
-        .icon-button:hover{
-            opacity: 100%;
-        }
-        .button:hover{
-            background-color: lightgrey;
+            padding: 15px 20px;
+
+
+            &:hover{
+                background-color: $bg-colour;
+            }
         }
     }
 

@@ -48,9 +48,6 @@ router.post('/', async (req, res) => {
  * PATCH - Update User details from ID
  */
 router.patch('/:id', getUser, async (req, res) => {
-	if (!req.params.id) {
-		return res.status(400).json({ message: 'Bad formatting' });
-	}
 	const previousName = res.user.name;
 	const previousAvatar = res.user.avatar;
 	if (req.body.name == previousName && req.body.avatar == previousAvatar) {

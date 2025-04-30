@@ -21,6 +21,7 @@ const Preview = ({ previewObj }) => {
 	useEffect(() => {
 		setUserObject(getUserObject());
 		getWatchlist();
+		getContinueWatching(itemData);
 	},[]);
 
 	const [userObject,setUserObject] = useState(getUserObject());
@@ -30,6 +31,15 @@ const Preview = ({ previewObj }) => {
 	const [keywords, setKeywords] = useState();
 	const [watchlistItem, setWatchlistItem] = useState(null);
 	const [missingTitleImage, setMissingTitleImage] = useState(null);
+	const [cwItem, setCwItem] = useState(null);
+
+	const getContinueWatching = (item) => {
+		apiRequest().get(`continuewatching/${userObject._id}/${item.title}`, (res, err) => {
+			if(!err) {
+				setCwItem(res.data);
+			}
+		});
+	};
 
 	useEffect(() => {
 		const searchEndpoint = 'search/'+ type +'?query='+encodeURIComponent(name)+'&';
@@ -151,9 +161,11 @@ const Preview = ({ previewObj }) => {
 						<div className='button-container'>
 							<img src={getImage(itemData.title+'/title.png')} alt={itemData.title +' Title'} onError={(e) => {e.target.style.display = 'none'; setMissingTitleImage(true);}}/>
 							{missingTitleImage && <h1>{itemData.title}</h1>}
-							<a href={'/watch/?type=' + itemData.type +'&path=' + encodeURIComponent(itemData.path)} className='play-button'>
-								<FontAwesomeIcon icon={faPlay}/> PLAY
-							</a>
+							{cwItem &&
+								<a href={'/watch/?type=' + cwItem.type +'&path=' + encodeURIComponent(cwItem.path) + (cwItem.timestamp? `&start=${cwItem.timestamp}`: '')} className='play-button'>
+									<FontAwesomeIcon icon={faPlay}/> PLAY
+								</a>
+							}
 							<button className='icon-button' onClick={() => {handleWatchlist();}}>
 								<FontAwesomeIcon icon={watchlistItem ? faCheck :faPlus} />
 							</button>
