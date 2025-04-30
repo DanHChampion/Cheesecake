@@ -38,12 +38,13 @@
     }
 
     .grid{
+        $cards: 8; 
         width: 100%;
         max-width: 100%;
         padding: 20px 100px ;
         display: grid;
         row-gap: 25px;
-        grid-template-columns: repeat(8, auto);
+        grid-template-columns: repeat($cards, calc(100% /$cards));
         height: fit-content;
 
     }

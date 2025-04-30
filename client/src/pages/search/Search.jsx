@@ -47,7 +47,7 @@ const Search = ({ search }) => {
 				</div>
 			}
 			{(items == null || items.length == 0) &&
-				<span> No Results Found!</span>
+				<h2> No Results Found!</h2>
 			}
 		</div>
 	);
