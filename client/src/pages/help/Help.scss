@@ -6,12 +6,6 @@
     padding-top: $navbar-height;
     height: calc(100% - $navbar-height);
 
-    h1{
-        position: absolute;
-        top: 140px;
-        font-size: 40px;
-    }
-
     .container {
         @extend .flex-center;
         flex-direction: column;
@@ -19,6 +13,10 @@
         justify-content: center;
         width: 500px;
 
+        h1{
+            font-size: 40px;
+            margin: 0px;
+        }
 
         .item{
             @extend .flex-center;

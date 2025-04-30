@@ -9,7 +9,7 @@ import AddProfile from './pages/profile/AddProfile.jsx';
 import Browse from './pages/browse/Browse.jsx';
 import Search from './pages/search/Search.jsx';
 import Help from './pages/help/Help.jsx';
-// import Settings from './pages/settings/Settings.jsx';
+import Settings from './pages/settings/Settings.jsx';
 import NavBar from './components/NavBar.jsx';
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
 				<Route path="/series" element={<Browse type='series'/>} />
 				<Route path="/search" element={<Search search={search}/>} />
 				<Route path="/help" element={<Help/>} />
-				{/* <Route path="/settings" element={<Settings/>} /> */}
+				<Route path="/settings" element={<Settings/>} />
 				<Route path="/*" element={<NotFound/>} />
 			</Routes>
 		</div>

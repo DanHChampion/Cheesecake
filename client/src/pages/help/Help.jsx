@@ -1,37 +1,31 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle , faBug, faFileLines } from '@fortawesome/free-solid-svg-icons';
+import { faBug, faFileLines } from '@fortawesome/free-solid-svg-icons';
 import './Help.scss';
 
 const Help = () => {
 
 	const pages = [
 		{
-			name: 'About',
-			icon: faInfoCircle,
-			description: 'Information about this website and its creator and more...',
-			link: '/about'
-		},
-		{
 			name: 'Report a Bug',
 			icon: faBug,
-			description: 'Report any issues (missing information, images or features not working).',
-			link: '/report'
+			description: 'Report any issues (certain features not working).',
+			link: 'https://github.com/DanHChampion/Cheesecake/issues/new'
 		},
 		{
 			name: 'Documentation',
 			icon: faFileLines,
-			description: 'Documentation for the REST API used in the backend.',
-			link: '/docs'
+			description: 'Documentation for Cheesecake and how to use it.',
+			link: 'https://github.com/DanHChampion/Cheesecake?tab=readme-ov-file#-installation-guide'
 		}
 	];
 
 	return (
 		<div className='Help'>
-			<h1>Help Centre</h1>
 			<div className='container'>
+			<h1>Help Centre</h1>
 				{pages &&
 					pages.map((page) => (
-						<a className='item' href={page.link} key={page.name}>
+						<a className='item' href={page.link} target='_blank' key={page.name}>
 							<FontAwesomeIcon className='icon' icon={page.icon}/>
 							<p className='name'>{page.name}</p>
 							<p className='description'>{page.description}</p>

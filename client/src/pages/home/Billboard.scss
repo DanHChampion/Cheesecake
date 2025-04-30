@@ -9,7 +9,9 @@
     margin: 20px 0px;
 
     height: $billboard-height;
-    width: 90vw;
+    width: 100%;
+    padding: 0px 60px;
+    box-sizing: border-box;
     overflow: hidden;
     filter: drop-shadow(0 10px 5px $billboard-drop-shadow-colour);
 
