@@ -227,7 +227,7 @@ describe('GET /videos/series/:title/:season/:episode', () => {
 		expect(response2.statusCode).toBe(200);
 		expect(response2.body).toEqual('Season2/Episode1.mp4');
 	});
-	it('responds with nullObject if next episode does not exist', async () => {
+	it('responds with 404 if next episode does not exist', async () => {
 		fsMock._setMockFiles({
 			'./videos/Series/Series1': [
 				new FakeDirent('Season1', true),
@@ -242,12 +242,10 @@ describe('GET /videos/series/:title/:season/:episode', () => {
 				new FakeDirent('Episode1.mp4'),
 				new FakeDirent('Episode2.mp4'),
 				new FakeDirent('Episode3.mp4')
-			],
-			'./videos/Series/Series1/Season2/Episode3.mp4': null,
+			]
 		});
 		const response = await request(app).get('/series/Series1/Season2/Episode3.mp4');
-		expect(response.statusCode).toBe(200);
-		expect(response.body).toBe(null);
+		expect(response.statusCode).toBe(404);
 	});
 	it('responds with 404 if episode is not found', async () => {
 		fsMock._setMockFiles({
