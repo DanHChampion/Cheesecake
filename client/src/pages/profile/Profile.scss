@@ -34,7 +34,7 @@
         p{
             width: 100%;
             font-size: 20px;
-            color: #777;
+            color: darken($font-colour,30%);
             margin: 5px;
         }
 
@@ -49,11 +49,11 @@
             border: 2px transparent solid;
             border-radius: 2px;
             background-color: $bg-lighter-colour;
-            color: white;
+            color: $font-colour;
             transition: 100ms;
         }
         .input-text:focus{
-            border: 2px white solid;
+            border: 2px $highlight-colour solid;
             background-color: transparent;
         }
 
@@ -62,25 +62,25 @@
             border-radius: 2px;
             padding: 10px 20px;
             letter-spacing: 1px;
-            border: 2px white solid;
+            border: 2px $highlight-colour solid;
             outline: none;
             margin: 5px;
             font-size: inherit;
             font-family: inherit;
             white-space: nowrap;
-            background-color: white;
-            color: black;
+            background-color: $font-colour;
+            color: $bg-colour;
         }
 
         a.button{
             background-color: transparent;
-            color: white;
+            color: $font-colour;
         }
 
         .delete {
-            border: 2px rgb(230, 51, 51) solid;
-            background-color: rgb(230, 51, 51);
-            color: white;
+            border: 2px $delete-button-bg-colour solid;
+            background-color: $delete-button-bg-colour;
+            color: $font-colour;
         }
     }
 }

@@ -14,14 +14,16 @@
 // General Variables
 $primary-colour: #EDBD59;
 // $secondary-colour: #a47d53;
-$bg-darker-colour: #1e1414; 
-$bg-colour: #2a1e1e;
-$bg-lighter-colour: #3b2a2a;
-$highlight-colour: #eeeeee;
+$bg-darker-colour: #1E1414; 
+$bg-colour: #2A1E1E;
+$bg-lighter-colour: #3B2A2A;
+$highlight-colour: #EEEEEE;
 $font-family: 'Varela Round','Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
-$font-colour: #eeeeee;
+$font-colour: #EEEEEE;
 $transition: 200ms;
 $colour-scheme: dark;
+
+$white: #EEEEEE;
 
 // Navbar
 $navbar-bg-colour: $bg-darker-colour;
@@ -66,10 +68,18 @@ $notifications-border-radius: 5px;
 $billboard-bg-colour: $bg-darker-colour;
 $billboard-font-colour: $font-colour;
 $billboard-font-size: 14px;
-$billboard-border-radius: 5px;
+$billboard-border-radius: 20px;
 $billboard-height: 60vh;
 $billboard-drop-shadow-colour: transparent;
 
+
+// Common
+$play-button-bg-colour: $highlight-colour;
+$play-button-font-colour: $bg-colour;
+$play-button-drop-shadow-colour: #0000002C;
+
+$delete-button-bg-colour: #E63333;
+$delete-button-font-colour: $font-colour;
 
 
 html {
@@ -82,9 +92,6 @@ body {
   margin: 0;
   font-family: $font-family;
   background-color: $bg-colour;
-  // -webkit-user-select: none; /* Safari */
-  // -ms-user-select: none; /* IE 10 and IE 11 */
-  // user-select: none; /* Standard syntax */
 }
 
 .App {
@@ -118,13 +125,20 @@ a{
   height: 100%;
 }
 
+.square {
+  aspect-ratio: 1/1;
+}
+
+.circle {
+  @extend .square;
+  border-radius: 50%;
+}
+
 .darken-overlay{
-  @extend .flex-center;
+  @extend .flex-center, .fill; 
   position: fixed;
   top: 0;
   left:0;
-  width: 100%;
-  height: 100%;
   background-color: #0c0c0cbe;
   opacity: 50%;
 }
@@ -150,6 +164,7 @@ a{
   overflow-x: hidden;
   margin-top: $navbar-height;
   height: calc(100vh - $navbar-height);
+  flex-direction: column;
 }
 
 .page-content {

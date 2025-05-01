@@ -61,16 +61,16 @@ const Settings = () => {
 	return (
 		<div className='Settings'>
 			<div className='main'>
-				<div className='header'>
-					<span>Settings</span>
-				</div>
+				<h1 className='header'>
+					Settings
+				</h1>
 				<div className='content'>
 					<section className='user-settings'>
-						<div className='left-section'>
+						<div className='left section'>
 							<h2>Profile</h2>
 							<p>Manage your profile settings.</p>
 						</div>
-						<div className='right-section'>
+						<div className='right section'>
 							<ChangeIcon inputIconPath={avatar} setState={setAvatar}/>
 							<input type='text' className='input-text' placeholder='Name' defaultValue={userObject.name} onChange={(e) => setName(e.target.value)}></input>
 							<button className='delete button' onClick={()=>{handleDelete();}}>Delete Profile</button>
@@ -86,11 +86,11 @@ const Settings = () => {
 						</div>
 					</section> */}
 					<section>
-						<div className='left-section'>
+						<div className='left section'>
 							<h2>Language</h2>
 							<p>Choose the language of the application.</p>
 						</div>
-						<div className='right-section'>
+						<div className='right section'>
 							<div className='select-wrapper'>
 								<Select options={['English']} value={language} setState={setLanguage}/>
 							</div>

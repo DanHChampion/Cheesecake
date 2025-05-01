@@ -15,7 +15,7 @@
     }
 
     .icon-wrapper{
-        @extend .flex-center;
+        @extend .flex-center, .clickable;
         width: 200px;
         height: 200px;
         overflow: hidden;
@@ -24,7 +24,6 @@
         transition: 300ms;
         font-size: 100px;
         position: relative;
-        cursor: pointer;
         
         img{
             @extend .fill;
@@ -33,27 +32,26 @@
         }
 
         .edit-icon{
+            @extend .circle;
             background-color: $bg-lighter-colour;
             padding: 10px;
-            border-radius: 50%;
             position: absolute;
             bottom: 8px;
             right: 8px;
             font-size: 15px;
         }
         .add-icon{
-            @extend .clickable;
+            @extend .clickable, .square;
             background-color: $bg-lighter-colour;
             padding: 100px;
             width: 60%;
-            height: 60%;
         }
         input {
             display: none;
         }
     }
     .icon-wrapper:hover{
-        border: 3px white solid;
+        border: 3px $highlight-colour solid;
         transform: scale(1.05);
     }
 

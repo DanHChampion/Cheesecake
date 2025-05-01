@@ -4,60 +4,48 @@
     @extend .page;
     display: flex;
     align-items: center;
-    flex-direction: column;
 
     .main {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 60vw;
+        @extend .page-content;
+        width: 60%;
+        max-width: 1000px;
         height: fit-content;
         margin: 20px 0;
         border-radius: 5px;
         box-sizing: border-box;
-        margin-bottom: 30px;
 
         .header{
+            @extend .flex-center;
             width: 100%;
             height: $navbar-height;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            margin-bottom: 20px;
-
-            span {
-                font-size: 30px;
-                text-transform: capitalize;
-                text-align: center;
-                font-weight: bold;
-                letter-spacing: 1px;
-                width: 100%;
-            }
+            margin: 0;
+            font-size: 30px;
+            text-transform: capitalize;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .content {
-            width: 100%;
-            display: flex;
+            @extend .flex-center;
             flex-direction: column;
-            align-items: center;
+            width: 100%;
             padding: 30px;
             border-radius: 20px;
             background-color: $bg-lighter-colour;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            margin: 20px 0;
             box-sizing: border-box;
         }
 
         section {
             display: flex;
-            flex-direction: row;
             width: 100%;
             height: fit-content;
-            border-top: 2px solid white;
-            padding: 10px;
+            border-top: 2px solid $bg-colour;
+            padding: 20px 10px;
 
-            .left-section {
-                width: 40%;
+            .left.section {
+                width: 35%;
                 min-width: 300px;
                 display: flex;
                 align-items: flex-start;
@@ -73,10 +61,10 @@
                     margin: 10px 0;
                 }
             };
-            .right-section {
+            .right.section {
                 padding: 0px 20px;
-                width: 60%;
-                color: white;
+                width: 65%;
+                color: $font-colour;
                 display: flex;
                 justify-content: flex-start;
                 align-items: flex-start;
@@ -90,7 +78,7 @@
 
         .user-settings {
             border-top: 0px;
-            .right-section {
+            .right.section {
                 height: 100%;
                 gap: 10px;
                 
@@ -104,30 +92,30 @@
                     border: 2px transparent solid;
                     border-radius: 2px;
                     background-color: $bg-colour;
-                    color: white;
+                    color: $font-colour;
                     transition: 100ms;
                     box-sizing: border-box;
                 }
                 .input-text:focus{
-                    border: 2px white solid;
+                    border: 2px $highlight-colour solid;
                     background-color: $bg-darker-colour;
                 }
 
                 .delete {
-                    border: 2px rgb(230, 51, 51) solid;
-                    background-color: rgb(230, 51, 51);
-                    color: white;
+                    border: 2px $delete-button-bg-colour solid;
+                    background-color: $delete-button-bg-colour;
+                    color: $delete-button-font-colour;
                     font-size: 16px;
                 }
             }
         }
 
         .footer {
-            width: 100%;
-            height: fit-content;
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            width: 100%;
+            height: fit-content;
             padding: 20px 0px;
             box-sizing: border-box;
             gap: 20px;
@@ -144,12 +132,10 @@
             border-radius: 2px;
             padding: 10px 20px;
             letter-spacing: 1px;
-            border: 2px white solid;
             outline: none;
             font-size: 20px;
             font-family: inherit;
             white-space: nowrap;
-            background-color: white;
             color: black;
         }
 
@@ -157,59 +143,6 @@
             @extend .flex-center;
             width: 350px;
             height: 100%;
-        }
-
-        /* The switch - the box around the slider */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        
-        /* Hide default HTML checkbox */
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        /* The slider */
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-            border-radius:20px;
-
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: $primary-colour;
-        }
-        
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
         }
     };
 }

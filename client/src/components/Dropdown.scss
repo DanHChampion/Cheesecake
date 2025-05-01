@@ -38,7 +38,7 @@
         }
     }
     a:hover .img-wrapper{
-        border: 1px white solid;
+        border: 1px $highlight-colour solid;
     }
     a:hover + .content,
     .content:hover{

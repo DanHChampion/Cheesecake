@@ -3,7 +3,7 @@ import Dropdown from './Dropdown.jsx';
 // import Notification from './Notification.jsx';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faPlus, faFilm, faTvAlt, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import getImage from '../utils/getImage.js';
 
@@ -21,14 +21,14 @@ const NavBar = ({ searchFunction }) => {
 
 	return(
 		<div className="NavBar">
-			<div className='left-container'>
+			<div className='left container'>
 				<a className='nav-item logo' href='/'></a>
-				<a className='nav-item' href='/'><FontAwesomeIcon className='icon' icon={faHouse}/><span>HOME</span></a>
-				<a className='nav-item' href='/watchlist'><FontAwesomeIcon className='icon' icon={faPlus}/><span>WATCHLIST</span></a>
-				<a className='nav-item' href='/movies'><FontAwesomeIcon className='icon' icon={faFilm}/><span>MOVIES</span></a>
-				<a className='nav-item' href='/series'><FontAwesomeIcon className='icon' icon={faTvAlt}/><span>SERIES</span></a>
+				<a className='nav-item' href='/'><span>Home</span></a>
+				<a className='nav-item' href='/watchlist'><span>Watchlist</span></a>
+				<a className='nav-item' href='/movies'><span>Movies</span></a>
+				<a className='nav-item' href='/series'><span>Series</span></a>
 			</div>
-			<div className='right-container'>
+			<div className='right container'>
 				<div className='search-container'>
 					<input id='searchbar' placeholder='Titles, peoples, genres' type='text' onChange={(e) => {searchFunction(e.target.value);}}/>
 					<label htmlFor='searchbar' className='button' ><FontAwesomeIcon className='big-icon' icon={faMagnifyingGlass}/></label>

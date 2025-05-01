@@ -54,7 +54,7 @@
         }
         .item:hover{
             transform: scale(1.03);
-            border: 3px solid white;
+            border: 3px $highlight-colour solid;
         }
     };
 }

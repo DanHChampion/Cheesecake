@@ -85,11 +85,10 @@
                 transition: 200ms;
             }
             ::-webkit-slider-thumb{
+                @extend .circle;
                 -webkit-appearance: none;
                 height: 18px;
-                width: 18px;
-                background: white;
-                border-radius: 50%;
+                background: $white;
             }
             ::-webkit-slider-runnable-track{
                 -webkit-appearance: none;
@@ -101,7 +100,7 @@
                 @extend .flex-center;
                 justify-content: flex-end;
                 font-size: 16px;
-                color: white;
+                color: $white;
                 height: 46px;
                 min-width: fit-content;
                 padding-left: 10px ;
@@ -111,7 +110,7 @@
                 position: absolute;
                 width: 3px;
                 height: 10px;
-                background: white;
+                background: $white;
                 display: none;
                 pointer-events: none;
 
@@ -168,7 +167,7 @@
                 font-size: 40px;
                 width: 60px;
                 background-color: transparent;
-                color: white;
+                color: $white;
                 outline: none;
                 border: none;
                 transition: 150ms;

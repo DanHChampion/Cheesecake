@@ -22,21 +22,6 @@
             font-weight: bold;
             letter-spacing: 1px;
         }
-        select {
-            font-family: inherit;
-            height: 36px;
-            text-transform: capitalize;
-            padding: 5px 10px;
-            font-size: 16px;
-            background-color: $bg-lighter-colour;
-            color: white;
-            outline: none;
-            border:none;
-            border-radius: 18px;
-        }
-        option{
-            background-color: $bg-lighter-colour;
-        }
 
     }
 
@@ -50,6 +35,4 @@
         grid-template-columns: repeat($cards, calc(100% /$cards));
         height: fit-content;
     }
-    
-
 }

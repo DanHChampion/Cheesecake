@@ -50,20 +50,17 @@
         display: flex;
     }
     button {
-        @extend .flex-center;
+        @extend .flex-center, .clickable, .circle;
         display: none;
         position: absolute;
+        width: 30px;
         top: 5px;
         right: 5px;
         outline: none;
         background: $bg-lighter-colour;
-        border-radius: 50%;
         border: none;
-        width: 30px;
-        height: 30px;
         color: $card-font-colour;
         font-size: 20px;
-        cursor: pointer;
         transition: $transition;
         opacity: 70%;
         pointer-events:visible;
