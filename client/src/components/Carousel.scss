@@ -1,0 +1,84 @@
+@import '../assets/global.scss';
+
+.Carousel{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transition: $transition;
+    height: calc($card-height + 50px);
+    margin-bottom: 30px;
+
+    .header{
+        font-size: $header-font-size;
+        letter-spacing: 1px;
+        font-weight: bold;
+        text-align: left;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 60px;
+    }
+
+    .main {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    
+        .wrapper {
+            width: 100%;
+            position: relative;
+            scroll-behavior: smooth;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 25px;
+    
+            .container {
+                width: fit-content;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin: 0 50px;
+            }
+        }
+        .scroll-arrow{
+            @extend .flex-center, .clickable;
+            position: absolute;
+            top: 10px;
+            z-index: 1;
+            background-color: $carousel-button-colour;
+            opacity: 0%;
+            height: calc($card-height + 4px);
+            aspect-ratio: 0.15;
+            transition: $transition;
+        }
+        .left-arrow{
+            left: 0;
+            border-top-right-radius: calc($card-border-radius/2);
+            border-bottom-right-radius: calc($card-border-radius/2);
+        }
+        .right-arrow{
+            right: 0;
+            border-top-left-radius: calc($card-border-radius/2);
+            border-bottom-left-radius: calc($card-border-radius/2);
+        }
+    }
+    
+    .main:hover .scroll-arrow{
+        opacity: $carousel-button-opacity;
+    }
+}
+    
+
+
+
+
+

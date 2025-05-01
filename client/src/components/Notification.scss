@@ -1,0 +1,43 @@
+@import '../assets/global.scss';
+@import './NavBar.scss';
+
+.Notification{
+    height: inherit;
+    position: relative;
+
+    .content{
+        @extend .flex-center;
+        transition: $transition;
+        position: absolute;
+        width: 200px;
+        height: 60px;
+        top: $navbar-height;
+        right: 0px;
+        display: flex;
+        flex-direction: column;
+        background-color: $notifications-bg-colour;
+        border: 1px solid $notifications-bg-colour;
+        opacity: 0;
+        border-bottom-left-radius: $notifications-border-radius;
+        border-bottom-right-radius: $notifications-border-radius;
+
+        .item{
+            padding: 10px;
+            text-align: left;
+            color: $notifications-font-colour;
+
+            svg{
+                padding: 0px 15px 0px 10px;
+            }
+        }
+    }
+   
+}
+
+.Notification:hover a svg{
+    @include jiggle(300ms);
+}
+
+.Notification:hover .content{
+    opacity: 1;
+}

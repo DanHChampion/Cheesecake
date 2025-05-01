@@ -1,0 +1,287 @@
+@import '../assets/global.scss';
+ 
+.Preview {
+    @extend .flex-center;
+    z-index: 3;
+    position: fixed;
+    top:0;
+    left: 0;
+
+    .scrollable-wrapper{
+        display: flex;
+        justify-content: center;
+        position:relative;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+        z-index: 2;
+        
+        .popup{
+            @extend .flex-center;
+            position:absolute;
+            background-color: $bg-colour;
+            width: 50vw;
+            min-height: fit-content;
+            top: calc($navbar-height/2);
+            z-index: 3;
+            flex-direction: column;
+            border-radius: 25px;
+            margin-bottom: 50px;
+            overflow: hidden;
+            
+            .img-wrapper{
+                position: relative;
+                width: 100%;
+                height: 28vw;
+                background: $card-bg-colour;
+
+                .poster{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .img-wrapper:after {
+                content: "";
+                position: absolute;
+                z-index: 1;
+                bottom: 0;
+                left: 0;
+                pointer-events: none;
+                background-image: linear-gradient(to bottom, rgba(255,255,255,0), $bg-colour 90%);
+                width: 100%;
+                height: 5em;
+            }
+
+            .button{
+                @extend .clickable;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                outline: none;
+                border: none;
+                border-radius: 50%;
+                background-color: $bg-lighter-colour;
+                color: white;
+            }
+
+            .exit{
+                top: 10px;
+                right: 10px;
+                z-index: 1;
+                transition: 150ms;
+                font-size: 25px;
+            }
+            .exit:hover{
+                transform: scale(0.9);
+            }
+            .more-buttons-wrapper{
+                position: absolute;
+                top: 10px;
+                right: 55px;
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+                background: $bg-lighter-colour;
+                z-index: 1;
+                transition: 150ms;
+
+                .add-image{
+                    @extend .flex-center;
+                    position: absolute;
+                    top: 0;
+                    right: 0px;
+                    z-index: 1;
+                    font-size: 20px;
+                    transition: 150ms;
+    
+                    label{
+                        @extend .clickable;
+                    }
+    
+                    input{
+                        display:none;
+                    }
+                    p{
+                        display: none;
+                        position: absolute;
+                        top: 35px;
+                        font-size: 16px;
+                        height: 20px;
+                        width: 180px;
+                    }
+                }
+                .add-image:hover{
+                    transform: scale(0.9);
+                    filter: brightness(1.4);
+                }
+                .add-image:hover p{
+                    display: block;
+                    text-shadow: 0 0 5px black;
+                }
+    
+                .coverphoto{
+                    z-index: 3;
+                }
+    
+                .coverphoto:hover ~ .preview{
+                    right: 45px;
+                }
+                .coverphoto:hover ~ .title{
+                    right: 90px;
+                }
+            }
+            .more-buttons-wrapper:hover{
+                width: 130px;
+            }
+            .more-buttons-wrapper:hover .preview{
+                right: 45px;
+            }
+            .more-buttons-wrapper:hover .title{
+                right: 90px;
+            }
+            
+
+            .button-container{
+                @extend .flex-center;
+                flex-direction: row;
+                position: absolute;
+                z-index: 1;
+                bottom: 80px;
+                left: 80px;
+                width: fit-content;
+
+                img{
+                    // Title card
+                    position: absolute;
+                    max-width: 250px;
+                    max-height: 200px;
+                    bottom: 80px;
+                }
+                h1{
+                    // Title
+                    position: absolute;
+                    width: 500px;
+                    max-height: 200px;
+                    left: 0px;
+                    bottom: 80px;
+                    font-size: 24px;
+                    text-align: left;
+                }
+
+                .play-button {
+                    @extend .flex-center, .clickable;
+                    border-radius: 2px;
+                    padding: 15px 30px;
+                    letter-spacing: 1px;
+                    background-color: white;
+                    color: black;
+                    border: none;
+                    outline: none;
+                    margin: 5px;
+                    font-size: 15px;
+                    font-family: inherit;
+                    white-space: nowrap;
+                    transition: 200ms;
+                    filter: drop-shadow(0 8px 6px black);
+                    font-weight: bold;
+
+                    svg{
+                        margin-right: 15px;
+                        font-size: 20px;
+                    }
+                }
+                .icon-button{
+                    @extend .flex-center, .clickable;
+                    z-index: 1;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    outline: none;
+                    border: 2px white solid;
+                    background-color: $bg-lighter-colour;
+                    transition: 150ms;
+                    color: white;
+                    font-size: 25px;
+                    opacity: 70%;
+                    margin: 0 10px;
+                }
+                .icon-button:hover{
+                    opacity: 100%;
+                }
+                .play-button:hover{
+                    background-color: darken(white, 20%);
+                }
+            }
+            .video-info{
+                @extend .flex-center;
+                flex-direction: row;
+                padding: 20px;
+                min-height: 25vh;
+                height: fit-content;
+                text-align: left;
+
+                .container{
+                    @extend .flex-center;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    height: 100%;
+                    flex-direction: column;
+                }
+                .left{
+                    width: 60%;
+                    .name{
+                        font-size: 30px;
+                        padding-bottom: 10px;
+                        font-weight: bold;
+                    }
+                    .year{
+                        padding-bottom: 10px;
+                        font-style: italic;
+                    }
+                }
+                .right{
+                    width: 40%;
+                    padding-left:30px;
+                    font-size: 0;
+                    span{
+                        color: grey;
+                        padding-bottom: 0;
+                        font-size: 16px;
+                    }
+
+                    .list{
+                        display: inline;
+                        padding-inline-start: 0;
+                        list-style: none;
+                        margin-bottom: 10px;
+
+                        .item{
+                            display: none;
+                        }
+                        .item.on { /* JavaScript-added class to reveal list items */
+                            display: inline;
+                            font-size: 16px;
+                          }
+    
+                        .item.on ~ .item.on::before {
+                            content: ', '; 
+                        }
+                    }
+                    
+                }
+                
+            }
+        }
+    }
+    // /* Hide scrollbar for Chrome, Safari and Opera */
+    // .scrollable-wrapper::-webkit-scrollbar {
+    //     display: none;
+    // }
+    
+    // /* Hide scrollbar for IE, Edge and Firefox */
+    // .scrollable-wrapper {
+    //     -ms-overflow-style: none;  /* IE and Edge */
+    //     scrollbar-width: none;  /* Firefox */
+    // }
+}

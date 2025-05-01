@@ -1,0 +1,83 @@
+@import '../assets/global.scss';
+
+.Card {
+    @extend .flex-center, .clickable;
+    position: relative;
+    height: $card-height;
+    aspect-ratio: $card-aspect-ratio;
+    margin: 0 8px;
+    transition: $transition all;
+    border-radius: $card-border-radius;
+    color: $card-font-colour;
+    overflow: hidden;
+    border: 2px transparent solid;
+    filter: drop-shadow(0 8px 4px $card-drop-shadow-colour);
+
+    .title{
+        @extend .flex-center, .fill;
+        background: $card-bg-colour;
+        position: absolute;
+    }
+
+    img{
+        @extend .flex-center, .fill;
+        position: absolute;
+        z-index: 1;
+        object-fit: cover;
+    }
+    .overlay {
+        @extend .flex-center, .fill;
+        position: relative;
+        background-color: #0c0c0c2a;
+        z-index: 2;
+        font-size: 50px;
+        transition: $transition;
+
+        span{
+            position: absolute;
+            height: 10px;
+            width: 100%;
+            background: 
+                linear-gradient(to right, $card-progress-bar-right-colour, $card-progress-bar-right-colour),
+                linear-gradient(to right, $card-progress-bar-left-colour, $card-progress-bar-left-colour);
+            background-size: 100% 0.5em, 0 0.5em;
+            background-position: 100% 100%, 0 100%;
+            background-repeat: no-repeat;
+            bottom: 0;
+        }
+    }
+    .overlay:hover + button{
+        display: flex;
+    }
+    button {
+        @extend .flex-center;
+        display: none;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        outline: none;
+        background: $bg-lighter-colour;
+        border-radius: 50%;
+        border: none;
+        width: 30px;
+        height: 30px;
+        color: $card-font-colour;
+        font-size: 20px;
+        cursor: pointer;
+        transition: $transition;
+        opacity: 70%;
+        pointer-events:visible;
+        z-index: 2;
+    }
+    button:hover{
+        opacity: 100%;
+        display: flex;
+    }
+}
+.Card:hover {
+    transform: scale(1.07);
+    border: 2px $card-hover-colour solid;
+}
+.Card:hover .overlay {
+    background-color: #0c0c0cbe;
+}

@@ -1,0 +1,159 @@
+// Imports 
+@font-face {
+  font-family: 'Varela Round';
+  src: url('VarelaRound-Regular.ttf') format('truetype');
+}
+
+// Cheesecake Colours:
+// Light: #fdeca6
+// Dark: #a47d53
+
+// New Colours:
+// Light: #EDBD59
+
+// General Variables
+$primary-colour: #EDBD59;
+// $secondary-colour: #a47d53;
+$bg-darker-colour: #1e1414; 
+$bg-colour: #2a1e1e;
+$bg-lighter-colour: #3b2a2a;
+$highlight-colour: #eeeeee;
+$font-family: 'Varela Round','Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+$font-colour: #eeeeee;
+$transition: 200ms;
+$colour-scheme: dark;
+
+// Navbar
+$navbar-bg-colour: $bg-darker-colour;
+$navbar-font-colour: $font-colour;
+$navbar-font-size: 14px;
+$navbar-icon-colour: $navbar-font-colour;
+$navbar-height: 60px;
+$navbar-logo: url('../assets/logo.png');
+$search-bar-bg-colour: transparent;
+$search-bar-highlight-colour: $navbar-icon-colour;
+
+// Carousel
+$header-font-size: 24px;
+$carousel-button-colour: $bg-darker-colour;
+$carousel-button-opacity: 90%;
+
+// Card
+$card-bg-colour: $bg-darker-colour; 
+$card-height: 16vw;
+$card-aspect-ratio: calc(2/3);
+$card-border-radius: 10px;
+$card-font-colour: $font-colour;
+$card-hover-colour: $highlight-colour;
+$card-progress-bar-left-colour: $primary-colour;
+$card-progress-bar-right-colour: #eeeeee2c;
+$card-drop-shadow-colour: transparent;
+
+// Dropdown
+$dropdown-bg-colour: $bg-darker-colour;
+$dropdown-hover-colour: $bg-colour;
+$dropdown-font-colour: $font-colour;
+$dropdown-font-size: 14px;
+$dropdown-icon-colour: $dropdown-font-colour;
+$dropdown-border-radius: 5px;
+
+// Notifications
+$notifications-bg-colour: $bg-darker-colour;
+$notifications-font-colour: $font-colour;
+$notifications-border-radius: 5px;
+
+// Billboard
+$billboard-bg-colour: $bg-darker-colour;
+$billboard-font-colour: $font-colour;
+$billboard-font-size: 14px;
+$billboard-border-radius: 5px;
+$billboard-height: 60vh;
+$billboard-drop-shadow-colour: transparent;
+
+
+
+html {
+  scroll-behavior: smooth;
+  background-color: $bg-colour;
+  color-scheme: $colour-scheme;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  background-color: $bg-colour;
+  // -webkit-user-select: none; /* Safari */
+  // -ms-user-select: none; /* IE 10 and IE 11 */
+  // user-select: none; /* Standard syntax */
+}
+
+.App {
+  position: absolute;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: $bg-colour;
+  color: $font-colour;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.flex-center {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.fill {
+  width: 100%;
+  height: 100%;
+}
+
+.darken-overlay{
+  @extend .flex-center;
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: #0c0c0cbe;
+  opacity: 50%;
+}
+
+@mixin jiggle($duration) {
+  animation: jiggle-anim $duration infinite;
+}
+
+@keyframes jiggle-anim {
+  0% {
+      transform: rotate(-.5deg);
+      animation-timing-function: ease-in;
+  }
+
+  50% {
+      transform: rotate(1deg);
+      animation-timing-function: ease-out;
+  }
+}
+
+.page{
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: $navbar-height;
+  height: calc(100vh - $navbar-height);
+}
+
+.page-content {
+  @extend .flex-center;
+  flex-direction: column;
+  height: fit-content;
+}
