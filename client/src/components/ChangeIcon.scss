@@ -32,7 +32,7 @@
             transition: 200ms;
         }
 
-        svg{
+        .edit-icon{
             background-color: $bg-lighter-colour;
             padding: 10px;
             border-radius: 50%;
@@ -40,6 +40,16 @@
             bottom: 8px;
             right: 8px;
             font-size: 15px;
+        }
+        .add-icon{
+            @extend .clickable;
+            background-color: $bg-lighter-colour;
+            padding: 100px;
+            width: 60%;
+            height: 60%;
+        }
+        input {
+            display: none;
         }
     }
     .icon-wrapper:hover{

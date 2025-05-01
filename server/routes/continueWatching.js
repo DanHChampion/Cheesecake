@@ -54,7 +54,6 @@ router.get('/:id/:title', getUser ,async (req, res) => {
 			basePath = `${title}/${validFiles[0]}`;
 		}
 	} else {
-		console.log('Title not found in video directory');
 		return res.status(404).send();
 	}
 

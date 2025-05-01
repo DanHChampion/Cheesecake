@@ -5,16 +5,28 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
 	destination: function (req, file, callback) {
-		const path = `./static/${req.params.title}`;
-		if (!existsSync(path)){
-			mkdirSync(path, { recursive: true });
+		let path = '';
+		if (file.fieldname === 'avatar') {
+			// ensure uploaded avatar is unique
+			path = './static/_avatars';
+		} else {
+			path = `./static/${req.params.title}`;
+			if (!existsSync(path)){
+				mkdirSync(path, { recursive: true });
+			}
 		}
 		console.log('Destination:', path);
 		callback(null, path);
 	},
 	filename: (req, file, callback) => {
-		const fileExt = file.fieldname === 'title'? '.png' :'.jpg';
-		callback(null, file.fieldname + fileExt);
+		if (file.fieldname === 'avatar') {
+			// ensure uploaded avatar is unique
+			const fileName = `new_avatar_${Date.now()}.png`;
+			callback(null, fileName);
+		} else {
+			const fileExt = file.fieldname === 'title'? '.png' :'.jpg';
+			callback(null, file.fieldname + fileExt);
+		}
 	}
 });
 
@@ -34,6 +46,14 @@ router.get('/avatars', async (req, res) => {
 		});
 	}
 	res.json(responseList);
+});
+
+/**
+ * POST - Upload Avatar Images
+ */
+router.post('/upload/avatar/:title', upload.single('avatar') , async (req, res) => {
+	console.log('Uploaded new avatar');
+	res.json(200);
 });
 
 /**

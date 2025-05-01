@@ -15,7 +15,8 @@
 
 # static files
 /static/*
-!/static/_avatars
+!/static/_avatars/Scott.jpg
+!/static/_avatars/Ramona.jpg
 
 # production
 /build

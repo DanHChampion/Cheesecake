@@ -142,17 +142,17 @@ const Preview = ({ previewObj }) => {
 					<div className='more-buttons-wrapper'>
 						<div className='add-image button coverphoto'>
 							<label htmlFor='coverphoto'><FontAwesomeIcon icon={faImages}/></label>
-							<input id='coverphoto' type='file' name='coverphoto' onChange={(e) => {handleSubmit(e);}}/>
+							<input id='coverphoto' type='file' name='coverphoto' accept="image/*" onChange={(e) => {handleSubmit(e);}}/>
 							<p>Change Poster</p>
 						</div>
 						<div className='add-image button preview'>
 							<label htmlFor='preview'><FontAwesomeIcon icon={faImages}/></label>
-							<input id='preview' type='file' name='preview' onChange={(e) => {handleSubmit(e);}}/>
+							<input id='preview' type='file' name='preview' accept="image/*" onChange={(e) => {handleSubmit(e);}}/>
 							<p>Change Preview Image</p>
 						</div>
 						<div className='add-image button title'>
 							<label htmlFor='title'><FontAwesomeIcon icon={faImages}/></label>
-							<input id='title' type='file' name='title' onChange={(e) => {handleSubmit(e);}}/>
+							<input id='title' type='file' name='title' accept="image/*" onChange={(e) => {handleSubmit(e);}}/>
 							<p>Change Title Image</p>
 						</div>
 					</div>

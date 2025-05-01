@@ -1,6 +1,6 @@
 import './ChangeIcon.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faPlus } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import getImage from '../utils/getImage';
 import apiRequest from '../hooks/apiRequest';
@@ -38,11 +38,31 @@ const ChangeIcon = ({inputIconPath, setState}) => {
 		});
 	};
 
+	function handleSubmit(event) {
+		event.preventDefault();
+		const fieldname = 'avatar';
+		let body = {};
+		body[fieldname] = event.target.files[0];
+		const config = {
+			headers: {
+				'content-type': 'multipart/form-data',
+			},
+		};
+		apiRequest().post('images/upload/'+ fieldname +'/new', body, config, (res, err) => {
+			if(!err) {
+				console.log(res.status);
+				getAvatars();
+			} else {
+				console.error(err);
+			}
+		});
+	}
+
 	return(
 		<div className="ChangeIcon">
 			<div onClick={() => {setPopup(true);}} className='icon-wrapper editable'>
 				{iconPath !== '' && <img src={getImage('_avatars/'+iconPath)}/>}
-				<FontAwesomeIcon icon={faPencil}/>
+				<FontAwesomeIcon icon={faPencil} className='edit-icon'/>
 			</div>
 			{popup && <div className='popup-wrapper'>
 				<div className='popup'>
@@ -58,6 +78,12 @@ const ChangeIcon = ({inputIconPath, setState}) => {
 									<img src={getImage('_avatars/'+ avatar.path)}/>
 								</div>
 							))}
+							<div className='icon-wrapper'>
+								<label htmlFor="avatar" className='add-icon'>
+									<FontAwesomeIcon icon={faPlus}/>
+								</label>
+								<input type="file" name="avatar" id="avatar" accept="image/*" onChange={handleSubmit}/>
+							</div>
 						</div>
 					</div>
 					}
