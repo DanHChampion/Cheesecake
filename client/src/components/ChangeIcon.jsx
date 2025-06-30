@@ -2,7 +2,7 @@ import './ChangeIcon.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faPlus } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-import getImage from '../utils/getImage';
+import getImage from '../utils/getStaticFile';
 import apiRequest from '../hooks/apiRequest';
 import { useState , useEffect } from 'react';
 

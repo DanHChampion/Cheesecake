@@ -2,7 +2,7 @@ import './Episodes.scss';
 import apiRequest from '../hooks/apiRequest';
 import { useState , useEffect } from 'react';
 import PropTypes from 'prop-types';
-import getImage from '../utils/getImage';
+import getImage from '../utils/getStaticFile';
 
 
 const Episodes = ({itemData}) => {

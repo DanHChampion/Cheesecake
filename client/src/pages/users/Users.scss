@@ -1,10 +1,11 @@
 @import '../../assets/global.scss';
+@import '../../assets/_theme.scss';
 
 .Users {
     @extend .flex-center;
     flex-direction: column;
     height: 100%;
-    font-family: $font-family;
+    font-family: var(--font-family);
 
     span {
         font-size: 35px;
@@ -25,11 +26,11 @@
         font-size: 20px;
         font-family: inherit;
         white-space: nowrap;
-        transition: 200ms;
+        transition: var(--transition);
     }
     .button:hover{
-        color: $font-colour;
-        border: 2px $highlight-colour solid;
+        color: var(--font-colour);
+        border: 2px var(--highlight-colour) solid;
     }
     
     .wrapper {
@@ -56,12 +57,9 @@
             overflow: hidden;
             border-radius: 10px;
             border: 3px transparent solid;
-            transition: 300ms;
+            transition: var(--transition);
             font-size: 100px;
             position: relative;
-            filter: drop-shadow(0 5px 5px $bg-darker-colour);
-
-
 
             img{
                 @extend .fill;
@@ -70,7 +68,7 @@
 
             .edit{
                 @extend .circle;
-                background-color: $bg-lighter-colour;
+                background-color: var(--bg-lighter-colour);
                 padding: 10px;
                 position: absolute;
                 bottom: 8px;
@@ -81,21 +79,20 @@
 
         }
         .icon-wrapper:hover{
-            border: 3px $highlight-colour solid;
+            border: 3px var(--highlight-colour) solid;
             transform: scale(1.05);
         }
         .jiggle{
             @include jiggle(300ms);
-            filter: drop-shadow(0 5px 5px $bg-darker-colour) brightness(0.75);
+            filter: brightness(0.75);
         }
         .jiggle:hover{
             animation-name: none;
-            filter: drop-shadow(0 5px 5px $bg-darker-colour);
         }
 
     }
     .item:has(.icon-wrapper:hover){
-        color: $font-colour
+        color: var(--font-colour);
     }
     
 }

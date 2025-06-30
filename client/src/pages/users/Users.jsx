@@ -3,7 +3,7 @@ import { useEffect , useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus , faPencil } from '@fortawesome/free-solid-svg-icons';
 import apiRequest from '../../hooks/apiRequest.js';
-import getImage from '../../utils/getImage.js';
+import getImage from '../../utils/getStaticFile.js';
 
 const Users = () => {
 	const [users, setUsers] = useState([]);

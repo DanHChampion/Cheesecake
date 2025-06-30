@@ -18,6 +18,9 @@
 !/static/_avatars/Scott.jpg
 !/static/_avatars/Ramona.jpg
 
+!/static/_themes/default.json
+!/static/_themes/light.json
+
 # production
 /build
 

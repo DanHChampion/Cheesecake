@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-import getImage from '../utils/getImage.js';
+import getImage from '../utils/getStaticFile.js';
 
 const NavBar = ({ searchFunction }) => {
 

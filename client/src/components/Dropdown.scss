@@ -6,39 +6,39 @@
     position: relative;
 
     .content{
-        transition: $transition;
+        transition: var(--transition);
         position: absolute;
         width: 200px;
         height: fit-content;
-        top: $navbar-height;
+        top: var(--navbar-height);
         right: 0px;
         display: flex;
         flex-direction: column;
-        background-color: $dropdown-bg-colour;
-        border: 1px solid $dropdown-bg-colour;
+        background-color: var(--dropdown-bg-colour);
+        border: 1px solid var(--dropdown-bg-colour);
         opacity: 0;
-        border-bottom-left-radius: $dropdown-border-radius;
-        border-bottom-right-radius: $dropdown-border-radius;
-        font-size: $dropdown-font-size;
+        border-bottom-left-radius: var(--dropdown-border-radius);
+        border-bottom-right-radius: var(--dropdown-border-radius);
+        font-size: var(--dropdown-font-size);
         pointer-events: none;
         
         .item{
             padding: 10px;
             text-align: left;
-            transition: $transition;
-            color: $dropdown-font-colour;
+            transition: var(--transition);
+            color: var(--dropdown-font-colour);
             svg{
                 padding: 0px 15px 0px 10px;
-                color: $dropdown-icon-colour;
+                color: var(--dropdown-icon-colour);
             }
         }
 
         .item:hover{
-            background-color: $dropdown-hover-colour;
+            background-color: var(--dropdown-hover-colour);
         }
     }
     a:hover .img-wrapper{
-        border: 1px $highlight-colour solid;
+        border: 1px var(--highlight-colour) solid;
     }
     a:hover + .content,
     .content:hover{

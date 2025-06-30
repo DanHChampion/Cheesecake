@@ -7,24 +7,24 @@
 
     .content{
         @extend .flex-center;
-        transition: $transition;
+        transition: var(--transition);
         position: absolute;
         width: 200px;
         height: 60px;
-        top: $navbar-height;
+        top: var(--navbar-height);
         right: 0px;
         display: flex;
         flex-direction: column;
-        background-color: $notifications-bg-colour;
-        border: 1px solid $notifications-bg-colour;
+        background-color: var(--notifications-bg-colour);
+        border: 1px solid var(--notifications-bg-colour);
         opacity: 0;
-        border-bottom-left-radius: $notifications-border-radius;
-        border-bottom-right-radius: $notifications-border-radius;
+        border-bottom-left-radius: var(--notifications-border-radius);
+        border-bottom-right-radius: var(--notifications-border-radius);
 
         .item{
             padding: 10px;
             text-align: left;
-            color: $notifications-font-colour;
+            color: var(--notifications-font-colour);
 
             svg{
                 padding: 0px 15px 0px 10px;

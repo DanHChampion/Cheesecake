@@ -11,6 +11,7 @@ import Search from './pages/search/Search.jsx';
 import Help from './pages/help/Help.jsx';
 import Settings from './pages/settings/Settings.jsx';
 import NavBar from './components/NavBar.jsx';
+import ThemeProvider from './components/ThemeProvider.jsx';
 
 function App() {
 	const queryParameters = new URLSearchParams(window.location.search);
@@ -32,31 +33,35 @@ function App() {
 	if(userObject === null) {
 		return (
 			<div id="app" className="App">
-				<Routes>
-					<Route path="/edit" element={<EditProfile/>} />
-					<Route path="/add" element={<AddProfile/>} />
-					<Route path="*" element={<Users/>} />
-				</Routes>
+				<ThemeProvider>
+					<Routes>
+						<Route path="/edit" element={<EditProfile/>} />
+						<Route path="/add" element={<AddProfile/>} />
+						<Route path="*" element={<Users/>} />
+					</Routes>
+				</ThemeProvider>
 			</div>
 		);
 	}
 
 	return (
 		<div id="app" className="App">
-			<NavBar searchFunction={handleSearch}/>
-			<Routes>
-				<Route path="/" element={<Home/>}/>
-				<Route path="/home" element={<Home/>} />
-				<Route path="/users" element={<Users/>} />
-				<Route path="/watch/*" element={<Player navigateTo={navigateTo}/>} />
-				<Route path="/watchlist" element={<Browse type='watchlist'/>} />
-				<Route path="/movies" element={<Browse type='movies'/>} />
-				<Route path="/series" element={<Browse type='series'/>} />
-				<Route path="/search" element={<Search search={search}/>} />
-				<Route path="/help" element={<Help/>} />
-				<Route path="/settings" element={<Settings/>} />
-				<Route path="/*" element={<NotFound/>} />
-			</Routes>
+			<ThemeProvider>
+				<NavBar searchFunction={handleSearch}/>
+				<Routes>
+					<Route path="/" element={<Home/>}/>
+					<Route path="/home" element={<Home/>} />
+					<Route path="/users" element={<Users/>} />
+					<Route path="/watch/*" element={<Player navigateTo={navigateTo}/>} />
+					<Route path="/watchlist" element={<Browse type='watchlist'/>} />
+					<Route path="/movies" element={<Browse type='movies'/>} />
+					<Route path="/series" element={<Browse type='series'/>} />
+					<Route path="/search" element={<Search search={search}/>} />
+					<Route path="/help" element={<Help/>} />
+					<Route path="/settings" element={<Settings/>} />
+					<Route path="/*" element={<NotFound/>} />
+				</Routes>
+			</ThemeProvider>
 		</div>
 	);
 }

@@ -21,19 +21,19 @@
         overflow: hidden;
         border-radius: 10px;
         border: 3px transparent solid;
-        transition: 300ms;
+        transition: var(--transition);
         font-size: 100px;
         position: relative;
         
         img{
             @extend .fill;
             object-fit: cover;
-            transition: 200ms;
+            transition: var(--transition);
         }
 
         .edit-icon{
             @extend .circle;
-            background-color: $bg-lighter-colour;
+            background-color: var(--bg-lighter-colour);
             padding: 10px;
             position: absolute;
             bottom: 8px;
@@ -42,7 +42,7 @@
         }
         .add-icon{
             @extend .clickable, .square;
-            background-color: $bg-lighter-colour;
+            background-color: var(--bg-lighter-colour);
             padding: 100px;
             width: 60%;
         }
@@ -51,7 +51,7 @@
         }
     }
     .icon-wrapper:hover{
-        border: 3px $highlight-colour solid;
+        border: 3px var(--highlight-colour) solid;
         transform: scale(1.05);
     }
 
@@ -67,7 +67,7 @@
         height: 100%;
         width: 100vw;
         z-index: 1;
-        background-color: $bg-colour;
+        background-color: var(--bg-colour);
         border-radius: 10px;
         flex-direction: column;
 

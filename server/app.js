@@ -44,6 +44,7 @@ const watchlistRoute = require('./routes/watchlist.js');
 const streamRoute = require('./routes/stream.js');
 const videoRoute = require('./routes/videos.js');
 const imageRoute = require('./routes/images.js');
+const themeRoute = require('./routes/themes.js');
 const continueWatchingRoute = require('./routes/continueWatching.js');
 
 app.use('/users', usersRoute);
@@ -51,6 +52,7 @@ app.use('/watchlist', watchlistRoute);
 app.use('/stream', streamRoute);
 app.use('/videos', videoRoute);
 app.use('/images', imageRoute);
+app.use('/themes', themeRoute);
 app.use('/continuewatching', continueWatchingRoute);
 
 // For static

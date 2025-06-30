@@ -1,5 +1,5 @@
 import './Billboard.scss';
-import getImage from '../../utils/getImage.js';
+import getImage from '../../utils/getStaticFile.js';
 import apiRequest from '../../hooks/apiRequest.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faPlay } from '@fortawesome/free-solid-svg-icons';

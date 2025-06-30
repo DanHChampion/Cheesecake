@@ -1,5 +1,5 @@
 import './Card.scss';
-import getImage from '../utils/getImage';
+import getImage from '../utils/getStaticFile';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faTimes } from '@fortawesome/free-solid-svg-icons';

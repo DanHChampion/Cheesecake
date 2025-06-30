@@ -1,0 +1,76 @@
+// Imports 
+@font-face {
+    font-family: 'Varela Round';
+    src: url('VarelaRound-Regular.ttf') format('truetype');
+}
+  
+
+// General Variables
+:root {
+    --primary-colour: #EDBD59;
+    --primary-darker-colour: #D6A03C;
+    --bg-darker-colour: #1E1414;
+    --bg-colour: #2A1E1E;
+    --bg-lighter-colour: #3B2A2A;
+    --highlight-colour: #EEEEEE;
+    --font-family: 'Varela Round','Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    --font-colour: #EEEEEE;
+    --transition: 400ms;
+    --colour-scheme: dark;
+
+    --white: #EEEEEE;
+    --black: #131313;
+
+    --navbar-bg-colour: var(--bg-darker-colour);
+    --navbar-font-colour: var(--font-colour);
+    --navbar-font-size: 14px;
+    --navbar-icon-colour: var(--navbar-font-colour);
+    --navbar-height: 60px;
+    --navbar-logo: url('../assets/logo.png');
+    --search-bar-bg-colour: transparent;
+    --search-bar-highlight-colour: var(--navbar-icon-colour);
+
+    --header-font-size: 24px;
+    --carousel-button-colour: var(--bg-darker-colour);
+    --carousel-button-opacity: 90%;
+
+    --card-bg-colour: var(--bg-darker-colour);
+    --card-height: 16vw;
+    --card-aspect-ratio: calc(2/3);
+    --card-border-radius: 10px;
+    --card-font-colour: var(--font-colour);
+    --card-hover-colour: var(--highlight-colour);
+    --card-progress-bar-left-colour: var(--primary-colour);
+    --card-progress-bar-right-colour: #eeeeee2c;
+    --card-drop-shadow-colour: transparent;
+
+    --dropdown-bg-colour: var(--bg-darker-colour);
+    --dropdown-hover-colour: var(--bg-colour);
+    --dropdown-font-colour: var(--font-colour);
+    --dropdown-font-size: 14px;
+    --dropdown-icon-colour: var(--dropdown-font-colour);
+    --dropdown-border-radius: 5px;
+
+    --notifications-bg-colour: var(--bg-darker-colour);
+    --notifications-font-colour: var(--font-colour);
+    --notifications-border-radius: 5px;
+
+    --billboard-bg-colour: var(--bg-darker-colour);
+    --billboard-font-colour: var(--font-colour);
+    --billboard-font-size: 14px;
+    --billboard-border-radius: 20px;
+    --billboard-height: 60vh;
+    --billboard-drop-shadow-colour: transparent;
+
+    --play-button-bg-colour: var(--white);
+    --play-button-font-colour: var(--black);
+    --play-button-drop-shadow-colour: #0000002C;
+    --play-button-border-radius: 5px;
+    --more-info-button-bg-colour: var(--bg-colour);
+    --more-info-button-font-colour: var(--font-colour);
+    --more-info-button-drop-shadow-colour: #0000002C;
+    --more-info-button-border-radius: 5px;
+
+    --delete-button-bg-colour: #E63333;
+    --delete-button-font-colour: var(--font-colour);
+}

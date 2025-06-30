@@ -1,97 +1,15 @@
-// Imports 
-@font-face {
-  font-family: 'Varela Round';
-  src: url('VarelaRound-Regular.ttf') format('truetype');
-}
-
-// Cheesecake Colours:
-// Light: #fdeca6
-// Dark: #a47d53
-
-// New Colours:
-// Light: #EDBD59
-
-// General Variables
-$primary-colour: #EDBD59;
-// $secondary-colour: #a47d53;
-$bg-darker-colour: #1E1414; 
-$bg-colour: #2A1E1E;
-$bg-lighter-colour: #3B2A2A;
-$highlight-colour: #EEEEEE;
-$font-family: 'Varela Round','Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
-$font-colour: #EEEEEE;
-$transition: 200ms;
-$colour-scheme: dark;
-
-$white: #EEEEEE;
-
-// Navbar
-$navbar-bg-colour: $bg-darker-colour;
-$navbar-font-colour: $font-colour;
-$navbar-font-size: 14px;
-$navbar-icon-colour: $navbar-font-colour;
-$navbar-height: 60px;
-$navbar-logo: url('../assets/logo.png');
-$search-bar-bg-colour: transparent;
-$search-bar-highlight-colour: $navbar-icon-colour;
-
-// Carousel
-$header-font-size: 24px;
-$carousel-button-colour: $bg-darker-colour;
-$carousel-button-opacity: 90%;
-
-// Card
-$card-bg-colour: $bg-darker-colour; 
-$card-height: 16vw;
-$card-aspect-ratio: calc(2/3);
-$card-border-radius: 10px;
-$card-font-colour: $font-colour;
-$card-hover-colour: $highlight-colour;
-$card-progress-bar-left-colour: $primary-colour;
-$card-progress-bar-right-colour: #eeeeee2c;
-$card-drop-shadow-colour: transparent;
-
-// Dropdown
-$dropdown-bg-colour: $bg-darker-colour;
-$dropdown-hover-colour: $bg-colour;
-$dropdown-font-colour: $font-colour;
-$dropdown-font-size: 14px;
-$dropdown-icon-colour: $dropdown-font-colour;
-$dropdown-border-radius: 5px;
-
-// Notifications
-$notifications-bg-colour: $bg-darker-colour;
-$notifications-font-colour: $font-colour;
-$notifications-border-radius: 5px;
-
-// Billboard
-$billboard-bg-colour: $bg-darker-colour;
-$billboard-font-colour: $font-colour;
-$billboard-font-size: 14px;
-$billboard-border-radius: 20px;
-$billboard-height: 60vh;
-$billboard-drop-shadow-colour: transparent;
-
-
-// Common
-$play-button-bg-colour: $highlight-colour;
-$play-button-font-colour: $bg-colour;
-$play-button-drop-shadow-colour: #0000002C;
-
-$delete-button-bg-colour: #E63333;
-$delete-button-font-colour: $font-colour;
-
+@import './theme.scss';
 
 html {
   scroll-behavior: smooth;
-  background-color: $bg-colour;
-  color-scheme: $colour-scheme;
+  background-color: var(--bg-colour);
+  color-scheme: var(--colour-scheme);
 }
 
 body {
   margin: 0;
-  font-family: $font-family;
-  background-color: $bg-colour;
+  font-family: var(--font-family);
+  background-color: var(--bg-colour);
 }
 
 .App {
@@ -101,8 +19,8 @@ body {
   width: 100vw;
   overflow-x: hidden;
   overflow-y: hidden;
-  background-color: $bg-colour;
-  color: $font-colour;
+  background-color: var(--bg-colour);
+  color: var(--font-colour);
 }
 
 a{
@@ -162,8 +80,8 @@ a{
 .page{
   overflow-y: auto;
   overflow-x: hidden;
-  margin-top: $navbar-height;
-  height: calc(100vh - $navbar-height);
+  margin-top: var(--navbar-height);
+  height: calc(100vh - var(--navbar-height));
   flex-direction: column;
 }
 

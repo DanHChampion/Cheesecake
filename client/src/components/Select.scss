@@ -10,19 +10,19 @@
     .current-option {
         @extend .flex-center, .fill, .clickable;
         position: relative;
-        background-color: $bg-colour;
+        background-color: var(--bg-colour);
         border-radius: 3px;
-        transition: 0.3s ease;
+        transition: var(--transition) ease;
         border: 2px solid transparent;
         
         &:hover {
-            background-color: $bg-darker-colour;
+            background-color: var(--bg-darker-colour);
         }
 
         .arrow {
             position: absolute;
             right: 10px;
-            transition: 0.2s ease;
+            transition: var(--transition) ease;
 
             &.active {
                 transform: rotateX(180deg);
@@ -30,8 +30,8 @@
         }
         
         &.active {
-            background-color: $bg-darker-colour;
-            border: 2px $highlight-colour solid;
+            background-color: var(--bg-darker-colour);
+            border: 2px var(--highlight-colour) solid;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
@@ -42,14 +42,14 @@
         top: calc(100% + 3px);
         left: 0;
         width: 100%;
-        background-color: $bg-colour;
+        background-color: var(--bg-colour);
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
         z-index: 1;
         height: fit-content;
         max-height: 0;
         font-size: inherit;
-        transition: 0.2s ease;
+        transition: var(--transition) ease;
         overflow: hidden;
         display: block;
         
@@ -57,9 +57,9 @@
             @extend .flex-center, .clickable;
             height: 50px;
             font-size: inherit;
-            transition: background-color 0.2s ease;
+            transition: background-color var(--transition) ease;
             &:hover {
-                background-color: $bg-darker-colour;
+                background-color: var(--bg-darker-colour);
             }
         }
 

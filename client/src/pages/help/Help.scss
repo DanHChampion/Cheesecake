@@ -1,10 +1,11 @@
 @import '../../assets/global.scss';
+@import '../../assets/_theme.scss';
 
 .Help{
     @extend .flex-center;
     flex-direction: column;
-    padding-top: $navbar-height;
-    height: calc(100% - $navbar-height);
+    padding-top: var(--navbar-height);
+    height: calc(100% - var(--navbar-height));
 
     .container {
         @extend .flex-center;
@@ -27,8 +28,8 @@
             border: 3px solid transparent;
             text-align: left;
             border-radius: 10px;
-            transition: $transition;
-            background-color: $bg-lighter-colour;
+            transition: var(--transition);
+            background-color: var(--bg-lighter-colour);
             margin-top: 20px;
 
 
@@ -54,7 +55,7 @@
         }
         .item:hover{
             transform: scale(1.03);
-            border: 3px $highlight-colour solid;
+            border: 3px var(--highlight-colour) solid;
         }
     };
 }

@@ -3,19 +3,19 @@
 .Card {
     @extend .flex-center, .clickable;
     position: relative;
-    height: $card-height;
-    aspect-ratio: $card-aspect-ratio;
+    height: var(--card-height);
+    aspect-ratio: var(--card-aspect-ratio);
     margin: 0 8px;
-    transition: $transition all;
-    border-radius: $card-border-radius;
-    color: $card-font-colour;
+    transition: var(--transition) all;
+    border-radius: var(--card-border-radius);
+    color: var(--card-font-colour);
     overflow: hidden;
     border: 2px transparent solid;
-    filter: drop-shadow(0 8px 4px $card-drop-shadow-colour);
+    filter: drop-shadow(0 8px 4px var(--card-drop-shadow-colour));
 
     .title{
         @extend .flex-center, .fill;
-        background: $card-bg-colour;
+        background: var(--card-bg-colour);
         position: absolute;
     }
 
@@ -31,15 +31,15 @@
         background-color: #0c0c0c2a;
         z-index: 2;
         font-size: 50px;
-        transition: $transition;
+        transition: var(--transition);
 
         span{
             position: absolute;
             height: 10px;
             width: 100%;
             background: 
-                linear-gradient(to right, $card-progress-bar-right-colour, $card-progress-bar-right-colour),
-                linear-gradient(to right, $card-progress-bar-left-colour, $card-progress-bar-left-colour);
+                linear-gradient(to right, var(--card-progress-bar-right-colour), var(--card-progress-bar-right-colour)),
+                linear-gradient(to right, var(--card-progress-bar-left-colour), var(--card-progress-bar-left-colour));
             background-size: 100% 0.5em, 0 0.5em;
             background-position: 100% 100%, 0 100%;
             background-repeat: no-repeat;
@@ -57,11 +57,11 @@
         top: 5px;
         right: 5px;
         outline: none;
-        background: $bg-lighter-colour;
+        background: var(--bg-lighter-colour);
         border: none;
-        color: $card-font-colour;
+        color: var(--card-font-colour);
         font-size: 20px;
-        transition: $transition;
+        transition: var(--transition);
         opacity: 70%;
         pointer-events:visible;
         z-index: 2;
@@ -73,7 +73,7 @@
 }
 .Card:hover {
     transform: scale(1.07);
-    border: 2px $card-hover-colour solid;
+    border: 2px var(--card-hover-colour) solid;
 }
 .Card:hover .overlay {
     background-color: #0c0c0cbe;

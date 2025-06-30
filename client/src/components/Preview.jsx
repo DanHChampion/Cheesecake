@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes , faPlus , faImages , faPlay, faCheck } from '@fortawesome/free-solid-svg-icons';
 import Episodes from './Episodes';
-import getImage from '../utils/getImage';
+import getImage from '../utils/getStaticFile';
 import tmdbApi from '../hooks/tmdbApi';
 import apiRequest from '../hooks/apiRequest';
 

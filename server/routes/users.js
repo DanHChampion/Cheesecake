@@ -50,19 +50,36 @@ router.post('/', async (req, res) => {
 router.patch('/:id', getUser, async (req, res) => {
 	const previousName = res.user.name;
 	const previousAvatar = res.user.avatar;
-	if (req.body.name == previousName && req.body.avatar == previousAvatar) {
-		return res.json({ message: 'No new changes'});
+	const previousTheme = res.user.theme;
+	const previousLanguage = res.user.language;
+
+	if (
+		req.body.name == previousName &&
+		req.body.avatar == previousAvatar &&
+		req.body.theme == previousTheme &&
+		req.body.language == previousLanguage
+	) {
+		return res.json({ message: 'No new changes' });
 	}
+
 	const keys = Object.keys(req.body);
-	if (!keys.includes('name') || !keys.includes('avatar')) {
-		return res.status(400).json({ message: 'Bad formatting'});
+	if (!keys.includes('name') || !keys.includes('avatar') || !keys.includes('theme') || !keys.includes('language')) {
+		return res.status(400).json({ message: 'Bad formatting' });
 	}
+
 	if (req.body.name != null) {
 		res.user.name = req.body.name;
 	}
 	if (req.body.avatar != null) {
 		res.user.avatar = req.body.avatar;
 	}
+	if (req.body.theme != null) {
+		res.user.theme = req.body.theme;
+	}
+	if (req.body.language != null) {
+		res.user.language = req.body.language;
+	}
+
 	try {
 		const updatedUser = await updateUser(res.user);
 		res.json(updatedUser);

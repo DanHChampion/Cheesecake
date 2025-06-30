@@ -3,11 +3,11 @@ import apiRequest from '../../hooks/apiRequest.js';
 import { useRef, useEffect , useState, useCallback } from 'react';
 import useFullscreenStatus from '../../hooks/useFullscreenStatus.js';
 // import PropTypes from 'prop-types';
-import getImage from '../../utils/getImage.js';
+import getImage from '../../utils/getStaticFile.js';
 import mediaSource from '../../utils/mediaSource.js';
 import convertHMS from '../../utils/convertHMS.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClosedCaptioning, faExpand, faMinimize, faPause, faPlay, faRotateForward, faRotateBackward, faChevronLeft, faForwardStep } from '@fortawesome/free-solid-svg-icons';
+import { faExpand, faMinimize, faPause, faPlay, faRotateForward, faRotateBackward, faChevronLeft, faForwardStep, faSliders } from '@fortawesome/free-solid-svg-icons';
 
 const Player = () => {
 	const queryParameters = new URLSearchParams(window.location.search);
@@ -22,6 +22,7 @@ const Player = () => {
 	// const [videoSub,setVideoSub] = useState(null);
 	const [slider, setSlider] = useState(0);
 	const [nextEpisode,setNextEpisode] = useState(null);
+	const [toggleSettings, setToggleSettings] = useState(false);
 
 	const videoRef = useRef(null);
 	const sliderRef = useRef(null);
@@ -88,10 +89,12 @@ const Player = () => {
 				seek(event);
 			}
 
-			timeout = setTimeout(() => {
-				bodyRef.current.style.opacity = 0;
-				bodyRef.current.style.cursor = 'none';
-			}, 2000);
+			if (!toggleSettings) {
+				timeout = setTimeout(() => {
+					bodyRef.current.style.opacity = 0;
+					bodyRef.current.style.cursor = 'none';
+				}, 3000);
+			}
 		};
 
 		bodyRef.current.addEventListener('mousemove', mouseMove);
@@ -99,7 +102,7 @@ const Player = () => {
 		return () => {
 			bodyRef.current.removeEventListener('mousemove', mouseMove);
 		};
-	}, []);
+	}, [toggleSettings]);
 	const updateTimestamp = () => {
 		if (sliderRef.current.value <= 0) sliderRef.current.value = 0;
 		else if ((sliderRef.current.value >= sliderRef.current.max)) sliderRef.current.max-0.1;
@@ -142,9 +145,8 @@ const Player = () => {
 		}
 	};
 
-	const toggleSubtitles = () => {
-		setSubtitle(!subtitles);
-		console.log('SUB:',subtitles);
+	const toggleSettingsMenu = () => {
+		setToggleSettings(!toggleSettings);
 	};
 
 	const updateContinueWatching = () => {
@@ -225,6 +227,13 @@ const Player = () => {
 	return (
 		<div className="Player">
 			<div className='overlay' ref={bodyRef}>
+				<div className={`settings ${toggleSettings? 'active' : ''}`}>
+					<div className='subtitles'>
+						<button onClick={() => {setSubtitle(!subtitles);}}>
+							{!subtitles? 'Enable Subtitles' : 'Disable Subtitles'}
+						</button>
+					</div>
+				</div>
 				<div onClick={() => {handlePause();}} className='clickable-screen'></div>
 				<div className='header'>
 					<div onClick={() => {toggleFullScreen(true);}} className='exit'>
@@ -255,8 +264,8 @@ const Player = () => {
 						console.log(e.target.files[0]);
 					} */}
 					{/* }/> */}
-					<button onClick={() => {toggleSubtitles();}}>
-						<FontAwesomeIcon icon={faClosedCaptioning}/>
+					<button onClick={() => {toggleSettingsMenu();}}>
+						<FontAwesomeIcon icon={faSliders}/>
 					</button>
 					<button onClick={() => {handleSkip(-10);}}>
 						<FontAwesomeIcon icon={faRotateBackward}/>
